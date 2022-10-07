@@ -12,10 +12,9 @@ class NewsCard extends StatelessWidget {
       ),
       child: Container(
         color: const Color(0xFFf5f5f5),
-        height: 350.0,
+        height: 380.0,
         padding: const EdgeInsets.all(10.0),
         width: double.infinity,
-        
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -44,34 +43,55 @@ class NewsCard extends StatelessWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Text("Author: Name",
-                  style: TextStyle(
-                    fontSize: 11.0,
-                    fontWeight: FontWeight.bold
-                  ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text("Posted: 10/22/2052",
-                  style: TextStyle(
-                    fontSize: 11.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  child: Text(
+                    "Author: Name",
+                    style:
+                        TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
                   ),
                 ),
                 const Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Text("Vote: 10",
-                  style: TextStyle(
-                    fontSize: 11.0,
-                    fontWeight: FontWeight.bold,
+                  child: Text(
+                    "Posted: 10/22/2052",
+                    style: TextStyle(
+                      fontSize: 11.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Vote: 10",
+                    style: TextStyle(
+                      fontSize: 11.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
             ),
-            
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: IconButton(
+                        onPressed: () {}, icon: const Icon(Icons.arrow_upward)),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text("23"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.arrow_downward)),
+                ),
+              ],
+            ),
           ],
         ),
       ),

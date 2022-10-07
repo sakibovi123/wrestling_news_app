@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wrestling_news_app/Views/Widgets/NewsCard.dart';
 
+import '../Widgets/Narbar.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -12,6 +14,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavBar(),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -25,12 +28,11 @@ class _HomeState extends State<Home> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.notifications),
+            icon: const Icon(Icons.notifications_active_outlined),
           ),
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.favorite_border_outlined)
-          ),
+              onPressed: () {},
+              icon: const Icon(Icons.account_circle_outlined)),
         ],
       ),
       body: SingleChildScrollView(
@@ -65,7 +67,6 @@ class _HomeState extends State<Home> {
                     padding: EdgeInsets.all(8.0),
                     child: NewsCard(),
                   ),
-                  
                 ],
               ),
             ),
