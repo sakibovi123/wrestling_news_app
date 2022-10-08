@@ -22,6 +22,8 @@ class NewsCard extends StatelessWidget {
             Image.asset(
               "assets/images/digital2.png",
               height: 150.0,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
             const Text("Lorem Ipsum Dolor Lorem lorem ipsum",
                 style: TextStyle(
