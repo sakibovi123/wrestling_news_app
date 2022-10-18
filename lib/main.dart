@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wrestling_news_app/Views/Screens/Splash.dart';
-
-import 'Views/Pages/Home.dart';
+import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -23,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
       ),
       // home: const Home(),
-      home: const SplashScreen(),
+      home: SplashScreen(),
     );
   }
 }

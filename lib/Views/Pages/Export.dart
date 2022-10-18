@@ -1,0 +1,10 @@
+export '../Screens/Splash.dart';
+export '../Widgets/Narbar.dart';
+export '../Widgets/NewsCard.dart';
+export '../Widgets/my_bottom_navbar.dart';
+export 'Home.dart';
+export 'Login.dart';
+export 'Register.dart';
+export 'photos.dart';
+export 'podcasts.dart';
+export 'wrestling_news.dart';

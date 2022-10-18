@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wrestling_news_app/Views/Pages/Login.dart';
-import 'package:wrestling_news_app/Views/Pages/Register.dart';
-import 'package:wrestling_news_app/Views/Widgets/NewsCard.dart';
 
-import '../Widgets/Narbar.dart';
+import 'Export.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,6 +10,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int currentIndex = 0;
+  void onTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +82,8 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomAppBar(),
+      // pages[0];
+      // bottomNavigationBar: MyBottomNavbar(),
     );
   }
 }
