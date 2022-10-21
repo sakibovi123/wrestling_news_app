@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:wrestling_news_app/Views/Pages/NewsDetails.dart';
 
 class NewsCard extends StatelessWidget {
-  const NewsCard({super.key});
+
+  final String title;
+
+  const NewsCard({
+    required this.title
+    });
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +36,8 @@ class NewsCard extends StatelessWidget {
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
-              const Text("Lorem Ipsum Dolor Lorem lorem ipsum",
-                  style: TextStyle(
+               Text(title,
+                  style: const TextStyle(
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,
                   )),
@@ -52,7 +57,7 @@ class NewsCard extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "Author: Name",
+                      "Author: John Robertson",
                       style:
                           TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
                     ),

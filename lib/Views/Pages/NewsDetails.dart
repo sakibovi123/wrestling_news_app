@@ -88,17 +88,17 @@ class _NewsDetailsCardState extends State<NewsDetailsCard> {
                 ),
               ],
             ),
-            Container(
-              height: 400,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GridView.count(
-                    crossAxisCount: 1,
-                  scrollDirection: Axis.horizontal,
-                  children: List.generate(10, (i) => const NewsCard())
-                ),
-              ),
-            ),
+            // Container(
+            //   height: 400,
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(8.0),
+            //     child: GridView.count(
+            //         crossAxisCount: 1,
+            //       scrollDirection: Axis.horizontal,
+            //       children: List.generate(10, (i) => const NewsCard())
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       )

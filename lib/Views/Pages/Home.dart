@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Controller/NewsController.dart';
 
 import 'Export.dart';
 
@@ -11,6 +13,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  bool _init = true;
+  bool _isLoading = false;
+
+  @override
+  void didChangeDependencies() async{
+    if (_init) {
+      _isLoading = await Provider.of<NewsController>(context, listen: false).getNews();
+    }
+    _init = false;
+    super.didChangeDependencies();
+  }
+
+
   int currentIndex = 0;
   void onTap(int index) {
     setState(() {
@@ -20,6 +35,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final all_news = Provider.of<NewsController>(context).news;
     return Scaffold(
       drawer: const NavBar(),
       appBar: AppBar(
@@ -65,22 +81,22 @@ class _HomeState extends State<Home> {
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
                       )),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: NewsCard(),
+                    child: Container(
+                      height: 300,
+                      child: GridView.count(
+                        crossAxisCount: 1,
+                        scrollDirection: Axis.horizontal,
+                        children: List.generate(all_news.length, (i){
+                          return NewsCard(title: all_news[i].title)
+                        }
+
+                        ),
+                      ),
+                    ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: NewsCard(),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: NewsCard(),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: NewsCard(),
-                  ),
+
                 ],
               ),
             ),

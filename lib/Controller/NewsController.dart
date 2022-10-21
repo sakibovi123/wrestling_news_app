@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 class NewsController with ChangeNotifier{
   List<NewsModel> _news = [];
 
+
   Future<bool> getNews() async {
     var url = Uri.parse('https://wrestlingworld.co/wp-json/wp/v2/posts?categories=22');
     try{
@@ -26,6 +27,10 @@ class NewsController with ChangeNotifier{
       print(e);
       return false;
     }
+  }
+
+  List<NewsController> get news {
+    return [..._news];
   }
 
 }
