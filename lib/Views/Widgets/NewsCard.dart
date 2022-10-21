@@ -12,7 +12,7 @@ class NewsCard extends StatelessWidget {
       ),
       child: Container(
         color: const Color(0xFFf5f5f5),
-        height: 380.0,
+        height: 400.0,
         padding: const EdgeInsets.all(10.0),
         width: double.infinity,
         child: Column(

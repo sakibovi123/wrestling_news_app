@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wrestling_news_app/Views/Pages/Login.dart';
 import 'package:wrestling_news_app/Views/Pages/Register.dart';
 import 'package:wrestling_news_app/Views/Widgets/NewsCard.dart';
+import 'package:wrestling_news_app/Views/Widgets/NotificationCard.dart';
 
 import '../Widgets/Narbar.dart';
 
@@ -29,7 +30,12 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NotificationCard()));
+            },
             icon: const Icon(Icons.notifications_active_outlined),
           ),
           IconButton(
