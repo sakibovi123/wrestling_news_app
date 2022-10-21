@@ -33,10 +33,7 @@ class _HomeState extends State<Home> {
           ),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications_active_outlined),
-          ),
+
           IconButton(
               onPressed: () {
                 Navigator.push(context,
