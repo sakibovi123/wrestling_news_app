@@ -22,6 +22,13 @@ class MyApp extends StatelessWidget {
       ),
       // home: const Home(),
       home: SplashScreen(),
+      initialRoute: '/',
+      routes: {
+        Home.routeName: (context) => const Home(),
+        WrestlingNews.routeName: (context) => const WrestlingNews(),
+        Photos.routeName: (context) => const Photos(),
+        Podcasts.routeName: (context) => const Podcasts(),
+      },
     );
   }
 }

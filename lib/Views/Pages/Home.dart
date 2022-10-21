@@ -4,6 +4,7 @@ import 'Export.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
+  static const routeName = '/Home';
 
   @override
   State<Home> createState() => _HomeState();
@@ -54,6 +55,13 @@ class _HomeState extends State<Home> {
               child: Column(
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
+                  Container(
+                    height: 10,
+                  ),
+                  //const Filter(),
+                  Container(
+                    height: 20,
+                  ),
                   // ignore: prefer_const_constructors
                   Text("Trending News",
                       style: const TextStyle(
@@ -82,8 +90,11 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
+
       // pages[0];
       //bottomNavigationBar: MyBottomNavbar(),
+
+      bottomNavigationBar: const MyBottomNavbar(index: 0),
     );
   }
 }
