@@ -12,18 +12,17 @@ class NewsCard extends StatelessWidget {
       ),
       child: Container(
         color: const Color(0xFFf5f5f5),
-        height: 400.0,
+        height: 470.0,
         padding: const EdgeInsets.all(10.0),
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              "assets/images/digital2.png",
-              height: 150.0,
-              width: double.infinity,
-              fit: BoxFit.cover,
+            Image(
+              image: AssetImage(
+                "assets/images/digital2.png",
+              ),
             ),
             const Text("Lorem Ipsum Dolor Lorem lorem ipsum",
                 style: TextStyle(

@@ -2,6 +2,7 @@ export '../Screens/Splash.dart';
 export '../Widgets/Narbar.dart';
 export '../Widgets/NewsCard.dart';
 export '../Widgets/NotificationCard.dart';
+export '../Widgets/event_card.dart';
 export '../Widgets/formed_filter.dart';
 export '../Widgets/my_bottom_navbar.dart';
 export 'Home.dart';

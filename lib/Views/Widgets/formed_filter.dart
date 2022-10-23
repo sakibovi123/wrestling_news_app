@@ -83,7 +83,7 @@ class _FilterState extends State<Filter> {
                 margin: const EdgeInsets.only(left: 5),
                 child: const ElevatedButton(
                   onPressed: null,
-                  child: Text('Submit'),
+                  child: Text('Search'),
                 ),
               ),
             )
