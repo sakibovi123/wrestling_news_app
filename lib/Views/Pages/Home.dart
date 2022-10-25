@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final all_news = Provider.of<NewsController>(context).news;
+    final all_news = Provider.of<NewsController>(context).allNews;
     return Scaffold(
       drawer: const NavBar(),
       appBar: AppBar(
@@ -89,7 +89,7 @@ class _HomeState extends State<Home> {
                         crossAxisCount: 1,
                         scrollDirection: Axis.horizontal,
                         children: List.generate(all_news.length, (i){
-                          return NewsCard(title: all_news[i].title)
+                          return NewsCard(title: all_news[i].title);
                         }
 
                         ),
