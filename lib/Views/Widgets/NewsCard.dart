@@ -7,11 +7,12 @@ class NewsCard extends StatelessWidget {
 
   const NewsCard({
     required this.title
-    });
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+
       onTap: (){
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const NewsDetailsCard()));
@@ -23,7 +24,7 @@ class NewsCard extends StatelessWidget {
         ),
         child: Container(
           color: const Color(0xFFf5f5f5),
-          height: 380.0,
+          height: 500.0,
           padding: const EdgeInsets.all(10.0),
           width: double.infinity,
           child: Column(
@@ -36,11 +37,14 @@ class NewsCard extends StatelessWidget {
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
-               Text(title,
-                  style: const TextStyle(
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                  )),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(title,
+                    style: const TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
               const Padding(
                 padding: EdgeInsets.all(5.0),
                 child: Text(
@@ -59,7 +63,7 @@ class NewsCard extends StatelessWidget {
                     child: Text(
                       "Author: John Robertson",
                       style:
-                          TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
                     ),
                   ),
                   const Padding(

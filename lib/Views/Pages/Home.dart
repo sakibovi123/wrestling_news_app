@@ -13,20 +13,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool _init = true;
-  bool _isLoading = false;
 
-  @override
-  void didChangeDependencies() async{
-    if (_init) {
-      _isLoading = await Provider.of<NewsController>(context, listen: false).getNews();
-    }
-    _init = false;
-    super.didChangeDependencies();
-  }
-
+  NewsController newsController = NewsController();
 
   int currentIndex = 0;
+
   void onTap(int index) {
     setState(() {
       currentIndex = index;
@@ -35,20 +26,29 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final all_news = Provider.of<NewsController>(context).allNews;
     return Scaffold(
       drawer: const NavBar(),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
-          "Wrestling",
+          "Wrestling World",
           style: TextStyle(
             fontStyle: FontStyle.italic,
             fontSize: 18.0,
           ),
         ),
         actions: [
+
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NotificationCard()));
+            },
+            icon: const Icon(Icons.notifications_active_outlined),
+          ),
 
           IconButton(
               onPressed: () {
@@ -58,50 +58,55 @@ class _HomeState extends State<Home> {
               icon: const Icon(Icons.account_circle_outlined)),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              // height: double.infinity,
-              color: Colors.white24,
-              child: Column(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  Container(
-                    height: 10,
-                  ),
-                  //const Filter(),
-                  Container(
-                    height: 20,
-                  ),
-                  // ignore: prefer_const_constructors
-                  Text("Trending News",
-                      style: const TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                      )),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 300,
-                      child: GridView.count(
-                        crossAxisCount: 1,
-                        scrollDirection: Axis.horizontal,
-                        children: List.generate(all_news.length, (i){
-                          return NewsCard(title: all_news[i].title);
-                        }
+      body: ListView(
+        children: [
+          Container(
+            width: double.infinity,
+            // height: double.infinity,
+            color: Colors.white24,
+            child: Column(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Container(
+                  height: 10,
+                ),
+                //const Filter(),
+                Container(
+                  height: 20,
+                ),
+                // ignore: prefer_const_constructors
+                Text("Trending News",
+                    style: const TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    )),
+                FutureBuilder(
+                  future: newsController.getNews(),
+                  builder: (context, snapShot) {
+                    if (snapShot.hasData) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: snapShot.data?.length,
+                              itemBuilder: (context, item){
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: NewsCard(title: snapShot.data?[item]['title']["rendered"]),
+                                );
+                          })
+                      );
+                    }
+                    else {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
 
-                        ),
-                      ),
-                    ),
-                  ),
-
-                ],
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
 
       // pages[0];
