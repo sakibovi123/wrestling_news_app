@@ -8,14 +8,14 @@ class EventCard extends StatelessWidget {
     required this.imageList,
     required this.titleList,
     required this.width,
-    required this.eventTimeAndDate,
+    this.eventTimeAndDate,
     required this.index,
   }) : super(key: key);
 
   final List<String> imageList;
   final List<String> titleList;
   final double width;
-  final List<String> eventTimeAndDate;
+  final List<String>? eventTimeAndDate;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class EventCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     titleList[index],
@@ -70,10 +70,10 @@ class EventCard extends StatelessWidget {
                     height: 10,
                   ),
                   Container(
-                    alignment: Alignment.center,
+                    alignment: Alignment.topLeft,
                     width: width,
                     child: Text(
-                      eventTimeAndDate[index],
+                      eventTimeAndDate![index],
                       style: const TextStyle(
                         fontSize: 18,
                       ),
