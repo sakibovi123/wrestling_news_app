@@ -12,7 +12,7 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-
+      behavior: HitTestBehavior.translucent,
       onTap: (){
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const NewsDetailsCard()));
@@ -26,7 +26,7 @@ class NewsCard extends StatelessWidget {
           color: const Color(0xFFf5f5f5),
           height: 500.0,
           padding: const EdgeInsets.all(10.0),
-          width: double.infinity,
+          //width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -88,27 +88,27 @@ class NewsCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.arrow_upward)),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text("23"),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.arrow_downward)),
-                  ),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     Padding(
+              //       padding: const EdgeInsets.all(8.0),
+              //       child: Padding(
+              //         padding: const EdgeInsets.all(8.0),
+              //         child: IconButton(
+              //             onPressed: () {}, icon: const Icon(Icons.arrow_upward)),
+              //       ),
+              //     ),
+              //     const Padding(
+              //       padding: EdgeInsets.all(10.0),
+              //       child: Text("23"),
+              //     ),
+              //     Padding(
+              //       padding: const EdgeInsets.all(8.0),
+              //       child: IconButton(
+              //           onPressed: () {}, icon: const Icon(Icons.arrow_downward)),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),
