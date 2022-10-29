@@ -64,7 +64,8 @@ class _WrestlingNewsState extends State<WrestlingNews> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              print(titleList[index]);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => RosterPage()));
             },
             child: EventCard(
               imageList: imageList,
