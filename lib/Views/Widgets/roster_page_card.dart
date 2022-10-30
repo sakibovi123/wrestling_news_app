@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RosterPageCard extends StatelessWidget {
   final int index;
 
-  RosterPageCard({
+  const RosterPageCard({
     Key? key,
     required this.imageList,
     required this.firstNameList,
@@ -74,7 +74,7 @@ class RosterPageCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
                       Text(
                         lastNameList[index],
@@ -130,7 +130,7 @@ class RosterPageCard extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
       ],

@@ -11,12 +11,38 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int currentIndex = 0;
-  void onTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
+  List<StoryData> stories = [
+    StoryData(
+      'Product 1',
+      'https://cdn.pixabay.com/photo/2014/02/27/16/10/tree-276014_960_720.jpg',
+      'https://cdn.pixabay.com/photo/2014/02/27/16/10/tree-276014_960_720.jpg',
+    ),
+    StoryData(
+      'Product 2',
+      'https://pixabay.com/get/g9d48154a4158b4aa951200db9489c5640646d01ce7f49ba6219b2351885186c0011b835c2e38999ac82be36c5956feab_640.jpg',
+      'https://pixabay.com/get/g9d48154a4158b4aa951200db9489c5640646d01ce7f49ba6219b2351885186c0011b835c2e38999ac82be36c5956feab_640.jpg',
+    ),
+    StoryData(
+      'Product 3',
+      'https://pixabay.com/get/g77d47b23359554641677764d2b31d6c545be36ddddf9380166963935e7e1f4244f322c7ecc6506e4a1180f00c505c214_640.jpg',
+      'https://pixabay.com/get/g77d47b23359554641677764d2b31d6c545be36ddddf9380166963935e7e1f4244f322c7ecc6506e4a1180f00c505c214_640.jpg',
+    ),
+    StoryData(
+      'Product 4',
+      'https://pixabay.com/get/ged4bc7781f54002756bc7a09ba86a743f77207c6ee97e54862622e56bd638c2f97fff7a65ac3f8f54b2581c00043d47b_640.jpg',
+      'https://pixabay.com/get/ged4bc7781f54002756bc7a09ba86a743f77207c6ee97e54862622e56bd638c2f97fff7a65ac3f8f54b2581c00043d47b_640.jpg',
+    ),
+    StoryData(
+      'Product 5',
+      'https://pixabay.com/get/g8209f471ca0b85c7003a790c620fb68d77b8216973ee7697409760314d7b4bf13311728fb8d88ed8bea5614e00c92ebf_640.jpg',
+      'https://pixabay.com/get/g8209f471ca0b85c7003a790c620fb68d77b8216973ee7697409760314d7b4bf13311728fb8d88ed8bea5614e00c92ebf_640.jpg',
+    ),
+    StoryData(
+      'Product 6',
+      'https://pixabay.com/get/gb86c3ef96e625e6bc27bee43f20f94dbbc30fd59867bdcf79f60da9e0259b1f68806471a56fd4feb699abf4dd85a25e4_640.jpg',
+      'https://pixabay.com/get/gb86c3ef96e625e6bc27bee43f20f94dbbc30fd59867bdcf79f60da9e0259b1f68806471a56fd4feb699abf4dd85a25e4_640.jpg',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +89,27 @@ class _HomeState extends State<Home> {
                   Container(
                     height: 10,
                   ),
+
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 130.0,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            storyButton(stories[0], context),
+                            storyButton(stories[1], context),
+                            storyButton(stories[2], context),
+                            storyButton(stories[3], context),
+                            storyButton(stories[4], context),
+                            storyButton(stories[5], context),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+
                   const Filter(),
                   Container(
                     height: 20,

@@ -1,4 +1,7 @@
+export '../../Components/story_btn.dart';
+export '../../Data/story_data.dart';
 export '../Screens/Splash.dart';
+export '../Screens/story_view.dart';
 export '../Widgets/Narbar.dart';
 export '../Widgets/NewsCard.dart';
 export '../Widgets/NotificationCard.dart';
