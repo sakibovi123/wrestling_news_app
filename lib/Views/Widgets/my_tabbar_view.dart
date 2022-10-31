@@ -46,7 +46,7 @@ class MyTabBarView extends StatelessWidget {
           ),
         ),
         Container(
-          width: double.maxFinite,
+          width: double.infinity,
           height: 800,
           child: TabBarView(
             controller: tabController,
@@ -56,19 +56,16 @@ class MyTabBarView extends StatelessWidget {
                 future: eventController.getEvents(),
                 builder: (context, snapshot){
                   if(snapshot.hasData){
-                    return Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: snapshot.data?.length,
-                        itemBuilder: (context, item){
-                          return EventCard(
-                            date: snapshot.data?[item]["date"],
-                            title: snapshot.data?[item]["title"],
-                            matches: snapshot.data?[item]["matches"],
-                          );
-                        },
-                      ),
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data?.length,
+                      itemBuilder: (context, item){
+                        return EventCard(
+                          date: snapshot.data?[item]["date"],
+                          event_name: snapshot.data?[item]["event_name"],
+                          location: snapshot.data?[item]["location"],
+                        );
+                      },
                     );
                   }
                   else{

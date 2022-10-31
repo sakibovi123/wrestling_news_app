@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 
 class EventCard extends StatelessWidget {
   final String date;
-  final String title;
-  final String matches;
+  final String event_name;
+  final String location;
 
   const EventCard({
     Key? key,
     required this.date,
-    required this.title,
-    required this.matches
+    required this.event_name,
+    required this.location
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 290,
+      margin: EdgeInsets.all(7.0),
       decoration: BoxDecoration(
         border: Border.all(color: const Color(0xFFe8e8e8)),
         borderRadius: BorderRadius.circular(6.0),
@@ -29,7 +31,7 @@ class EventCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 100,
+            width: 80,
             height: 100,
             child: ClipRRect(
               borderRadius: const BorderRadiusDirectional.only(
@@ -43,14 +45,14 @@ class EventCard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(5.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  date,
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -59,9 +61,9 @@ class EventCard extends StatelessWidget {
                 ),
                 Container(
                   alignment: Alignment.topLeft,
-                  width: 300,
+                  width: 280,
                   child: Text(
-                    date,
+                    event_name,
                     style: const TextStyle(
                       fontSize: 18,
                     ),
