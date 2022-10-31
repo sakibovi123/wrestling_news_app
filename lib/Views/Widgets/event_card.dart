@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 
 class EventCard extends StatelessWidget {
-  final int index;
+  final String date;
+  final String title;
+  final String matches;
 
   const EventCard({
     Key? key,
-    required this.imageList,
-    required this.titleList,
-    required this.width,
-    this.eventTimeAndDate,
-    required this.index,
+    required this.date,
+    required this.title,
+    required this.matches
   }) : super(key: key);
-
-  final List<String> imageList;
-  final List<String> titleList;
-  final double width;
-  final List<String>? eventTimeAndDate;
 
   @override
   Widget build(BuildContext context) {
@@ -31,59 +26,51 @@ class EventCard extends StatelessWidget {
           )
         ],
       ),
-      child: Card(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        elevation: 5,
-        shadowColor: Colors.white,
-        child: Row(
-          children: [
-            Container(
-              width: 100,
-              height: 100,
-              child: ClipRRect(
-                borderRadius: const BorderRadiusDirectional.only(
-                  topStart: Radius.circular(10.0),
-                  bottomStart: Radius.circular(10.0),
-                ),
-                child: Image.asset(
-                  imageList[index],
-                  fit: BoxFit.fill,
-                ),
+      child: Row(
+        children: [
+          Container(
+            width: 100,
+            height: 100,
+            child: ClipRRect(
+              borderRadius: const BorderRadiusDirectional.only(
+                topStart: Radius.circular(10.0),
+                bottomStart: Radius.circular(10.0),
+              ),
+              child: Image.network(
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/WWE_%282014%29_logo.svg/1200px-WWE_%282014%29_logo.svg.png",
+                fit: BoxFit.fill,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    titleList[index],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  width: 300,
+                  child: Text(
+                    date,
                     style: const TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    width: width,
-                    child: Text(
-                      eventTimeAndDate![index],
-                      style: const TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
