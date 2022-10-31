@@ -16,7 +16,7 @@ class _StoryViewState extends State<StoryView> {
   double percent = 0.0;
   Timer? _timer;
   void startTimer() {
-    _timer = Timer.periodic(const Duration(microseconds: 50), (timer) {
+    _timer = Timer.periodic(const Duration(microseconds: 5000), (timer) {
       setState(() {
         percent += 0.001;
         if (percent > 1) {
@@ -44,7 +44,7 @@ class _StoryViewState extends State<StoryView> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(widget.story.storyUrl),
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.cover,
               ),
             ),
           ),

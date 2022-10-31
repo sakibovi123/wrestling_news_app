@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wrestling_news_app/Views/Pages/event_details.dart';
 
 class MyTabBarView extends StatelessWidget {
   const MyTabBarView({
@@ -37,11 +38,21 @@ class MyTabBarView extends StatelessWidget {
         ),
         Container(
           width: double.maxFinite,
-          height: 300,
+          height: 120,
           child: TabBarView(
             controller: tabController,
-            children: const [
-              Text('This is tab 1'),
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EventDetails(),
+                    ),
+                  );
+                },
+                child: Text('Tap here to navigate to Event Details'),
+              ),
               Text('This is tab 2'),
               Text('This is tab 3'),
               Text('This is tab 4'),

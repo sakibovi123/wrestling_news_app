@@ -1,5 +1,6 @@
 export '../../Components/story_btn.dart';
 export '../../Data/story_data.dart';
+export '../../Data/story_data_link.dart';
 export '../Screens/Splash.dart';
 export '../Screens/story_view.dart';
 export '../Widgets/Narbar.dart';
@@ -13,6 +14,7 @@ export '../Widgets/roster_page_card.dart';
 export 'Home.dart';
 export 'Login.dart';
 export 'Register.dart';
+export 'event_details.dart';
 export 'photos.dart';
 export 'podcasts.dart';
 export 'roster_page.dart';
