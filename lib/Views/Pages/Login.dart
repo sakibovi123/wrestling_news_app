@@ -40,8 +40,12 @@ class _LoginState extends State<Login> {
                   contentPadding:
                       const EdgeInsets.only(left: 14.0, bottom: 6.0, top: 8.0),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        color: Color.fromARGB(255, 73, 57, 55)),
+
+                    borderSide:
+                        const BorderSide(color: Color.fromARGB(255, 73, 57, 55)),
+
+
+
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   enabledBorder: UnderlineInputBorder(
@@ -64,8 +68,8 @@ class _LoginState extends State<Login> {
                   contentPadding:
                       const EdgeInsets.only(left: 14.0, bottom: 6.0, top: 8.0),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        color: Color.fromARGB(255, 73, 57, 55)),
+                    borderSide:
+                        const BorderSide(color: Color.fromARGB(255, 73, 57, 55)),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   enabledBorder: UnderlineInputBorder(

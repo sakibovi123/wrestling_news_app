@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
+
+import '../Pages/Export.dart';
+
 class MyBottomNavbar extends StatelessWidget {
   const MyBottomNavbar({
     Key? key,
@@ -53,5 +56,7 @@ class MyBottomNavbar extends StatelessWidget {
         ),
       ],
     );
+
   }
 }
+

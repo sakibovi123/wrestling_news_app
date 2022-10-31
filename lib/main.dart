@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Controller/NewsController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 void main() {
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
       ),
       // home: const Home(),
-      home: SplashScreen(),
+      home: const SplashScreen(),
       initialRoute: '/',
       routes: {
         Home.routeName: (context) => const Home(),
