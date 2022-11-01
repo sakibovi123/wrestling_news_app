@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Controller/MatchController.dart';
+import 'package:wrestling_news_app/Views/Pages/Export.dart';
+import 'package:wrestling_news_app/Views/Pages/event_details.dart';
 
 import 'event_card.dart';
 
@@ -43,7 +45,7 @@ class MyTabBarView extends StatelessWidget {
           ),
         ),
         Container(
-          width: double.maxFinite,
+          width: double.infinity,
           height: 800,
           child: TabBarView(
             controller: tabController,
@@ -53,19 +55,25 @@ class MyTabBarView extends StatelessWidget {
                 future: eventController.getEvents(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: snapshot.data?.length,
-                        itemBuilder: (context, item) {
-                          return EventCard(
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data?.length,
+                      itemBuilder: (context, item) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EventDetails()),
+                            );
+                          },
+                          child: EventCard(
                             date: snapshot.data?[item]["date"],
-                            title: snapshot.data?[item]["title"],
-                            matches: snapshot.data?[item]["matches"],
-                          );
-                        },
-                      ),
+                            event_name: snapshot.data?[item]["event_name"],
+                            location: snapshot.data?[item]["location"],
+                          ),
+                        );
+                      },
                     );
                   } else {
                     return const Center(
@@ -96,7 +104,16 @@ class MyTabBarView extends StatelessWidget {
                 },
               ),
               // Results
-              Text('This is tab 3'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TemporaryImageSliderPage()),
+                  );
+                },
+                child: Text('This is tab 3'),
+              ),
               // Rosters
               Text('This is tab 4'),
             ],
