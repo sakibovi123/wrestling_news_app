@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/NewsController.dart';
 
 import 'Export.dart';
@@ -13,8 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-
   NewsController newsController = NewsController();
 
   int currentIndex = 0;
@@ -58,11 +55,10 @@ class _HomeState extends State<Home> {
     ),
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: const MyBottomNavbar(index: 0),
+      bottomNavigationBar: const MyBottomNavbar(index: 0),
       drawer: const NavBar(),
       appBar: AppBar(
         elevation: 0,
@@ -75,7 +71,6 @@ class _HomeState extends State<Home> {
           ),
         ),
         actions: [
-
           IconButton(
             onPressed: () {
               Navigator.push(
@@ -85,7 +80,6 @@ class _HomeState extends State<Home> {
             },
             icon: const Icon(Icons.notifications_active_outlined),
           ),
-
           IconButton(
               onPressed: () {
                 Navigator.push(context,
@@ -94,20 +88,16 @@ class _HomeState extends State<Home> {
               icon: const Icon(Icons.account_circle_outlined)),
         ],
       ),
-
       body: ListView(
         children: [
-
           Row(
             children: [
               storyButton(stories[0], context),
               storyButton(stories[1], context),
               storyButton(stories[1], context),
               storyButton(stories[1], context),
-
             ],
           ),
-
           Container(
             width: double.infinity,
             // height: double.infinity,
@@ -133,102 +123,28 @@ class _HomeState extends State<Home> {
                   builder: (context, snapShot) {
                     if (snapShot.hasData) {
                       return Padding(
-                        padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: ListView.builder(
                               shrinkWrap: true,
                               itemCount: snapShot.data?.length,
-                              itemBuilder: (context, item){
+                              itemBuilder: (context, item) {
                                 return Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: NewsCard(title: snapShot.data?[item]['title']["rendered"]),
+                                  child: NewsCard(
+                                      title: snapShot.data?[item]['title']
+                                          ["rendered"]),
                                 );
-                          })
-                      );
-                    }
-                    else {
+                              }));
+                    } else {
                       return const Center(child: CircularProgressIndicator());
                     }
                   },
                 ),
-
               ],
-    ),
+            ),
+          ),
+        ],
       ),
-      ],
-    )
-      //
-      // body: SingleChildScrollView(
-      //   child: Column(
-      //     children: [
-      //       Container(
-      //         width: double.infinity,
-      //         // height: double.infinity,
-      //         color: Colors.white24,
-      //         child: Column(
-      //           // ignore: prefer_const_literals_to_create_immutables
-      //           children: [
-      //             Container(
-      //               height: 10,
-      //             ),
-      //
-      //             Column(
-      //               children: [
-      //                 Container(
-      //                   width: double.infinity,
-      //                   height: 130.0,
-      //                   child: ListView(
-      //                     scrollDirection: Axis.horizontal,
-      //                     children: [
-      //                       storyButton(stories[0], context),
-      //                       storyButton(stories[1], context),
-      //                       storyButton(stories[2], context),
-      //                       storyButton(stories[3], context),
-      //                       storyButton(stories[4], context),
-      //                       storyButton(stories[5], context),
-      //                     ],
-      //                   ),
-      //                 ),
-      //               ],
-      //             ),
-      //
-      //             const Filter(),
-      //             Container(
-      //               height: 20,
-      //             ),
-      //             // ignore: prefer_const_constructors
-      //             Text("Trending News",
-      //                 style: const TextStyle(
-      //                   fontSize: 18.0,
-      //                   fontWeight: FontWeight.bold,
-      //                 )),
-      //             const Padding(
-      //               padding: EdgeInsets.all(8.0),
-      //               child: NewsCard(),
-      //             ),
-      //             const Padding(
-      //               padding: EdgeInsets.all(8.0),
-      //               child: NewsCard(),
-      //             ),
-      //             const Padding(
-      //               padding: EdgeInsets.all(8.0),
-      //               child: NewsCard(),
-      //             ),
-      //             const Padding(
-      //               padding: EdgeInsets.all(8.0),
-      //               child: NewsCard(),
-      //             ),
-      //           ],
-      //         ),
-      //
-      //       ),
-      //     ),
-      //   ],
-      // ),
-
-      // pages[0];
-      //bottomNavigationBar: MyBottomNavbar(),
-
-
     );
   }
 }

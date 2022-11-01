@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Controller/MatchController.dart';
-import 'package:wrestling_news_app/Views/Widgets/MatchCard.dart';
+import 'package:wrestling_news_app/Views/Pages/Export.dart';
+import 'package:wrestling_news_app/Views/Pages/event_details.dart';
 
 import 'event_card.dart';
 
@@ -15,8 +16,6 @@ class MyTabBarView extends StatelessWidget {
   }) : super(key: key);
 
   final TabController tabController;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -54,21 +53,29 @@ class MyTabBarView extends StatelessWidget {
               // Events
               FutureBuilder(
                 future: eventController.getEvents(),
-                builder: (context, snapshot){
-                  if(snapshot.hasData){
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
                     return ListView.builder(
                       shrinkWrap: true,
                       itemCount: snapshot.data?.length,
-                      itemBuilder: (context, item){
-                        return EventCard(
-                          date: snapshot.data?[item]["date"],
-                          event_name: snapshot.data?[item]["event_name"],
-                          location: snapshot.data?[item]["location"],
+                      itemBuilder: (context, item) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EventDetails()),
+                            );
+                          },
+                          child: EventCard(
+                            date: snapshot.data?[item]["date"],
+                            event_name: snapshot.data?[item]["event_name"],
+                            location: snapshot.data?[item]["location"],
+                          ),
                         );
                       },
                     );
-                  }
-                  else{
+                  } else {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
@@ -78,20 +85,18 @@ class MyTabBarView extends StatelessWidget {
               // Matches
               FutureBuilder(
                 future: matchController.getMatches(),
-                builder: (context, output){
-                  if( output.hasData ){
+                builder: (context, output) {
+                  if (output.hasData) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListView.builder(
                         itemCount: output.data?.length,
-                        itemBuilder: (context, item){
+                        itemBuilder: (context, item) {
                           return Text("Hello world");
-
                         },
                       ),
                     );
-                  }
-                  else{
+                  } else {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
@@ -99,7 +104,16 @@ class MyTabBarView extends StatelessWidget {
                 },
               ),
               // Results
-              Text('This is tab 3'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TemporaryImageSliderPage()),
+                  );
+                },
+                child: Text('This is tab 3'),
+              ),
               // Rosters
               Text('This is tab 4'),
             ],

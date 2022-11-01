@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
-class Photos extends StatefulWidget {
-  const Photos({Key? key}) : super(key: key);
-
-  static const routeName = '/photos';
+class TemporaryImageSliderPage extends StatefulWidget {
+  const TemporaryImageSliderPage({Key? key}) : super(key: key);
 
   @override
-  State<Photos> createState() => _PhotosState();
+  State<TemporaryImageSliderPage> createState() =>
+      _TemporaryImageSliderPageState();
 }
 
-class _PhotosState extends State<Photos> {
+class _TemporaryImageSliderPageState extends State<TemporaryImageSliderPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          elevation: 0,
           backgroundColor: Colors.white,
+          elevation: 0.0,
         ),
         body: VerticalImageSlider(),
-        bottomNavigationBar: const MyBottomNavbar(
-          index: 2,
-        ),
       ),
     );
   }

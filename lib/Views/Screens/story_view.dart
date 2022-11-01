@@ -44,7 +44,7 @@ class _StoryViewState extends State<StoryView> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(widget.story.storyUrl),
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.cover,
               ),
             ),
           ),
