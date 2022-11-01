@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Controller/EventController.dart';
 
-class EventDetails extends StatefulWidget {
+class EventDetails extends StatelessWidget {
   const EventDetails({Key? key}) : super(key: key);
+  static const routeName = '/event-details';
 
-  @override
-  State<EventDetails> createState() => _EventDetailsState();
-}
-
-class _EventDetailsState extends State<EventDetails> {
   @override
   Widget build(BuildContext context) {
+    final id = ModalRoute.of(context)?.settings.arguments;
+    final event = Provider.of<EventController>(context).getEventById(id as int);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -43,7 +43,7 @@ class _EventDetailsState extends State<EventDetails> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
                         Text(
-                          'WWE Crown Jewel 2022',
+                          "wwe",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),

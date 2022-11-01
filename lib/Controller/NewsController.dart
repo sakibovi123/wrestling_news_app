@@ -24,7 +24,7 @@ class NewsController{
 
   Future getNewsDetails(int newsId) async {
     try{
-      var response = await http.get(Uri.parse(""));
+      var response = await http.get(Uri.parse("https://wrestlingworld.co/wp-json/wp/v2/posts/{$newsId}"));
       if ( response.statusCode == 200 ){
         return jsonDecode(response.body);
       }

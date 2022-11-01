@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:wrestling_news_app/Views/Pages/event_details.dart';
 
 class EventCard extends StatelessWidget {
+  final int id;
   final String date;
   final String event_name;
   final String location;
 
   const EventCard({
     Key? key,
+    required this.id,
     required this.date,
     required this.event_name,
     required this.location
@@ -16,7 +19,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        // Navigator.of(context).pushNamed()
+        Navigator.of(context).pushNamed(EventDetails.routeName, arguments: id);
       },
       child: Container(
         width: 290,

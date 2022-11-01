@@ -68,6 +68,7 @@ class MyTabBarView extends StatelessWidget {
                             );
                           },
                           child: EventCard(
+                            id: snapshot.data?[item]["id"],
                             date: snapshot.data?[item]["date"],
                             event_name: snapshot.data?[item]["event_name"],
                             location: snapshot.data?[item]["location"],

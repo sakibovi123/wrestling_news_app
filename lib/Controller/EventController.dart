@@ -1,9 +1,13 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:wrestling_news_app/Model/EventModel.dart';
 
-class EventController{
+class EventController with ChangeNotifier{
   String url = "https://wrestlingdb.pythonanywhere.com/api/events/";
+
+
+
   Future<List> getEvents() async {
     try{
       var response = await http.get(Uri.parse(url));
@@ -19,6 +23,7 @@ class EventController{
     }
   }
 
+
   Future getEventById(int id) async {
     try{
       var response = await http.get(Uri.parse("https://wrestlingdb.pythonanywhere.com/api/events/{$id}/"));
@@ -30,7 +35,7 @@ class EventController{
       }
     }
     catch(Exception){
-      print(Exception);
+      Future.error(Exception);
     }
   }
 
