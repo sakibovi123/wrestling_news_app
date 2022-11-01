@@ -20,4 +20,21 @@ class NewsController{
       return Future.error("Error in the controller");
     }
   }
+
+
+  Future getNewsDetails(int newsId) async {
+    try{
+      var response = await http.get(Uri.parse(""));
+      if ( response.statusCode == 200 ){
+        return jsonDecode(response.body);
+      }
+      else{
+        Future.error("404 Server Error!");
+      }
+    } catch(Exception){
+      print(Exception);
+    }
+  }
+
+
 }

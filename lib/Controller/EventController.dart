@@ -18,4 +18,20 @@ class EventController{
       return Future.error("Server error!");
     }
   }
+
+  Future getEventById(int id) async {
+    try{
+      var response = await http.get(Uri.parse("https://wrestlingdb.pythonanywhere.com/api/events/{$id}/"));
+      if( response.statusCode == 200 ){
+        return json.decode(response.body);
+      }
+      else{
+        return Future.error("API ERROR");
+      }
+    }
+    catch(Exception){
+      print(Exception);
+    }
+  }
+
 }
