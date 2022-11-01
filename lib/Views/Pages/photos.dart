@@ -13,16 +13,14 @@ class Photos extends StatefulWidget {
 class _PhotosState extends State<Photos> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-        ),
-        body: VerticalImageSlider(),
-        bottomNavigationBar: const MyBottomNavbar(
-          index: 2,
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+      ),
+      body: VerticalImageSlider(),
+      bottomNavigationBar: const MyBottomNavbar(
+        index: 2,
       ),
     );
   }

@@ -20,6 +20,7 @@ class MyTabBarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      // shrinkWrap: true,
       children: [
         const SizedBox(
           height: 20,
@@ -82,6 +83,17 @@ class MyTabBarView extends StatelessWidget {
                   }
                 },
               ),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    MatchCard(),
+                    MatchCard(),
+                    MatchCard(),
+                    MatchCard(),
+                    MatchCard(),
+                  ],
+                ),
+              ),
               // Matches
               FutureBuilder(
                 future: matchController.getMatches(),
@@ -103,17 +115,9 @@ class MyTabBarView extends StatelessWidget {
                   }
                 },
               ),
+
               // Results
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const TemporaryImageSliderPage()),
-                  );
-                },
-                child: Text('This is tab 3'),
-              ),
+              // Text('This is tab 3'),
               // Rosters
               Text('This is tab 4'),
             ],
