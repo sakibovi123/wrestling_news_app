@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/EventController.dart';
+import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 class EventDetails extends StatelessWidget {
   const EventDetails({Key? key}) : super(key: key);
@@ -68,33 +69,38 @@ class EventDetails extends StatelessWidget {
                   physics: const ScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: eventDetails.matches?.length,
-                  itemBuilder: (context, i) => Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            eventDetails.matches?[i].title as String,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            eventDetails.matches?[i].match as String,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                  itemBuilder: (context, i) => MatchCard(
+                      matchTitle: eventDetails.matches?[i].title as String,
+                      match: eventDetails.matches?[i].match as String,
                   ),
+
+                      // Card(
+                      //   child: Container(
+                      //     width: double.infinity,
+                      //     padding: const EdgeInsets.all(15.0),
+                      //     child: Column(
+                      //       crossAxisAlignment: CrossAxisAlignment.start,
+                      //       children: [
+                      //         Text(
+                      //           eventDetails.matches?[i].title as String,
+                      //           style: const TextStyle(
+                      //             fontSize: 20,
+                      //             fontWeight: FontWeight.bold,
+                      //           ),
+                      //         ),
+                      //         const SizedBox(
+                      //           height: 8,
+                      //         ),
+                      //         Text(
+                      //           eventDetails.matches?[i].match as String,
+                      //           style: const TextStyle(
+                      //             fontSize: 16,
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
                 ),
 
 

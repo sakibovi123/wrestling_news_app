@@ -23,34 +23,20 @@ class EventCard extends StatelessWidget {
       onTap: (){
         Navigator.of(context).pushNamed(EventDetails.routeName, arguments: id);
       },
-      child: Container(
-        width: 290,
-        margin: EdgeInsets.all(7.0),
-        decoration: BoxDecoration(
-          border: Border.all(color: const Color(0xFFe8e8e8)),
-          borderRadius: BorderRadius.circular(6.0),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.white70,
-              blurRadius: 1,
-              spreadRadius: 0,
-            )
-          ],
-        ),
+      child: Card(
+        elevation: 5,
         child: Row(
           children: [
-            Container(
-              width: 80,
-              height: 100,
-              child: ClipRRect(
-                borderRadius: const BorderRadiusDirectional.only(
-                  topStart: Radius.circular(10.0),
-                  bottomStart: Radius.circular(10.0),
-                ),
-                child: Image.network(
-                  "https://wrestlingdb.pythonanywhere.com$event_logo",
-                  fit: BoxFit.fill,
-                ),
+            ClipRRect(
+              borderRadius: const BorderRadiusDirectional.only(
+                topStart: Radius.circular(10.0),
+                bottomStart: Radius.circular(10.0),
+              ),
+              child: Image.network(
+                "https://wrestlingdb.pythonanywhere.com$event_logo",
+                width: 130,
+                height: 120,
+                fit: BoxFit.fill,
               ),
             ),
             Padding(
@@ -70,7 +56,7 @@ class EventCard extends StatelessWidget {
                   ),
                   Container(
                     alignment: Alignment.topLeft,
-                    width: 280,
+                    width: 180,
                     child: Text(
                       event_name,
                       style: const TextStyle(

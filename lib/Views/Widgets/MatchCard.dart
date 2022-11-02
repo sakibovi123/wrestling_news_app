@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
 class MatchCard extends StatelessWidget {
+  final String matchTitle;
+  final String match;
+
+
   const MatchCard({
     Key? key,
+    required this.matchTitle,
+    required this.match
   }) : super(key: key);
 
   @override
@@ -11,14 +17,14 @@ class MatchCard extends StatelessWidget {
     return UnconstrainedBox(
       child: Card(
         child: Container(
-          margin: EdgeInsets.only(top: 15),
-          padding: EdgeInsets.all(10),
+          margin: const EdgeInsets.only(top: 15),
+          padding: const EdgeInsets.all(10),
           height: 165,
           width: width * 0.95,
           decoration: BoxDecoration(
             color: Colors.black,
             image: DecorationImage(
-              image: NetworkImage(
+              image: const NetworkImage(
                   'https://upload.wikimedia.org/wikipedia/en/1/1a/ROH_World_Six-Man_Tag_Team_Championship.jpeg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
@@ -29,42 +35,42 @@ class MatchCard extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'Six Man Tag Team Match',
-                style: TextStyle(
+                matchTitle,
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 24,
                     fontWeight: FontWeight.w700),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
-                'Bayley, Dakota Kai & IYO SKY',
-                style: TextStyle(
+                match,
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.w500),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              Text(
-                'VS',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w500),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                'Bayley, Dakota Kai & IYO SKY',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500),
-              ),
+              // Text(
+              //   'VS',
+              //   style: TextStyle(
+              //       color: Colors.white,
+              //       fontSize: 28,
+              //       fontWeight: FontWeight.w500),
+              // ),
+              // SizedBox(
+              //   height: 15,
+              // ),
+              // Text(
+              //   'Bayley, Dakota Kai & IYO SKY',
+              //   style: TextStyle(
+              //       color: Colors.white,
+              //       fontSize: 18,
+              //       fontWeight: FontWeight.w500),
+              // ),
             ],
           ),
         ),

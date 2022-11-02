@@ -90,7 +90,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Column(
                   children: const [
-                    MatchCard(),
+                    MatchCard(matchTitle: "asdads", match: "asdasd",),
                   ],
                 ),
               ),
