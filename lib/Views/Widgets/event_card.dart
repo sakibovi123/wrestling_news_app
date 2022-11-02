@@ -4,6 +4,7 @@ import 'package:wrestling_news_app/Views/Pages/event_details.dart';
 class EventCard extends StatelessWidget {
   final int id;
   final String date;
+  final String event_logo;
   final String event_name;
   final String location;
 
@@ -11,6 +12,7 @@ class EventCard extends StatelessWidget {
     Key? key,
     required this.id,
     required this.date,
+    required this.event_logo,
     required this.event_name,
     required this.location
   }) : super(key: key);
@@ -46,7 +48,7 @@ class EventCard extends StatelessWidget {
                   bottomStart: Radius.circular(10.0),
                 ),
                 child: Image.network(
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/WWE_%282014%29_logo.svg/1200px-WWE_%282014%29_logo.svg.png",
+                  "https://wrestlingdb.pythonanywhere.com$event_logo",
                   fit: BoxFit.fill,
                 ),
               ),

@@ -69,7 +69,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
         ),
         Container(
           width: double.infinity,
-          height: 800,
+          height: double.maxFinite,
           child: TabBarView(
             controller: widget.tabController,
             children: [
@@ -77,12 +77,23 @@ class _MyTabBarViewState extends State<MyTabBarView> {
               ListView.builder(
                 physics: const ClampingScrollPhysics(),
                 itemCount: events.length,
-                  itemBuilder: (ctx, i) => EventCard(id: events[i].id as int,
+                  itemBuilder: (ctx, i) => EventCard(
+                      id: events[i].id as int,
                       date: events[i].date as String,
+                      event_logo: events[i].eventLogo as String,
                       event_name: events[i].eventName as String,
                       location: events[i].location as String),
               ),
 
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Column(
+                  children: const [
+                    MatchCard(),
+                  ],
+                ),
+              ),
               // Matches
               FutureBuilder(
                 future: matchController.getMatches(),
@@ -104,17 +115,9 @@ class _MyTabBarViewState extends State<MyTabBarView> {
                   }
                 },
               ),
+
               // Results
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const TemporaryImageSliderPage()),
-                  );
-                },
-                child: Text('This is tab 3'),
-              ),
+              // Text('This is tab 3'),
               // Rosters
               Text('This is tab 4'),
             ],

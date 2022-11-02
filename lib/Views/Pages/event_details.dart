@@ -31,8 +31,7 @@ class EventDetails extends StatelessWidget {
                   SizedBox(
                     height: 60,
                     width: 120,
-                    child: Image.network(
-                        'https://s1.ticketm.net/dam/a/3b3/e00e8717-4f6f-49bc-98dc-3687d30863b3_1531661_TABLET_LANDSCAPE_LARGE_16_9.jpg?width=450&height=255&fit=crop&auto=webp'),
+                    child: Image.network('https://wrestlingdb.pythonanywhere.com${eventDetails.eventLogo}'),
                   ),
                   const SizedBox(
                     width: 15,

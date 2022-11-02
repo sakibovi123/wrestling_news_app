@@ -1,59 +1,72 @@
 import 'package:flutter/material.dart';
 
 class MatchCard extends StatelessWidget {
-  final String matchType;
-  final String match;
-  final String location;
-
   const MatchCard({
     Key? key,
-    required this.matchType,
-    required this.match,
-    required this.location
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 120,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(color: Colors.white),
-          boxShadow: const [
-            BoxShadow(
-              blurRadius: 0.2,
-              spreadRadius: 0.1,
+    double width = MediaQuery.of(context).size.width;
+    return UnconstrainedBox(
+      child: Card(
+        child: Container(
+          margin: EdgeInsets.only(top: 15),
+          padding: EdgeInsets.all(10),
+          height: 165,
+          width: width * 0.95,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            image: DecorationImage(
+              image: NetworkImage(
+                  'https://upload.wikimedia.org/wikipedia/en/1/1a/ROH_World_Six-Man_Tag_Team_Championship.jpeg'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.8), BlendMode.darken),
             ),
-          ],
-
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(matchType,
-                style: const TextStyle(fontSize: 18),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            children: [
+              Text(
+                'Six Man Tag Team Match',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(match,
-                style: const TextStyle(fontSize: 18),
+              SizedBox(
+                height: 10,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(location,
-                style: const TextStyle(fontSize: 18),
+              Text(
+                'Bayley, Dakota Kai & IYO SKY',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500),
               ),
-            ),
-          ],
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                'VS',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 28,
+                    fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                'Bayley, Dakota Kai & IYO SKY',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
         ),
       ),
     );

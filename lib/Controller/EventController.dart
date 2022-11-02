@@ -24,7 +24,7 @@ class EventController with ChangeNotifier{
       notifyListeners();
       return true;
     } catch (e) {
-      print("e getProducts");
+      print("e getEvents");
       print(e);
       return false;
     }

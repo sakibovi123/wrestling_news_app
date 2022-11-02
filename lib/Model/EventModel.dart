@@ -1,6 +1,6 @@
 class EventModel {
   int? id;
-  Null? eventLogo;
+  String? eventLogo;
   String? slug;
   String? date;
   String? eventName;
