@@ -20,7 +20,6 @@ class MyTabBarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      // shrinkWrap: true,
       children: [
         const SizedBox(
           height: 20,
@@ -47,7 +46,7 @@ class MyTabBarView extends StatelessWidget {
         ),
         Container(
           width: double.infinity,
-          height: 800,
+          height: double.maxFinite,
           child: TabBarView(
             controller: tabController,
             children: [
@@ -84,8 +83,37 @@ class MyTabBarView extends StatelessWidget {
                 },
               ),
               SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Column(
                   children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Caragory 1'),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Caragory 1'),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Caragory 1'),
+                          ),
+                        ],
+                      ),
+                    ),
                     MatchCard(),
                     MatchCard(),
                     MatchCard(),
