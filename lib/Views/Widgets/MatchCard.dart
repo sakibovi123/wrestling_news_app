@@ -7,13 +7,14 @@ class MatchCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return UnconstrainedBox(
       child: Card(
         child: Container(
           margin: EdgeInsets.only(top: 15),
           padding: EdgeInsets.all(10),
           height: 165,
-          width: 390,
+          width: width * 0.95,
           decoration: BoxDecoration(
             color: Colors.black,
             image: DecorationImage(

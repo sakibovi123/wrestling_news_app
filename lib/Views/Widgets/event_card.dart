@@ -5,20 +5,23 @@ class EventCard extends StatelessWidget {
   final String event_name;
   final String location;
 
-  const EventCard({
-    Key? key,
-    required this.date,
-    required this.event_name,
-    required this.location
-  }) : super(key: key);
+  const EventCard(
+      {Key? key,
+      required this.date,
+      required this.event_name,
+      required this.location})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Container(
-      width: 290,
+      width: width,
       margin: EdgeInsets.all(7.0),
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFe8e8e8)),
+        border: Border.all(
+          color: const Color(0xFFe8e8e8),
+        ),
         borderRadius: BorderRadius.circular(6.0),
         boxShadow: const [
           BoxShadow(
