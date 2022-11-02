@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Controller/MatchController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
@@ -6,9 +7,7 @@ import 'package:wrestling_news_app/Views/Pages/event_details.dart';
 
 import 'event_card.dart';
 
-class MyTabBarView extends StatelessWidget {
-  EventController eventController = EventController();
-  MatchController matchController = MatchController();
+class MyTabBarView extends StatefulWidget {
 
   MyTabBarView({
     Key? key,
@@ -18,7 +17,31 @@ class MyTabBarView extends StatelessWidget {
   final TabController tabController;
 
   @override
+  State<MyTabBarView> createState() => _MyTabBarViewState();
+}
+
+class _MyTabBarViewState extends State<MyTabBarView> {
+  // EventController eventController = EventController();
+  MatchController matchController = MatchController();
+
+  bool _init = true;
+
+  bool _isLoadingEvents = false;
+
+  @override
+  void didChangeDependencies() async {
+    if (_init) {
+      _isLoadingEvents = await Provider.of<EventController>(context).getEvents();
+
+      setState(() {});
+    }
+    _init = false;
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final events = Provider.of<EventController>(context).events;
     return ListView(
       children: [
         const SizedBox(
@@ -35,7 +58,7 @@ class MyTabBarView extends StatelessWidget {
             isScrollable: true,
             labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
-            controller: tabController,
+            controller: widget.tabController,
             tabs: const [
               Tab(text: 'Events'),
               Tab(text: 'Matches'),
@@ -48,41 +71,18 @@ class MyTabBarView extends StatelessWidget {
           width: double.infinity,
           height: 800,
           child: TabBarView(
-            controller: tabController,
+            controller: widget.tabController,
             children: [
               // Events
-              FutureBuilder(
-                future: eventController.getEvents(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: snapshot.data?.length,
-                      itemBuilder: (context, item) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const EventDetails()),
-                            );
-                          },
-                          child: EventCard(
-                            id: snapshot.data?[item]["id"],
-                            date: snapshot.data?[item]["date"],
-                            event_name: snapshot.data?[item]["event_name"],
-                            location: snapshot.data?[item]["location"],
-                          ),
-                        );
-                      },
-                    );
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
+              ListView.builder(
+                physics: const ClampingScrollPhysics(),
+                itemCount: events.length,
+                  itemBuilder: (ctx, i) => EventCard(id: events[i].id as int,
+                      date: events[i].date as String,
+                      event_name: events[i].eventName as String,
+                      location: events[i].location as String),
               ),
+
               // Matches
               FutureBuilder(
                 future: matchController.getMatches(),

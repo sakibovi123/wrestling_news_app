@@ -9,7 +9,7 @@ class EventDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)?.settings.arguments;
-    final event = Provider.of<EventController>(context).getEventById(id as int);
+    final eventDetails = Provider.of<EventController>(context).getEventDetails(id as int);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -41,10 +41,10 @@ class EventDetails extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
-                          "wwe",
-                          style: TextStyle(
+                          eventDetails.eventName as String,
+                          style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
@@ -62,11 +62,14 @@ class EventDetails extends StatelessWidget {
             ),
 
             // upper section finishes here and next section starts here
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Card(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListView.builder(
+                  physics: const ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: eventDetails.matches?.length,
+                  itemBuilder: (context, i) => Card(
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(15.0),
@@ -74,7 +77,7 @@ class EventDetails extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'lorem ' * 2,
+                            eventDetails.matches?[i].title as String,
                             style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -84,7 +87,7 @@ class EventDetails extends StatelessWidget {
                             height: 8,
                           ),
                           Text(
-                            'lorem ' * 5,
+                            eventDetails.matches?[i].match as String,
                             style: const TextStyle(
                               fontSize: 16,
                             ),
@@ -93,117 +96,10 @@ class EventDetails extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'lorem ' * 2,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'lorem ' * 5,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'lorem ' * 2,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'lorem ' * 5,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'lorem ' * 2,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'lorem ' * 5,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'lorem ' * 2,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'lorem ' * 5,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+
+
+              ],
             ),
           ],
         ),
