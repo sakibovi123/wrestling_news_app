@@ -9,7 +9,7 @@ import 'event_card.dart';
 
 class MyTabBarView extends StatefulWidget {
 
-  MyTabBarView({
+  const MyTabBarView({
     Key? key,
     required this.tabController,
   }) : super(key: key);
@@ -32,7 +32,6 @@ class _MyTabBarViewState extends State<MyTabBarView> {
   void didChangeDependencies() async {
     if (_init) {
       _isLoadingEvents = await Provider.of<EventController>(context).getEvents();
-
       setState(() {});
     }
     _init = false;
@@ -69,7 +68,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
         ),
         Container(
           width: double.infinity,
-          height: double.maxFinite,
+          height: 500,
           child: TabBarView(
             controller: widget.tabController,
             children: [
