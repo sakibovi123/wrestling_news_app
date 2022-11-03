@@ -19,7 +19,7 @@ class MatchCard extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.only(top: 15),
           padding: const EdgeInsets.all(10),
-          height: 165,
+          height: 200,
           width: width * 0.95,
           decoration: BoxDecoration(
             color: Colors.black,
