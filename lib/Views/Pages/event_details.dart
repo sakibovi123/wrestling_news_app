@@ -10,7 +10,8 @@ class EventDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)?.settings.arguments;
-    final eventDetails = Provider.of<EventController>(context).getEventDetails(id as int);
+    final eventDetails =
+        Provider.of<EventController>(context).getEventDetails(id as int);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -32,7 +33,8 @@ class EventDetails extends StatelessWidget {
                   SizedBox(
                     height: 60,
                     width: 120,
-                    child: Image.network('https://wrestlingdb.pythonanywhere.com${eventDetails.eventLogo}'),
+                    child: Image.network(
+                        'https://wrestlingdb.pythonanywhere.com${eventDetails.eventLogo}'),
                   ),
                   const SizedBox(
                     width: 15,
@@ -70,40 +72,38 @@ class EventDetails extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: eventDetails.matches?.length,
                   itemBuilder: (context, i) => MatchCard(
-                      matchTitle: eventDetails.matches?[i].title as String,
-                      match: eventDetails.matches?[i].match as String,
+                    matchTitle: eventDetails.matches?[i].title as String,
+                    match: eventDetails.matches?[i].match as String,
                   ),
 
-                      // Card(
-                      //   child: Container(
-                      //     width: double.infinity,
-                      //     padding: const EdgeInsets.all(15.0),
-                      //     child: Column(
-                      //       crossAxisAlignment: CrossAxisAlignment.start,
-                      //       children: [
-                      //         Text(
-                      //           eventDetails.matches?[i].title as String,
-                      //           style: const TextStyle(
-                      //             fontSize: 20,
-                      //             fontWeight: FontWeight.bold,
-                      //           ),
-                      //         ),
-                      //         const SizedBox(
-                      //           height: 8,
-                      //         ),
-                      //         Text(
-                      //           eventDetails.matches?[i].match as String,
-                      //           style: const TextStyle(
-                      //             fontSize: 16,
-                      //           ),
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
+                  // Card(
+                  //   child: Container(
+                  //     width: double.infinity,
+                  //     padding: const EdgeInsets.all(15.0),
+                  //     child: Column(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Text(
+                  //           eventDetails.matches?[i].title as String,
+                  //           style: const TextStyle(
+                  //             fontSize: 20,
+                  //             fontWeight: FontWeight.bold,
+                  //           ),
+                  //         ),
+                  //         const SizedBox(
+                  //           height: 8,
+                  //         ),
+                  //         Text(
+                  //           eventDetails.matches?[i].match as String,
+                  //           style: const TextStyle(
+                  //             fontSize: 16,
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                 ),
-
-
               ],
             ),
           ],

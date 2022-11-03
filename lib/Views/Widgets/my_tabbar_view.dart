@@ -3,13 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Controller/MatchController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
-import 'package:wrestling_news_app/Views/Pages/event_details.dart';
 
 import 'event_card.dart';
 
 class MyTabBarView extends StatefulWidget {
-
-  const MyTabBarView({
+  MyTabBarView({
     Key? key,
     required this.tabController,
   }) : super(key: key);
@@ -27,11 +25,51 @@ class _MyTabBarViewState extends State<MyTabBarView> {
   bool _init = true;
 
   bool _isLoadingEvents = false;
+  var imageList = [
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+    'https://i.ytimg.com/vi/j4ErmBDTOJo/maxresdefault.jpg',
+  ];
+
+  var firstNameList = [
+    'Shawn',
+    'Shawn',
+    'Shawn',
+    'Shawn',
+    'Shawn',
+    'Shawn',
+    'Shawn',
+    'Shawn',
+    'Shawn',
+    'Shawn',
+  ];
+
+  var lastNameList = [
+    'Michael',
+    'Michael',
+    'Michael',
+    'Michael',
+    'Michael',
+    'Michael',
+    'Michael',
+    'Michael',
+    'Michael',
+    'Michael',
+  ];
 
   @override
   void didChangeDependencies() async {
     if (_init) {
-      _isLoadingEvents = await Provider.of<EventController>(context).getEvents();
+      _isLoadingEvents =
+      await Provider.of<EventController>(context).getEvents();
+
       setState(() {});
     }
     _init = false;
@@ -41,13 +79,20 @@ class _MyTabBarViewState extends State<MyTabBarView> {
   @override
   Widget build(BuildContext context) {
     final events = Provider.of<EventController>(context).events;
+    double width = MediaQuery.of(context).size.width * 0.95;
+    double height = MediaQuery.of(context).size.height;
     return ListView(
       children: [
         const SizedBox(
           height: 20,
         ),
         Container(
+          margin: EdgeInsets.symmetric(horizontal: 10),
           child: TabBar(
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.redAccent,
+            ),
             labelPadding: const EdgeInsets.only(
               left: 25,
               right: 25,
@@ -55,8 +100,8 @@ class _MyTabBarViewState extends State<MyTabBarView> {
               bottom: 0,
             ),
             isScrollable: true,
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.grey,
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.redAccent,
             controller: widget.tabController,
             tabs: const [
               Tab(text: 'Events'),
@@ -68,7 +113,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
         ),
         Container(
           width: double.infinity,
-          height: 500,
+          height: double.maxFinite,
           child: TabBarView(
             controller: widget.tabController,
             children: [
@@ -76,12 +121,12 @@ class _MyTabBarViewState extends State<MyTabBarView> {
               ListView.builder(
                 physics: const ClampingScrollPhysics(),
                 itemCount: events.length,
-                  itemBuilder: (ctx, i) => EventCard(
-                      id: events[i].id as int,
-                      date: events[i].date as String,
-                      event_logo: events[i].eventLogo as String,
-                      event_name: events[i].eventName as String,
-                      location: events[i].location as String),
+                itemBuilder: (ctx, i) => EventCard(
+                    id: events[i].id as int,
+                    date: events[i].date as String,
+                    event_logo: events[i].eventLogo as String,
+                    event_name: events[i].eventName as String,
+                    location: events[i].location as String),
               ),
 
               SingleChildScrollView(
@@ -89,36 +134,51 @@ class _MyTabBarViewState extends State<MyTabBarView> {
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Column(
                   children: const [
-                    MatchCard(matchTitle: "asdads", match: "asdasd",),
+                    MatchCard(
+                      matchTitle: "asdads",
+                      match: "asdasd",
+                    ),
                   ],
                 ),
               ),
               // Matches
-              FutureBuilder(
-                future: matchController.getMatches(),
-                builder: (context, output) {
-                  if (output.hasData) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListView.builder(
-                        itemCount: output.data?.length,
-                        itemBuilder: (context, item) {
-                          return Text("Hello world");
-                        },
-                      ),
-                    );
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
+              Container(
+                height: 600,
+                child: Center(
+                  child: Text('Coming Soon!'),
+                ),
               ),
-
               // Results
               // Text('This is tab 3'),
               // Rosters
-              Text('This is tab 4'),
+              // RosterPageCard(imageList: imageList, firstNameList: firstNameList, lastNameList: lastNameList, width: width, index: index)
+              Container(
+                margin: EdgeInsets.only(top: 15),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xffD5E5D6),
+                      Color(0xff83ABB0),
+                    ],
+                    stops: [0.5, 1],
+                  ),
+                ),
+                child: ListView.builder(
+                  physics: ClampingScrollPhysics(),
+                  itemCount: imageList.length,
+                  itemBuilder: (context, index) {
+                    return RosterPageCard(
+                      imageList: imageList,
+                      firstNameList: firstNameList,
+                      width: width,
+                      lastNameList: lastNameList,
+                      index: index,
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

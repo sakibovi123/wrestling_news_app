@@ -8,19 +8,19 @@ class EventCard extends StatelessWidget {
   final String event_name;
   final String location;
 
-  const EventCard({
-    Key? key,
-    required this.id,
-    required this.date,
-    required this.event_logo,
-    required this.event_name,
-    required this.location
-  }) : super(key: key);
+  const EventCard(
+      {Key? key,
+      required this.id,
+      required this.date,
+      required this.event_logo,
+      required this.event_name,
+      required this.location})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         Navigator.of(context).pushNamed(EventDetails.routeName, arguments: id);
       },
       child: Card(
