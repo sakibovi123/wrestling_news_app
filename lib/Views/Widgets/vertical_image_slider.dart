@@ -43,7 +43,7 @@ class _VerticalImageSliderState extends State<VerticalImageSlider> {
       child: VerticalCardPager(
         titles: titles,
         images: images,
-        textStyle: TextStyle(fontSize: 14, color: Colors.white),
+        textStyle: const TextStyle(fontSize: 14, color: Colors.white),
       ),
     );
   }

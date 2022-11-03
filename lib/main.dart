@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Controller/NewsController.dart';
+import 'package:wrestling_news_app/Controller/PhotoController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 void main() {
@@ -19,8 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-
-          ChangeNotifierProvider(create: (ctx) => EventController())
+          ChangeNotifierProvider(create: (ctx) => EventController()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

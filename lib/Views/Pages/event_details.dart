@@ -49,10 +49,10 @@ class EventDetails extends StatelessWidget {
                           style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
-                        Text('Pay Per View'),
+                        const Text('Pay Per View'),
                       ],
                     ),
                   ),

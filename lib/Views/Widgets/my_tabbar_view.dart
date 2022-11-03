@@ -87,7 +87,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
           height: 20,
         ),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
           child: TabBar(
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
@@ -144,7 +144,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
               // Matches
               Container(
                 height: 600,
-                child: Center(
+                child: const Center(
                   child: Text('Coming Soon!'),
                 ),
               ),
@@ -153,7 +153,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
               // Rosters
               // RosterPageCard(imageList: imageList, firstNameList: firstNameList, lastNameList: lastNameList, width: width, index: index)
               Container(
-                margin: EdgeInsets.only(top: 15),
+                margin: const EdgeInsets.only(top: 15),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
