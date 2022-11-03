@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Controller/NewsController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
@@ -16,21 +17,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Wrestling News',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
+    return MultiProvider(
+      providers: [
+
+          ChangeNotifierProvider(create: (ctx) => EventController())
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Wrestling News',
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+        ),
+        // home: const Home(),
+        home: const SplashScreen(),
+        initialRoute: '/',
+        routes: {
+          Home.routeName: (context) => const Home(),
+          WrestlingNews.routeName: (context) => const WrestlingNews(),
+          Photos.routeName: (context) => const Photos(),
+          Podcasts.routeName: (context) => const Podcasts(),
+          EventDetails.routeName: (context) => const EventDetails(),
+        },
       ),
-      // home: const Home(),
-      home: const SplashScreen(),
-      initialRoute: '/',
-      routes: {
-        Home.routeName: (context) => const Home(),
-        WrestlingNews.routeName: (context) => const WrestlingNews(),
-        Photos.routeName: (context) => const Photos(),
-        Podcasts.routeName: (context) => const Podcasts(),
-      },
     );
   }
 }

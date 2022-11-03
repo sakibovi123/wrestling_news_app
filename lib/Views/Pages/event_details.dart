@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Controller/EventController.dart';
+import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
-class EventDetails extends StatefulWidget {
+class EventDetails extends StatelessWidget {
   const EventDetails({Key? key}) : super(key: key);
+  static const routeName = '/event-details';
 
-  @override
-  State<EventDetails> createState() => _EventDetailsState();
-}
-
-class _EventDetailsState extends State<EventDetails> {
   @override
   Widget build(BuildContext context) {
+    final id = ModalRoute.of(context)?.settings.arguments;
+    final eventDetails =
+        Provider.of<EventController>(context).getEventDetails(id as int);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -32,7 +34,7 @@ class _EventDetailsState extends State<EventDetails> {
                     height: 60,
                     width: 120,
                     child: Image.network(
-                        'https://s1.ticketm.net/dam/a/3b3/e00e8717-4f6f-49bc-98dc-3687d30863b3_1531661_TABLET_LANDSCAPE_LARGE_16_9.jpg?width=450&height=255&fit=crop&auto=webp'),
+                        'https://wrestlingdb.pythonanywhere.com${eventDetails.eventLogo}'),
                   ),
                   const SizedBox(
                     width: 15,
@@ -41,10 +43,10 @@ class _EventDetailsState extends State<EventDetails> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
-                          'WWE Crown Jewel 2022',
-                          style: TextStyle(
+                          eventDetails.eventName as String,
+                          style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
@@ -62,148 +64,47 @@ class _EventDetailsState extends State<EventDetails> {
             ),
 
             // upper section finishes here and next section starts here
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'lorem ' * 2,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'lorem ' * 5,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListView.builder(
+                  physics: const ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: eventDetails.matches?.length,
+                  itemBuilder: (context, i) => MatchCard(
+                    matchTitle: eventDetails.matches?[i].title as String,
+                    match: eventDetails.matches?[i].match as String,
                   ),
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'lorem ' * 2,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'lorem ' * 5,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'lorem ' * 2,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'lorem ' * 5,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'lorem ' * 2,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'lorem ' * 5,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'lorem ' * 2,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'lorem ' * 5,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+
+                  // Card(
+                  //   child: Container(
+                  //     width: double.infinity,
+                  //     padding: const EdgeInsets.all(15.0),
+                  //     child: Column(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Text(
+                  //           eventDetails.matches?[i].title as String,
+                  //           style: const TextStyle(
+                  //             fontSize: 20,
+                  //             fontWeight: FontWeight.bold,
+                  //           ),
+                  //         ),
+                  //         const SizedBox(
+                  //           height: 8,
+                  //         ),
+                  //         Text(
+                  //           eventDetails.matches?[i].match as String,
+                  //           style: const TextStyle(
+                  //             fontSize: 16,
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                ),
+              ],
             ),
           ],
         ),

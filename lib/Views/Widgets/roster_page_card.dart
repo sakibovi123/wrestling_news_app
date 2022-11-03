@@ -53,7 +53,7 @@ class RosterPageCard extends StatelessWidget {
                       topStart: Radius.circular(15.0),
                       bottomStart: Radius.circular(15.0),
                     ),
-                    child: Image.asset(
+                    child: Image.network(
                       imageList[index],
                       fit: BoxFit.fill,
                     ),
