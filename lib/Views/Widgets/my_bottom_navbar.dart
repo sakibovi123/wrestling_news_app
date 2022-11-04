@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
-
-import '../Pages/Export.dart';
-
 class MyBottomNavbar extends StatelessWidget {
   const MyBottomNavbar({
     Key? key,
@@ -48,15 +45,16 @@ class MyBottomNavbar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, Podcasts.routeName);
+              Navigator.pushNamed(context, Champions.routeName);
             },
-            icon: const Icon(Icons.podcasts_outlined),
+            icon: const Icon(
+              Icons.military_tech_outlined,
+              size: 30,
+            ),
           ),
-          label: 'Podcasts',
+          label: 'Champions',
         ),
       ],
     );
-
   }
 }
-
