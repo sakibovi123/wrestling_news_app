@@ -12,6 +12,7 @@ class EventDetails extends StatelessWidget {
     final id = ModalRoute.of(context)?.settings.arguments;
     final eventDetails =
         Provider.of<EventController>(context).getEventDetails(id as int);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -49,10 +50,10 @@ class EventDetails extends StatelessWidget {
                           style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
-                        Text('Pay Per View'),
+                        const Text('Pay Per View'),
                       ],
                     ),
                   ),

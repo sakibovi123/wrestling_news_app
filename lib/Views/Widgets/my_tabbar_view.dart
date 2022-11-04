@@ -68,7 +68,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
   void didChangeDependencies() async {
     if (_init) {
       _isLoadingEvents =
-          await Provider.of<EventController>(context).getEvents();
+      await Provider.of<EventController>(context).getEvents();
 
       setState(() {});
     }
@@ -90,7 +90,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
           height: 20,
         ),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
           child: TabBar(
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
@@ -116,7 +116,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
         ),
         Container(
           width: double.infinity,
-          height: double.maxFinite,
+          height: 800,
           child: TabBarView(
             controller: widget.tabController,
             children: [
@@ -151,14 +151,20 @@ class _MyTabBarViewState extends State<MyTabBarView> {
               // Matches
               Container(
                 height: 600,
-                child: Text('Coming Soon!'),
+
+                child: const Center(
+                  child: Text('Coming Soon!'),
+                ),
+
+
+
               ),
               // Results
               // Text('This is tab 3'),
               // Rosters
               // RosterPageCard(imageList: imageList, firstNameList: firstNameList, lastNameList: lastNameList, width: width, index: index)
               Container(
-                margin: EdgeInsets.only(top: 15),
+                margin: const EdgeInsets.only(top: 15),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
