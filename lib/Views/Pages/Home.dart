@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/NewsController.dart';
+import 'package:wrestling_news_app/Model/NewsModel.dart';
 
 import 'Export.dart';
 
@@ -13,6 +15,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   NewsController newsController = NewsController();
+  bool _init = true;
+  bool _isLoadingNews = false;
+  @override
+  void didChangeDependencies() async {
+    if (_init) {
+      _isLoadingNews =
+      await Provider.of<NewsController>(context).getNews();
+
+      setState(() {});
+    }
+    _init = false;
+    super.didChangeDependencies();
+  }
 
   int currentIndex = 0;
 
@@ -57,6 +72,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final allNews = Provider.of<NewsController>(context).allNews;
     return Scaffold(
       bottomNavigationBar: const MyBottomNavbar(index: 0),
       drawer: const NavBar(),
@@ -118,28 +134,25 @@ class _HomeState extends State<Home> {
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     )),
-                FutureBuilder(
-                  future: newsController.getNews(),
-                  builder: (context, snapShot) {
-                    if (snapShot.hasData) {
-                      return Padding(
+                      Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ListView.builder(
+                            physics: const ClampingScrollPhysics(),
                               shrinkWrap: true,
-                              itemCount: snapShot.data?.length,
-                              itemBuilder: (context, item) {
+                              itemCount: allNews.length,
+                              itemBuilder: (context, i) {
                                 return Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: NewsCard(
-                                      title: snapShot.data?[item]['title']
-                                          ["rendered"]),
+                                    id: allNews[i].id as int,
+                                    title: allNews[i].title!.rendered!,
+                                    description: allNews[i].content!.rendered!,
+                                    //img: allNews[i].ogImage?[i].url as String,
+                                    img: "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2022/10/21/16663715357215.jpg"
+                                  ),
+
                                 );
-                              }));
-                    } else {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                  },
-                ),
+                              }),),
               ],
             ),
           ),

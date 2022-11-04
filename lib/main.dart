@@ -7,6 +7,7 @@ import 'package:wrestling_news_app/Controller/NewsController.dart';
 import 'package:wrestling_news_app/Controller/PhotoController.dart';
 
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
+import 'package:wrestling_news_app/Views/Pages/NewsDetails.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
 
       providers: [
           ChangeNotifierProvider(create: (ctx) => EventController()),
+        ChangeNotifierProvider(create: (ctx)=> NewsController()),
       ],
 
 
@@ -43,6 +45,7 @@ class MyApp extends StatelessWidget {
           Photos.routeName: (context) => const Photos(),
           Champions.routeName: (context) => const Champions(),
           EventDetails.routeName: (context) => const EventDetails(),
+          NewsDetailsCard.routeName: (context) => const NewsDetailsCard(),
         },
       ),
     );

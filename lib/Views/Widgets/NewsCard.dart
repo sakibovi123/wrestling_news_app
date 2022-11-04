@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:wrestling_news_app/Views/Pages/NewsDetails.dart';
 
 class NewsCard extends StatelessWidget {
-
+  final int id;
   final String title;
+  final String description;
+  final String img;
 
   const NewsCard({
-    required this.title
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.img,
   });
 
   @override
@@ -14,8 +20,7 @@ class NewsCard extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: (){
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const NewsDetailsCard()));
+        Navigator.of(context).pushNamed(NewsDetailsCard.routeName, arguments: id);
       },
       child: Card(
         elevation: 8.0,
@@ -31,12 +36,25 @@ class NewsCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/images/digital2.png",
-                height: 150.0,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+              Image.network(img),
+              // Flexible(
+              //   child: ListView.builder(
+              //     itemCount: img.length,
+              //     itemBuilder: (context, item){
+              //       return Image.network(
+              //         img[item],
+              //         height: 120,
+              //         width: double.infinity
+              //       );
+              //     },
+              //     // child: Image.asset(
+              //     //   img,
+              //     //   height: 150.0,
+              //     //   width: double.infinity,
+              //     //   fit: BoxFit.cover,
+              //     // ),
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(title,
@@ -45,11 +63,11 @@ class NewsCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     )),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(5.0),
-                child: Text(
-                    "Lorem ipsum dolor lorem ipsum dolor dolor ipsum lorem ipsum dolor dolor ipsum lorem, lorem ipsum dolor dolor dolor dolor dolor dolor dolor... read more..."),
-              ),
+                child: Html(
+                    data: description.substring(0, 200)
+              ),),
               Container(
                 height: 15.0,
               ),

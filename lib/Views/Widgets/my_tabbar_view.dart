@@ -116,7 +116,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
         ),
         Container(
           width: double.infinity,
-          height: double.maxFinite,
+          height: 800,
           child: TabBarView(
             controller: widget.tabController,
             children: [

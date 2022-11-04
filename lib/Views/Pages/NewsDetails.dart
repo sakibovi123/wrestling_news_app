@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Controller/NewsController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 class NewsDetailsCard extends StatefulWidget {
   const NewsDetailsCard({Key? key}) : super(key: key);
-
+  static const routeName = "/news-details";
   @override
   State<NewsDetailsCard> createState() => _NewsDetailsCardState();
 }
@@ -11,6 +13,9 @@ class NewsDetailsCard extends StatefulWidget {
 class _NewsDetailsCardState extends State<NewsDetailsCard> {
   @override
   Widget build(BuildContext context) {
+    final id = ModalRoute.of(context)?.settings.arguments;
+    final newsDetails =
+    Provider.of<NewsController>(context).getNewsDetails(id as int);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -33,28 +38,22 @@ class _NewsDetailsCardState extends State<NewsDetailsCard> {
               height: 5,
               color: const Color(0XFFe8e8e8),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "Lorem ipsum dolor title",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1,
-                    ),
-                  ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                newsDetails.title!.rendered!,
+                style: TextStyle(
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1,
                 ),
-              ],
+              ),
             ),
             Container(
               height: 5,
               color: const Color(0XFFe8e8e8),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(10.0),
               child: Align(
                 alignment: Alignment.center,
