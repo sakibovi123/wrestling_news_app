@@ -81,6 +81,9 @@ class _MyTabBarViewState extends State<MyTabBarView> {
     final events = Provider.of<EventController>(context).events;
     double width = MediaQuery.of(context).size.width * 0.95;
     double height = MediaQuery.of(context).size.height;
+    // double makeHeight(){
+    //   return
+    // }
     return ListView(
       children: [
         const SizedBox(
@@ -144,9 +147,13 @@ class _MyTabBarViewState extends State<MyTabBarView> {
               // Matches
               Container(
                 height: 600,
+
                 child: const Center(
                   child: Text('Coming Soon!'),
                 ),
+
+
+
               ),
               // Results
               // Text('This is tab 3'),
