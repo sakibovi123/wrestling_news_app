@@ -125,6 +125,7 @@ class _HomeState extends State<Home> {
                       return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ListView.builder(
+                              physics: ClampingScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: snapShot.data?.length,
                               itemBuilder: (context, item) {

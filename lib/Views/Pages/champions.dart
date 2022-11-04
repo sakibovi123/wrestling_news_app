@@ -26,12 +26,19 @@ class _ChampionsState extends State<Champions> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: ChampionsCard(
-        width: width,
-        eventName: eventName,
-        since: since,
-        rating: rating,
-        votes: votes,
+      body: ListView.builder(
+        itemCount: 10,
+        scrollDirection: Axis.vertical,
+        physics: ClampingScrollPhysics(),
+        itemBuilder: (context, index) {
+          return ChampionsCard(
+            width: width,
+            eventName: eventName,
+            since: since,
+            rating: rating,
+            votes: votes,
+          );
+        },
       ),
       bottomNavigationBar: MyBottomNavbar(
         index: 3,

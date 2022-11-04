@@ -24,7 +24,7 @@ class ChampionsCard extends StatelessWidget {
         color: Colors.white,
         elevation: 8.0,
         shadowColor: Colors.grey,
-        margin: EdgeInsets.only(left: 10, right: 10),
+        margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
         child: UnconstrainedBox(
           child: ConstrainedBox(
             constraints: BoxConstraints(minHeight: 180),
@@ -85,7 +85,7 @@ class ChampionsCard extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(
-                                          Icons.star_border,
+                                          Icons.star_border_outlined,
                                           size: 16,
                                         ),
                                         SizedBox(
