@@ -148,7 +148,8 @@ class _HomeState extends State<Home> {
                                     title: allNews[i].title!.rendered!,
                                     description: allNews[i].content!.rendered!,
                                     //img: allNews[i].ogImage?[i].url as String,
-                                    img: "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2022/10/21/16663715357215.jpg"
+                                      img: allNews[i].ogImage ?? []
+                                    // img: "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2022/10/21/16663715357215.jpg"
                                   ),
 
                                 );

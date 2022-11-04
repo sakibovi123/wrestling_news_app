@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
-import '../Widgets/ImageGridView.dart';
-
 class Photos extends StatefulWidget {
   const Photos({Key? key}) : super(key: key);
 
