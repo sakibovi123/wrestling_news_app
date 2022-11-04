@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:wrestling_news_app/Controller/NewsController.dart';
+import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 void main() {
@@ -17,9 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (ctx) => NewsController()),
-      ],
+      providers: [ChangeNotifierProvider(create: (ctx) => EventController())],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Wrestling News',
@@ -33,7 +31,8 @@ class MyApp extends StatelessWidget {
           Home.routeName: (context) => const Home(),
           WrestlingNews.routeName: (context) => const WrestlingNews(),
           Photos.routeName: (context) => const Photos(),
-          Podcasts.routeName: (context) => const Podcasts(),
+          Champions.routeName: (context) => const Champions(),
+          EventDetails.routeName: (context) => const EventDetails(),
         },
       ),
     );

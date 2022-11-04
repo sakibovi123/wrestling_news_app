@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
-class WrestlingNews extends StatelessWidget {
+import '../Widgets/my_bottom_navbar.dart';
+import '../Widgets/my_tabbar_view.dart';
+
+class WrestlingNews extends StatefulWidget {
   const WrestlingNews({Key? key}) : super(key: key);
 
   static const routeName = '/wrestlingNews';
+
+  @override
+  State<WrestlingNews> createState() => _PhotosState();
+}
+
+class _PhotosState extends State<WrestlingNews> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    TabController tabController = TabController(length: 4, vsync: this);
+
     return Scaffold(
-      bottomNavigationBar: MyBottomNavbar(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+      ),
+      body: MyTabBarView(tabController: tabController),
+      bottomNavigationBar: const MyBottomNavbar(
         index: 1,
       ),
     );

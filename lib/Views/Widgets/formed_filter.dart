@@ -33,60 +33,59 @@ class _FilterState extends State<Filter> {
       margin: const EdgeInsets.only(left: 5, right: 5),
       child: Form(
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              margin: const EdgeInsets.only(right: 5),
-              child: DropdownButtonFormField(
-                itemHeight: null,
-                isDense: true,
-                menuMaxHeight: 300,
-                icon: Icon(
-                  Icons.arrow_drop_down_circle,
-                  color: Colors.orange.shade500,
-                ),
-                value: selectedValue,
-                dropdownColor: Colors.white.withOpacity(0.9),
-                decoration: const InputDecoration(
-                  label: Text(
-                    'Filter',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 22,
-                    ),
+            Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: DropdownButtonFormField(
+                  itemHeight: null,
+                  isDense: true,
+                  menuMaxHeight: 300,
+                  icon: Icon(
+                    Icons.arrow_drop_down_circle,
+                    color: Colors.orange.shade500,
                   ),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      width: 2,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      width: 1,
-                    ),
-                  ),
-                ),
-                items: listOfThings
-                    .map(
-                      (e) => DropdownMenuItem(
-                        value: e,
-                        child: Text(e),
+                  value: selectedValue,
+                  dropdownColor: Colors.white.withOpacity(0.9),
+                  decoration: const InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                    focusColor: Colors.black,
+                    border: OutlineInputBorder(
+                      gapPadding: double.infinity,
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 4,
+                        style: BorderStyle.solid,
                       ),
-                    )
-                    .toList(),
-                onChanged: (tappedValue) {
-                  setState(() {
-                    selectedValue = tappedValue;
-                  });
-                },
+                    ),
+                    hintText: 'Search',
+                  ),
+                  items: listOfThings
+                      .map(
+                        (e) => DropdownMenuItem(
+                          value: e,
+                          child: Text(e),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (tappedValue) {
+                    setState(() {
+                      selectedValue = tappedValue;
+                    });
+                  },
+                ),
               ),
             ),
-            ElevatedButton(
-              onPressed: null,
-              child: Text('Submit'),
+            Expanded(
+              flex: 1,
+              child: Container(
+                margin: const EdgeInsets.only(left: 5),
+                child: const ElevatedButton(
+                  onPressed: null,
+                  child: Text('Search'),
+                ),
+              ),
             )
           ],
         ),
