@@ -121,15 +121,18 @@ class _MyTabBarViewState extends State<MyTabBarView> {
             controller: widget.tabController,
             children: [
               // Events
-              ListView.builder(
-                physics: const ClampingScrollPhysics(),
-                itemCount: events.length,
-                itemBuilder: (ctx, i) => EventCard(
-                  id: events[i].id as int,
-                  date: events[i].date as String,
-                  event_logo: events[i].eventLogo as String,
-                  event_name: events[i].eventName as String,
-                  location: events[i].location as String,
+              Container(
+                height: 200,
+                child: ListView.builder(
+                  physics: const ClampingScrollPhysics(),
+                  itemCount: events.length,
+                  itemBuilder: (ctx, i) => EventCard(
+                    id: events[i].id as int,
+                    date: events[i].date as String,
+                    event_logo: events[i].eventLogo as String,
+                    event_name: events[i].eventName as String,
+                    location: events[i].location as String,
+                  ),
                 ),
               ),
 
