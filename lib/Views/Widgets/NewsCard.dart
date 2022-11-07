@@ -41,10 +41,14 @@ class NewsCard extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: img.length,
                   itemBuilder: (context, i){
-                    return Image.network(
-                      img[0].url,
-                      height: 120,
-                      width: double.infinity
+                    return ClipRect(
+
+                      child: Image.network(
+                        img[0].url,
+                        height: 320,
+                        width: double.infinity,
+                        fit: BoxFit.cover
+                      ),
                     );
                   },
                   // child: Image.asset(
