@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../Widgets/my_bottom_navbar.dart';
 import '../Widgets/my_tabbar_view.dart';
 
 class WrestlingNews extends StatefulWidget {
   const WrestlingNews({Key? key}) : super(key: key);
-
-  static const routeName = '/wrestlingNews';
 
   @override
   State<WrestlingNews> createState() => _PhotosState();
@@ -23,9 +20,6 @@ class _PhotosState extends State<WrestlingNews> with TickerProviderStateMixin {
         backgroundColor: Colors.white,
       ),
       body: MyTabBarView(tabController: tabController),
-      bottomNavigationBar: const MyBottomNavbar(
-        index: 1,
-      ),
     );
   }
 }

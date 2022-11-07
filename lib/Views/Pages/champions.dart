@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wrestling_news_app/Views/Pages/Export.dart';
+
+import '../Pages/Export.dart';
 
 class Champions extends StatefulWidget {
   const Champions({
@@ -12,15 +13,15 @@ class Champions extends StatefulWidget {
 }
 
 class _ChampionsState extends State<Champions> {
-  String eventName = 'WWE Championship';
-  String championName = 'Roman Reigns';
-  String since = '03.04.2022  (142 days)';
-  String rating = '8.97';
-  String votes = '617';
+  String eventName = 'WWE CHAMPIONSHIP';
+  String currentChampion = 'ROMAN REIGNS';
+  String since = 'APRIL 3, 2022';
+  String days = '217';
 
   @override
   Widget build(BuildContext context) {
-    double? width = MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -33,15 +34,13 @@ class _ChampionsState extends State<Champions> {
         itemBuilder: (context, index) {
           return ChampionsCard(
             width: width,
+            height: height,
             eventName: eventName,
+            currentChampion: currentChampion,
             since: since,
-            rating: rating,
-            votes: votes,
+            days: days,
           );
         },
-      ),
-      bottomNavigationBar: MyBottomNavbar(
-        index: 3,
       ),
     );
   }
