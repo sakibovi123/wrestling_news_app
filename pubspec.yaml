@@ -72,6 +72,9 @@ flutter:
     - family: Khand
       fonts:
         - asset: assets/fonts/Khand-Regular.ttf
+    - family: NunitoSans
+      fonts:
+        - asset: assets/fonts/NunitoSans-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

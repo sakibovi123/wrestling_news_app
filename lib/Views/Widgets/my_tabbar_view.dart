@@ -4,8 +4,6 @@ import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Controller/MatchController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
-import 'event_card.dart';
-
 class MyTabBarView extends StatefulWidget {
   MyTabBarView({
     Key? key,
@@ -68,7 +66,7 @@ class _MyTabBarViewState extends State<MyTabBarView> {
   void didChangeDependencies() async {
     if (_init) {
       _isLoadingEvents =
-      await Provider.of<EventController>(context).getEvents();
+          await Provider.of<EventController>(context).getEvents();
 
       setState(() {});
     }
@@ -121,20 +119,20 @@ class _MyTabBarViewState extends State<MyTabBarView> {
             controller: widget.tabController,
             children: [
               // Events
-              Container(
-                height: 200,
-                child: ListView.builder(
-                  physics: const ClampingScrollPhysics(),
-                  itemCount: events.length,
-                  itemBuilder: (ctx, i) => EventCard(
-                    id: events[i].id as int,
-                    date: events[i].date as String,
-                    event_logo: events[i].eventLogo as String,
-                    event_name: events[i].eventName as String,
-                    location: events[i].location as String,
-                  ),
-                ),
-              ),
+              // Container(
+              //   height: 200,
+              //   child: ListView.builder(
+              //     physics: const ClampingScrollPhysics(),
+              //     itemCount: events.length,
+              //     itemBuilder: (ctx, i) => EventCard(
+              //       id: events[i].id as int,
+              //       date: events[i].date as String,
+              //       event_logo: events[i].eventLogo as String,
+              //       event_name: events[i].eventName as String,
+              //       location: events[i].location as String,
+              //     ),
+              //   ),
+              // ),
 
               SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -151,13 +149,9 @@ class _MyTabBarViewState extends State<MyTabBarView> {
               // Matches
               Container(
                 height: 600,
-
                 child: const Center(
                   child: Text('Coming Soon!'),
                 ),
-
-
-
               ),
               // Results
               // Text('This is tab 3'),

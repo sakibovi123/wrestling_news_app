@@ -92,6 +92,7 @@ class _NewNewscardWidgetState extends State<NewNewscardWidget> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w300,
+                        fontFamily: 'NunitoSans',
                       ),
                     ),
                   ),
