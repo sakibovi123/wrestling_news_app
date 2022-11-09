@@ -9,7 +9,7 @@ class NewNewscardWidget extends StatelessWidget {
     required this.title,
     required this.id,
     required this.content,
-    required this.image,
+    this.image,
     // required this.authorName
   }) : super(key: key);
 
@@ -17,7 +17,7 @@ class NewNewscardWidget extends StatelessWidget {
   final double height;
   final int id;
   final String title;
-  final List image;
+  final List? image;
   final String date;
   final String content;
   // final int authorName;
@@ -55,15 +55,16 @@ class NewNewscardWidget extends StatelessWidget {
                     child: Container(
                       height: height * .28,
                       width: width,
-                      child: ListView.builder(
-                        itemCount: image.length,
-                        itemBuilder: (context, i) {
-                          return Image.network(
-                            image[0].url,
-                            fit: BoxFit.cover,
-                          );
-                        }
-                      ),
+                      // child:
+                      // ListView.builder(
+                      //     itemCount: image.length,
+                      //     itemBuilder: (context, i) {
+                      //       return Image.network(
+                      //         // image[0].url,
+                      //
+                      //         fit: BoxFit.cover,
+                      //       );
+                      //     }),
                     ),
                   ),
                   const SizedBox(
@@ -90,6 +91,7 @@ class NewNewscardWidget extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w300,
+                        fontFamily: 'NunitoSans',
                       ),
                     ),
                   ),

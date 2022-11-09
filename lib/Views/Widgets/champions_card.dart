@@ -22,20 +22,18 @@ class ChampionsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return UnconstrainedBox(
       child: Container(
-        margin: EdgeInsets.only(bottom: 20),
-        width: width,
+        margin: EdgeInsets.only(bottom: 10, top: 10),
+        width: width * 0.95,
         height: height * 0.30,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(5),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey, //color of shadow
-              spreadRadius: 0.5,
-              blurRadius: 3,
-              offset: Offset(0, 1),
-              //first paramerter of offset is left-right
-              //second parameter is top to down
+              offset: Offset(0, 8),
+              spreadRadius: -12,
+              blurRadius: 26,
+              color: Color.fromRGBO(149, 143, 143, 1),
             ),
           ],
         ),
@@ -56,15 +54,25 @@ class ChampionsCard extends StatelessWidget {
               Container(
                 height: height * .28,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    SizedBox(
+                      height: 30,
+                    ),
                     Container(
-                      color: Colors.redAccent,
+                      color: Color(0xFFce061e),
                       child: Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        child: Text(eventName),
+                        child: Text(
+                          eventName,
+                          style: TextStyle(
+                            color: Color(0xFFfffffff),
+                          ),
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 20,
                     ),
                     Container(
                       child: Column(

@@ -25,7 +25,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Wrestling News',
-        theme: ThemeData(primarySwatch: Colors.orange, fontFamily: 'Khand'),
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          fontFamily: 'Khand',
+        ),
         // home: const Home(),
         home: const SplashScreen(),
       ),

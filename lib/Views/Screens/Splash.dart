@@ -33,13 +33,13 @@ class _SplashScreenState extends State<SplashScreen> {
           gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomRight,
-              colors: [Color(0xFFFF800B), Color(0xFFCE1010)])),
+              colors: [Color(0xFF3065E7), Color(0xFF7486FD)])),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Image.asset(
-            "assets/images/digital2.png",
+          Image.network(
+            "https://i.pinimg.com/originals/69/01/6e/69016ef7763b53f048891be7c6a59e73.png",
             height: 300.0,
             width: 300.0,
           ),
