@@ -5,21 +5,27 @@ class ShowResultCard extends StatelessWidget {
     Key? key,
     required this.width,
     required this.height,
+    required this.resultTitle,
+    required this.resultDescription,
   }) : super(key: key);
 
   final double width;
   final double height;
+  final String resultTitle;
+  final String resultDescription;
 
   @override
   Widget build(BuildContext context) {
     return UnconstrainedBox(
       child: Container(
+        margin: EdgeInsets.only(top: 30),
         width: width,
-        height: height * 0.8,
+        height: height * 0.95,
         padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: Column(
           children: [
             Container(
+              margin: EdgeInsets.only(top: 30),
               padding: EdgeInsets.only(
                 bottom: 0, // Space between underline and text
               ),
@@ -32,7 +38,7 @@ class ShowResultCard extends StatelessWidget {
                 ),
               ),
               child: Text(
-                "WWE Raw Results, Oct 31, 2022",
+                resultTitle,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 26,
@@ -41,7 +47,7 @@ class ShowResultCard extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             Container(
               margin: EdgeInsets.symmetric(
@@ -58,7 +64,7 @@ class ShowResultCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Women\'s Tag Team Championship: Alexa Bliss & Asuka def. Damage CTRL (Iyo Sky & Dakota Kai) (c) - TITLE CHANGE!!!',
+                          resultDescription,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,

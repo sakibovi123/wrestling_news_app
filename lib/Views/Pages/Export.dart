@@ -9,6 +9,7 @@ export '../Widgets/Narbar.dart';
 export '../Widgets/NewsCard.dart';
 export '../Widgets/NotificationCard.dart';
 export '../Widgets/champions_card.dart';
+export '../Widgets/custom_appbar.dart';
 export '../Widgets/event_card.dart';
 export '../Widgets/formed_filter.dart';
 export '../Widgets/image_grid_view.dart';
