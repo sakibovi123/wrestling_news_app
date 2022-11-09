@@ -29,19 +29,9 @@ class NewNewscardWidget extends StatelessWidget {
     return UnconstrainedBox(
       child: Container(
         width: width,
-        height: height,
+        height: height * 0.9,
         decoration: const BoxDecoration(
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey, //color of shadow
-              spreadRadius: 0.5,
-              blurRadius: 3,
-              offset: Offset(0, 1),
-              //first paramerter of offset is left-right
-              //second parameter is top to down
-            ),
-          ],
         ),
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),

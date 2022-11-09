@@ -34,23 +34,27 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
       );
     } else {
       return Scaffold(
-        body: PageView.builder(
-          physics: const ScrollPhysics(),
-          itemCount: news.length,
-          scrollDirection: Axis.vertical,
-          // shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return NewNewscardWidget(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              title: news[index].title!.rendered!,
-              content: news[index].content!.rendered!,
-              image: news[index].ogImage ?? [],
-              id: news[index].id!,
-              // authorName: news[index].author!,
-              date: 'November 5, 2022',
-            );
-          },
+        body: Stack(
+          children: [
+            PageView.builder(
+              physics: const ScrollPhysics(),
+              itemCount: news.length,
+              scrollDirection: Axis.vertical,
+              // shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return NewNewscardWidget(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  title: news[index].title!.rendered!,
+                  content: news[index].content!.rendered!,
+                  image: news[index].ogImage ?? [],
+                  id: news[index].id!,
+                  // authorName: news[index].author!,
+                  date: 'November 5, 2022',
+                );
+              },
+            ),
+          ],
         ),
       );
     }

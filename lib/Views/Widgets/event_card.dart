@@ -37,7 +37,7 @@ class EventCard extends StatelessWidget {
               //   height: 120,
               //   fit: BoxFit.fill,),
               child: Image.network(
-                event_logo,
+                "https://wrestlingdb.pythonanywhere.com$event_logo",
                 width: 130,
                 height: 120,
                 fit: BoxFit.fill,

@@ -15,10 +15,10 @@ class _PhotosState extends State<Photos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-      ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: Colors.white,
+      // ),
       body: FutureBuilder(
         future: photoController.getPhotos(),
         builder: (context, snapshot) {

@@ -24,7 +24,7 @@ class ChampionsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return UnconstrainedBox(
       child: Container(
-        margin: const EdgeInsets.only(bottom: 10, top: 10),
+        margin: EdgeInsets.only(bottom: 10, top: 30),
         width: width * 0.95,
         height: height * 0.30,
         decoration: BoxDecoration(
@@ -45,7 +45,7 @@ class ChampionsCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 5),
+                margin: EdgeInsets.only(top: 5),
                 width: width * 0.20,
                 height: height * 0.20,
                 child: titleImage != null
@@ -95,7 +95,7 @@ class ChampionsCard extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 5),
+                margin: EdgeInsets.only(top: 5),
                 width: width * 0.20,
                 height: height * 0.20,
                 child: championImage != null

@@ -22,7 +22,12 @@ class ImageGridView extends StatelessWidget {
         );
       },
       child: Container(
-        margin: const EdgeInsets.all(12),
+        margin: const EdgeInsets.only(
+          top: 40,
+          left: 12,
+          right: 12,
+          bottom: 12,
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Image.network(image),

@@ -10,21 +10,21 @@ class Champions extends StatefulWidget {
 
   static const routeName = '/Champions';
   @override
-  State<Champions> createState() => _ChampionsState();
+  State createState() => _ChampionsState();
 }
 
 ChampionController championController = ChampionController();
 
-class _ChampionsState extends State<Champions> {
+class _ChampionsState extends State {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      // ),
       body: FutureBuilder(
           future: championController.getChampions(),
           builder: (context, snapshot) {

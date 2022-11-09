@@ -8,7 +8,6 @@ class ResultCards extends StatelessWidget {
   final int id;
   final String resultTitle;
 
-
   const ResultCards({
     Key? key,
     required this.id,
@@ -16,7 +15,6 @@ class ResultCards extends StatelessWidget {
     required this.height,
     required this.resultTitle,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,8 @@ class ResultCards extends StatelessWidget {
       height: height * 0.20,
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(ResultDetails.routeName, arguments: id);
+          Navigator.of(context)
+              .pushNamed(ResultDetails.routeName, arguments: id);
         },
         child: Container(
           width: width * 0.95,
@@ -45,7 +44,7 @@ class ResultCards extends StatelessWidget {
             color: Colors.black45,
             image: DecorationImage(
               image: const NetworkImage(
-                  'https://logos-world.net/wp-content/uploads/2021/11/WWE-Emblem.png'),
+                  'https://wrestlingworld.co/wp-content/uploads/2019/05/ww-star-280x96.png?fbclid=IwAR1nY6M3v4zQO6RIhKyy0m_TQlv73PbNKqDLUqcQxzg1FTF2BlkVLgoYyVo'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.75),
