@@ -18,8 +18,9 @@ class _PhotosState extends State<Photos> {
       ),
       body: const ImageGridView(
         image:
-            'https://isbsp.daffodilvarsity.edu.bd/wp-content/uploads/2018/11/shapla.jpg',
+        'https://isbsp.daffodilvarsity.edu.bd/wp-content/uploads/2018/11/shapla.jpg',
       ),
     );
   }
 }
+

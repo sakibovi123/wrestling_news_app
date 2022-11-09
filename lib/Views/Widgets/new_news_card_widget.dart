@@ -1,46 +1,39 @@
 import 'package:flutter/material.dart';
 
-class NewNewscardWidget extends StatefulWidget {
+class NewNewscardWidget extends StatelessWidget {
   const NewNewscardWidget({
     Key? key,
     required this.width,
     required this.height,
-    required this.mainImage,
-    required this.bodyTitle,
-    required this.bodyDetails,
-    required this.footerTitle,
-    required this.footerBody,
-    required this.authorName,
     required this.date,
+    required this.title,
+    required this.id,
+    required this.content,
+    this.image,
+    // required this.authorName
   }) : super(key: key);
 
   final double width;
   final double height;
-  final String mainImage;
-  final String bodyTitle;
-  final String bodyDetails;
-  final String footerTitle;
-  final String footerBody;
-  final String authorName;
+  final int id;
+  final String title;
+  final List? image;
   final String date;
+  final String content;
+  // final int authorName;
 
-  @override
-  State<NewNewscardWidget> createState() => _NewNewscardWidgetState();
-}
-
-class _NewNewscardWidgetState extends State<NewNewscardWidget> {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
       itemCount: 5,
       scrollDirection: Axis.vertical,
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       itemBuilder: (context, index) {
         return UnconstrainedBox(
           child: Container(
-            width: widget.width,
-            height: widget.height,
-            decoration: BoxDecoration(
+            width: width,
+            height: height,
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -60,66 +53,72 @@ class _NewNewscardWidgetState extends State<NewNewscardWidget> {
                 children: [
                   Center(
                     child: Container(
-                      height: widget.height * .28,
-                      width: widget.width,
-                      child: Image.network(
-                        widget.mainImage,
-                        fit: BoxFit.cover,
-                      ),
+                      height: height * .28,
+                      width: width,
+                      // child:
+                      // ListView.builder(
+                      //     itemCount: image.length,
+                      //     itemBuilder: (context, i) {
+                      //       return Image.network(
+                      //         // image[0].url,
+                      //
+                      //         fit: BoxFit.cover,
+                      //       );
+                      //     }),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Text(
-                      widget.bodyTitle,
-                      style: TextStyle(
+                      title,
+                      style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w800,
                         letterSpacing: 1,
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 5, right: 5),
+                    padding: const EdgeInsets.only(left: 5, right: 5),
                     child: Text(
-                      widget.bodyDetails,
-                      style: TextStyle(
+                      content,
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w300,
                         fontFamily: 'NunitoSans',
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           'By',
                           style: TextStyle(color: Colors.black45),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Text(
-                          widget.authorName,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black45),
-                        ),
-                        SizedBox(
+                        // Text(
+                        //   ,
+                        //   style: TextStyle(
+                        //       fontWeight: FontWeight.w700,
+                        //       color: Colors.black45),
+                        // ),
+                        const SizedBox(
                           width: 10,
                         ),
-                        Text(widget.date),
+                        Text(date),
                       ],
                     ),
                   ),

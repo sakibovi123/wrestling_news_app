@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Controller/NewsController.dart';
 
 import 'Export.dart';
 
@@ -10,31 +12,57 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  bool _init = true;
+  bool _isLoadingNews = false;
+
+  @override
+  void didChangeDependencies() async {
+    if (_init) {
+      _isLoadingNews =
+          await Provider.of<NewsController>(context, listen: false).getNews();
+    }
+    _init = false;
+    setState(() {});
+    super.didChangeDependencies();
+  }
+
   bool isVisible = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        scrollDirection: Axis.horizontal,
-        physics: ClampingScrollPhysics(),
-        children: [
-          NewNewscardWidget(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            mainImage:
-                'https://www.wwe.com/f/styles/gallery_img_l/public/all/2016/06/036_RAW_03032014cm_0719--f64de45cfc57f78fbed672596d796c80.jpg',
-            bodyTitle: 'lorem' * 8,
-            bodyDetails: 'lorem ' * 70,
-            footerTitle: 'Firm in a legal tussle with ex-general Counsel',
-            footerBody: 'Tap to read more',
-            authorName: 'Faiz Ahamed',
-            date: 'November 5, 2022',
-          ),
-          Photos(),
-          Champions(),
-          ResultsPage(),
-        ],
-      ),
-    );
+    final news = Provider.of<NewsController>(context).allNews;
+    if (!_isLoadingNews) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    } else {
+      return Scaffold(
+        body: PageView(
+          scrollDirection: Axis.horizontal,
+          physics: ClampingScrollPhysics(),
+          children: [
+            // ListView.builder(
+            //   physics: const ScrollPhysics(),
+            //   itemCount: news.length,
+            //   itemBuilder: (context, index) {
+            //     return NewNewscardWidget(
+            //       width: MediaQuery.of(context).size.width,
+            //       height: MediaQuery.of(context).size.height,
+            //       title: news[index].title!.rendered!,
+            //       content: news[index].content!.rendered!,
+            //       image: news[index].ogImage ?? [],
+            //       id: news[index].id!,
+            //       // authorName: news[index].author!,
+            //       date: 'November 5, 2022',
+            //     );
+            //   },
+            // ),
+            const ShowNewsPage(),
+            const Photos(),
+            const Champions(),
+            const EventsPage(),
+          ],
+        ),
+      );
+    }
   }
 }

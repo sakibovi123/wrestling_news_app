@@ -29,5 +29,6 @@ export 'events_page.dart';
 export 'photos.dart';
 export 'results_page.dart';
 export 'roster_page.dart';
+export 'show_news.dart';
 export 'temp.dart';
 export 'wrestling_news.dart';

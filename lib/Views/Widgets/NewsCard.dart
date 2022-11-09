@@ -6,7 +6,7 @@ class NewsCard extends StatelessWidget {
   final int id;
   final String title;
   final String description;
-  final String img;
+  final List img;
 
   const NewsCard({
     required this.id,
@@ -37,25 +37,29 @@ class NewsCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(img),
-              // Flexible(
-              //   child: ListView.builder(
-              //     itemCount: img.length,
-              //     itemBuilder: (context, item){
-              //       return Image.network(
-              //         img[item],
-              //         height: 120,
-              //         width: double.infinity
-              //       );
-              //     },
-              //     // child: Image.asset(
-              //     //   img,
-              //     //   height: 150.0,
-              //     //   width: double.infinity,
-              //     //   fit: BoxFit.cover,
-              //     // ),
-              //   ),
-              // ),
+              //Image.network(img),
+              Flexible(
+                child: ListView.builder(
+                  itemCount: img.length,
+                  itemBuilder: (context, i){
+                    return ClipRect(
+
+                      child: Image.network(
+                        img[0].url,
+                        height: 320,
+                        width: double.infinity,
+                        fit: BoxFit.cover
+                      ),
+                    );
+                  },
+                  // child: Image.asset(
+                  //   img,
+                  //   height: 150.0,
+                  //   width: double.infinity,
+                  //   fit: BoxFit.cover,
+                  // ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(title,

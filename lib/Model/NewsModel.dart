@@ -26,10 +26,17 @@ class NewsModel {
     title = json['title'] != null ? new Title.fromJson(json['title']) : null;
     content =
     json['content'] != null ? new Title.fromJson(json['content']) : null;
-    if (json['og_image'] != null) {
+    // if (json['og_image'] != null) {
+    //   ogImage = <OgImage>[];
+    //   json['og_image'].forEach((v) {
+    //     ogImage!.add(new OgImage.fromJson(v));
+    //   });
+    // }
+    if (json['yoast_head_json'] != null &&
+        json['yoast_head_json']['og_image'] != null) {
       ogImage = <OgImage>[];
-      json['og_image'].forEach((v) {
-        ogImage!.add(new OgImage.fromJson(v));
+      json['yoast_head_json']['og_image'].forEach((v) {
+        ogImage!.add(OgImage.fromJson(v));
       });
     }
     author = json['author'];
