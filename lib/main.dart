@@ -7,8 +7,7 @@ import 'package:wrestling_news_app/Controller/ResultController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 void main() {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-      overlays: [SystemUiOverlay.bottom]);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   runApp(const MyApp());
 }
 
@@ -38,8 +37,6 @@ class MyApp extends StatelessWidget {
           ResultDetails.routeName: (context) => const ResultDetails(),
         },
       ),
-
     );
-
   }
 }

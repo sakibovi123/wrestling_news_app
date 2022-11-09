@@ -3,8 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class CustomAppbar extends StatefulWidget {
-  const CustomAppbar({Key? key}) : super(key: key);
+  const CustomAppbar({Key? key, this.title}) : super(key: key);
 
+  final Widget? title;
   @override
   State<CustomAppbar> createState() => _CustomAppbarState();
 }
@@ -27,6 +28,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
             width: screenSize,
             height: 60,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
@@ -39,6 +41,12 @@ class _CustomAppbarState extends State<CustomAppbar> {
                     },
                     icon: Icon(Icons.arrow_back_outlined),
                   ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                ),
+                Container(
+                  child: widget.title,
                 ),
               ],
             ),

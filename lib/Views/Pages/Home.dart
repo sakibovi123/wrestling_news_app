@@ -27,7 +27,14 @@ class _HomeState extends State<Home> {
               ResultsPage(),
             ],
           ),
-          CustomAppbar(),
+          CustomAppbar(
+            title: Text(
+              'Wrestling World',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+          ),
         ],
       ),
     );
