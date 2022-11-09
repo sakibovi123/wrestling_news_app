@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 
 class ChampionsCard extends StatelessWidget {
+  final double width;
+  final double height;
+  final String titleName;
+  final String currentChampion;
+  final String since;
+  final String? titleImage;
+  final String? championImage;
+
   const ChampionsCard({
     Key? key,
     required this.width,
     required this.height,
-    required this.eventName,
+    required this.titleName,
     required this.currentChampion,
     required this.since,
-    required this.days,
+    this.titleImage,
+    this.championImage
   }) : super(key: key);
 
-  final double width;
-  final double height;
-  final String eventName;
-  final String currentChampion;
-  final String since;
-  final String days;
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class ChampionsCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(5),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               offset: Offset(0, 8),
               spreadRadius: -12,
@@ -46,32 +50,32 @@ class ChampionsCard extends StatelessWidget {
                 margin: EdgeInsets.only(top: 5),
                 width: width * 0.20,
                 height: height * 0.20,
-                child: Image.network(
-                  'https://wallpapercave.com/wp/wp2092436.jpg',
+                child: titleImage != null ? Image.network(
+                  'https://wrestlingdb.pythonanywhere.com/$titleImage',
                   fit: BoxFit.contain,
-                ),
+                ) : Image.network("https://wallpapercave.com/wp/wp2092436.jpg"),
               ),
               Container(
                 height: height * .28,
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Container(
-                      color: Color(0xFFce061e),
+                      color: const Color(0xFFce061e),
                       child: Padding(
                         padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                            const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                         child: Text(
-                          eventName,
-                          style: TextStyle(
+                          titleName,
+                          style: const TextStyle(
                             color: Color(0xFFfffffff),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
@@ -79,7 +83,7 @@ class ChampionsCard extends StatelessWidget {
                         children: [
                           Text('CUREENT CHAMPION: $currentChampion'),
                           Text('SINCE: $since'),
-                          Text('DAYS: $days'),
+                          
                         ],
                       ),
                     ),
@@ -90,10 +94,10 @@ class ChampionsCard extends StatelessWidget {
                 margin: EdgeInsets.only(top: 5),
                 width: width * 0.20,
                 height: height * 0.20,
-                child: Image.network(
-                  'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0c782e4c-fae0-4a87-b7b1-a752598d9df9/deikh6z-9d8ce555-8929-4025-9d7b-550f7c4a8db7.png/v1/crop/w_275,h_350,x_0,y_0,scl_0.26953125,strp/roman_reigns__custom__wwe_champion_png_by_ambriegnsasylum16_deikh6z-350t.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMwMSIsInBhdGgiOiJcL2ZcLzBjNzgyZTRjLWZhZTAtNGE4Ny1iN2IxLWE3NTI1OThkOWRmOVwvZGVpa2g2ei05ZDhjZTU1NS04OTI5LTQwMjUtOWQ3Yi01NTBmN2M0YThkYjcucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Q33OoKqkPPzExJeeKxh8_iSNb5pvFQ9Rcs41QOIp7qw',
+                child: championImage != null ? Image.network(
+                  'https://wrestlingdb.pythonanywhere.com/$championImage',
                   fit: BoxFit.contain,
-                ),
+                ) : Image.network("https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"),
               ),
             ],
           ),
