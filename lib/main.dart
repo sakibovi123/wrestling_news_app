@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/EventController.dart';
-
 import 'package:wrestling_news_app/Controller/NewsController.dart';
-import 'package:wrestling_news_app/Controller/PhotoController.dart';
-
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
-import 'package:wrestling_news_app/Views/Pages/NewsDetails.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -22,31 +18,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-
       providers: [
-          ChangeNotifierProvider(create: (ctx) => EventController()),
-        ChangeNotifierProvider(create: (ctx)=> NewsController()),
+        ChangeNotifierProvider(create: (ctx) => EventController()),
+        ChangeNotifierProvider(create: (ctx) => NewsController()),
       ],
-
-
-
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Wrestling News',
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
-        ),
+        theme: ThemeData(primarySwatch: Colors.orange, fontFamily: 'Khand'),
         // home: const Home(),
         home: const SplashScreen(),
-        initialRoute: '/',
-        routes: {
-          Home.routeName: (context) => const Home(),
-          WrestlingNews.routeName: (context) => const WrestlingNews(),
-          Photos.routeName: (context) => const Photos(),
-          Champions.routeName: (context) => const Champions(),
-          EventDetails.routeName: (context) => const EventDetails(),
-          NewsDetailsCard.routeName: (context) => const NewsDetailsCard(),
-        },
       ),
     );
   }

@@ -19,8 +19,9 @@ class NewsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: (){
-        Navigator.of(context).pushNamed(NewsDetailsCard.routeName, arguments: id);
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(NewsDetailsCard.routeName, arguments: id);
       },
       child: Card(
         elevation: 8.0,
@@ -69,9 +70,8 @@ class NewsCard extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(5.0),
-                child: Html(
-                    data: description.substring(0, 200)
-              ),),
+                child: Html(data: description.substring(0, 200)),
+              ),
               Container(
                 height: 15.0,
               ),
@@ -84,8 +84,8 @@ class NewsCard extends StatelessWidget {
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       "Author: John Robertson",
-                      style:
-                      TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 11.0, fontWeight: FontWeight.bold),
                     ),
                   ),
                   const Padding(
@@ -138,3 +138,90 @@ class NewsCard extends StatelessWidget {
     );
   }
 }
+
+// Container(
+// child: Column(
+// children: [
+// Container(
+// width: width,
+// height: height * 0.35,
+// child: Image.network(
+// mainImage,
+// fit: BoxFit.cover,
+// ),
+// ),
+// Container(
+// padding:
+// EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
+// width: width,
+// height: height * 0.55,
+// child: Column(
+// children: [
+// Text(
+// bodyTitle,
+// style: TextStyle(
+// fontSize: 20,
+// fontWeight: FontWeight.w700,
+// height: 1.35,
+// ),
+// ),
+// SizedBox(
+// height: 10,
+// ),
+// Text(
+// bodyDetails,
+// style: TextStyle(
+// fontSize: 18,
+// color: Colors.grey.shade700,
+// fontWeight: FontWeight.w400,
+// height: 1.35,
+// ),
+// ),
+// ],
+// ),
+// ),
+// Container(
+// width: width,
+// height: height * 0.10,
+// decoration: BoxDecoration(
+// image: DecorationImage(
+// image: NetworkImage(
+// mainImage,
+// ),
+// fit: BoxFit.cover,
+// ),
+// ),
+// child: ClipRRect(
+// child: BackdropFilter(
+// filter: ImageFilter.blur(sigmaX: 40.0, sigmaY: 40.0),
+// child: Container(
+// padding: EdgeInsets.only(left: 10, right: 10),
+// child: Column(
+// crossAxisAlignment: CrossAxisAlignment.start,
+// mainAxisAlignment: MainAxisAlignment.center,
+// children: [
+// Text(
+// footerTitle,
+// style: TextStyle(
+// fontSize: 18,
+// fontWeight: FontWeight.w500,
+// color: Colors.white70.withOpacity(0.8),
+// ),
+// ),
+// Text(
+// footerBody,
+// style: TextStyle(
+// fontSize: 16,
+// fontWeight: FontWeight.w400,
+// color: Colors.white70.withOpacity(0.8),
+// ),
+// ),
+// ],
+// ),
+// ),
+// ),
+// ),
+// ),
+// ],
+// ),
+// )
