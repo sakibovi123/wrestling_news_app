@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Wrestling News',
         theme: ThemeData(
-          primarySwatch: Colors.orange,
+          primarySwatch: Colors.deepPurple,
           fontFamily: 'Khand',
         ),
         // home: const Home(),
