@@ -2,9 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class CustomAppbar extends StatelessWidget {
+class CustomAppbar extends StatefulWidget {
   const CustomAppbar({Key? key}) : super(key: key);
 
+  @override
+  State<CustomAppbar> createState() => _CustomAppbarState();
+}
+
+class _CustomAppbarState extends State<CustomAppbar> {
   @override
   Widget build(BuildContext context) {
     double screenSize = MediaQuery.of(context).size.width;
@@ -17,10 +22,26 @@ class CustomAppbar extends StatelessWidget {
             sigmaY: 10,
           ),
           child: Container(
-            color: Colors.amber,
+            color: Colors.grey.withOpacity(0.2),
             alignment: Alignment.center,
             width: screenSize,
-            height: 50,
+            height: 60,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(right: 15),
+                  width: 56,
+                  color: Colors.transparent,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back_outlined),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

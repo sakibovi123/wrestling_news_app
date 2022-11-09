@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Controller/NewsController.dart';
+import 'package:wrestling_news_app/Controller/ResultController.dart';
 
 import '../Pages/Export.dart';
 
 class ResultDetails extends StatefulWidget {
-
-  static const routeName = "/show-results";
-
+  static const routeName = "/result-details";
   const ResultDetails({
     Key? key,
   }) : super(key: key);
@@ -22,44 +23,20 @@ class _ResultDetailsState extends State<ResultDetails> {
         initialPage: _initialPage, keepPage: true, viewportFraction: 1.0);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final id = ModalRoute.of(context)?.settings.arguments;
+    final resultDetails =
+      Provider.of<ResultsController>(context).getResultDetails(id as int);
     return Scaffold(
       body: Stack(
         children: [
-          PageView.builder(
-            itemCount: 5,
-            scrollDirection: Axis.vertical,
+          SingleChildScrollView(
             physics: ClampingScrollPhysics(),
-            controller: pageController,
-            itemBuilder: (context, index) {
-              return ShowResultCard(
-                width: width,
-                height: height,
-                resultTitle: 'WWE Raw Results, Oct 31, 2022',
-                resultDescription:
-                    'Women\'s Tag Team Championship: Alexa Bliss & Asuka def. Damage CTRL (Iyo Sky & Dakota Kai) (c) - TITLE CHANGE!!!',
-              );
-            },
-          ),
-          Positioned(
-            bottom: 10,
-            right: 10,
-            child: Container(
-              width: 35,
-              margin: EdgeInsets.only(right: 10, bottom: 20),
-              child: FloatingActionButton(
-                onPressed: () {
-                  setState(() {});
-                  pageController.animateToPage(
-                    _initialPage,
-                    curve: Curves.decelerate,
-                    duration: Duration(milliseconds: 500),
-                  );
-                },
-                child: Icon(
-                  Icons.arrow_upward_outlined,
-                  size: 18,
-                ),
-              ),
+            scrollDirection: Axis.vertical,
+            child: ShowResultCard(
+              width: width,
+              height: height,
+              resultTitle: resultDetails.title!.rendered!,
+              resultDescription: resultDetails.content!.rendered!,
             ),
           ),
           CustomAppbar(),
@@ -68,4 +45,3 @@ class _ResultDetailsState extends State<ResultDetails> {
     );
   }
 }
-//
