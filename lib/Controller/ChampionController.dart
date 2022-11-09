@@ -7,6 +7,7 @@ class ChampionController{
   Future getChampions() async {
     var response = await http.get(Uri.parse(url));
     if( response.statusCode == 200 ){
+      print(response.statusCode);
       return json.decode(response.body);
     }
     else{

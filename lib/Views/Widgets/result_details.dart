@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import '../Pages/Export.dart';
 
 class ResultDetails extends StatefulWidget {
+
+  static const routeName = "/show-results";
+
   const ResultDetails({
     Key? key,
   }) : super(key: key);

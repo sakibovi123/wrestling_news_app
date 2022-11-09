@@ -2,45 +2,39 @@ import 'package:flutter/material.dart';
 
 import '../Pages/Export.dart';
 
-class ResultCards extends StatefulWidget {
-  const ResultCards({
-    Key? key,
-    required this.width,
-    required this.height,
-    required this.eventName,
-  }) : super(key: key);
-
+class ResultCards extends StatelessWidget {
   final double width;
   final double height;
-  final String eventName;
+  final int id;
+  final String resultTitle;
 
-  @override
-  State<ResultCards> createState() => _ResultCardsState();
-}
 
-class _ResultCardsState extends State<ResultCards> {
+  const ResultCards({
+    Key? key,
+    required this.id,
+    required this.width,
+    required this.height,
+    required this.resultTitle,
+  }) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       alignment: Alignment.center,
-      width: widget.width,
-      height: widget.height * 0.20,
+      width: width,
+      height: height * 0.20,
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ResultDetails(),
-            ),
-          );
+          Navigator.of(context).pushNamed(ResultDetails.routeName, arguments: id);
         },
         child: Container(
-          width: widget.width * 0.95,
-          height: widget.height * 0.20,
+          width: width * 0.95,
+          height: height * 0.20,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 offset: Offset(0, 8),
                 spreadRadius: -12,
@@ -50,7 +44,7 @@ class _ResultCardsState extends State<ResultCards> {
             ],
             color: Colors.black45,
             image: DecorationImage(
-              image: NetworkImage(
+              image: const NetworkImage(
                   'https://logos-world.net/wp-content/uploads/2021/11/WWE-Emblem.png'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
@@ -61,8 +55,8 @@ class _ResultCardsState extends State<ResultCards> {
           ),
           child: Center(
             child: Text(
-              widget.eventName,
-              style: TextStyle(
+              resultTitle,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 30,
                 letterSpacing: 3,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ShowResultCard extends StatelessWidget {
+
+
+
   const ShowResultCard({
     Key? key,
     required this.width,

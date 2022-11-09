@@ -26,6 +26,7 @@ class _HomeState extends State<Home> {
             Photos(),
             Champions(),
             EventsPage(),
+            ResultsPage(),
           ],
         ),
       );
