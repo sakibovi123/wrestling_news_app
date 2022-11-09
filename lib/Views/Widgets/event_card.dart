@@ -32,6 +32,10 @@ class EventCard extends StatelessWidget {
                 topStart: Radius.circular(10.0),
                 bottomStart: Radius.circular(10.0),
               ),
+              // child: Image.network(event_logo,
+              //   width: 130,
+              //   height: 120,
+              //   fit: BoxFit.fill,),
               child: Image.network(
                 event_logo,
                 width: 130,

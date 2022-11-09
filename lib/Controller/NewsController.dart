@@ -13,13 +13,13 @@ class NewsController with ChangeNotifier{
     // var token = storage.getItem('token');
     try {
       http.Response response = await http.get(url);
-      print(response.body);
+      // print(response.body);
       var data = json.decode(response.body) as List;
       // print(data);
       List<NewsModel> temp = [];
       data.forEach((element) {
-        NewsModel product = NewsModel.fromJson(element);
-        temp.add(product);
+        NewsModel newsModel = NewsModel.fromJson(element);
+        temp.add(newsModel);
       });
       _news = temp;
       notifyListeners();

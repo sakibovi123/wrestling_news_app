@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Controller/ResultController.dart';
 
 import '../Pages/Export.dart';
 
 class ResultDetails extends StatefulWidget {
+  static const routeName = "/result-details";
   const ResultDetails({
     Key? key,
   }) : super(key: key);
@@ -19,24 +22,21 @@ class _ResultDetailsState extends State<ResultDetails> {
         initialPage: _initialPage, keepPage: true, viewportFraction: 1.0);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final id = ModalRoute.of(context)?.settings.arguments;
+    final resultDetails =
+        Provider.of<ResultsController>(context).getResultDetails(id as int);
     return Scaffold(
       body: Stack(
         children: [
-          SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            child: ShowResultCard(
-              width: width,
-              height: height,
-              resultTitle: 'WWE Raw Results, Oct 31, 2022',
-              resultDescription:
-                  'Women\'s Tag Team Championship: Alexa Bliss & Asuka def. Damage CTRL (Iyo Sky & Dakota Kai) (c) - TITLE CHANGE!!!',
-            ),
+          ShowResultCard(
+            width: width,
+            height: height,
+            resultTitle: resultDetails.title!.rendered!,
+            resultDescription: resultDetails.content!.rendered!,
           ),
-          CustomAppbar(),
+          const CustomAppbar(),
         ],
       ),
     );
   }
 }
-//

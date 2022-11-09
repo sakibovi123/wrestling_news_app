@@ -17,12 +17,12 @@ class _HomeState extends State<Home> {
       body: PageView(
         scrollDirection: Axis.horizontal,
         physics: const ClampingScrollPhysics(),
-        children: [
-          const ShowNewsPage(),
-          const Photos(),
-          const Champions(),
-          const EventsPage(),
-          const ResultsPage(),
+        children: const [
+          ShowNewsPage(),
+          Photos(),
+          Champions(),
+          EventsPage(),
+          ResultsPage(),
         ],
       ),
     );
