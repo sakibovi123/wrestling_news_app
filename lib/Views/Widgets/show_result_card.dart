@@ -50,10 +50,7 @@ class ShowResultCard extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
+            Expanded(
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 physics: const ClampingScrollPhysics(),

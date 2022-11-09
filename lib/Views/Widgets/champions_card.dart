@@ -9,18 +9,16 @@ class ChampionsCard extends StatelessWidget {
   final String? titleImage;
   final String? championImage;
 
-  const ChampionsCard({
-    Key? key,
-    required this.width,
-    required this.height,
-    required this.titleName,
-    required this.currentChampion,
-    required this.since,
-    this.titleImage,
-    this.championImage
-  }) : super(key: key);
-
-
+  const ChampionsCard(
+      {Key? key,
+        required this.width,
+        required this.height,
+        required this.titleName,
+        required this.currentChampion,
+        required this.since,
+        this.titleImage,
+        this.championImage})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +48,13 @@ class ChampionsCard extends StatelessWidget {
                 margin: EdgeInsets.only(top: 5),
                 width: width * 0.20,
                 height: height * 0.20,
-                child: titleImage != null ? Image.network(
+                child: titleImage != null
+                    ? Image.network(
                   'https://wrestlingdb.pythonanywhere.com/$titleImage',
                   fit: BoxFit.contain,
-                ) : Image.network("https://wallpapercave.com/wp/wp2092436.jpg"),
+                )
+                    : Image.network(
+                    "https://wallpapercave.com/wp/wp2092436.jpg"),
               ),
               Container(
                 height: height * .28,
@@ -65,8 +66,8 @@ class ChampionsCard extends StatelessWidget {
                     Container(
                       color: const Color(0xFFce061e),
                       child: Padding(
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 10),
                         child: Text(
                           titleName,
                           style: const TextStyle(
@@ -79,11 +80,14 @@ class ChampionsCard extends StatelessWidget {
                       height: 20,
                     ),
                     Container(
+                      width: width * 0.5,
                       child: Column(
                         children: [
-                          Text('CUREENT CHAMPION: $currentChampion'),
+                          Text(
+                            'CUREENT CHAMPION: $currentChampion',
+                            textAlign: TextAlign.center,
+                          ),
                           Text('SINCE: $since'),
-                          
                         ],
                       ),
                     ),
@@ -94,10 +98,13 @@ class ChampionsCard extends StatelessWidget {
                 margin: EdgeInsets.only(top: 5),
                 width: width * 0.20,
                 height: height * 0.20,
-                child: championImage != null ? Image.network(
+                child: championImage != null
+                    ? Image.network(
                   'https://wrestlingdb.pythonanywhere.com/$championImage',
                   fit: BoxFit.contain,
-                ) : Image.network("https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"),
+                )
+                    : Image.network(
+                    "https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"),
               ),
             ],
           ),
