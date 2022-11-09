@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:wrestling_news_app/Controller/NewsController.dart';
 
 import 'Export.dart';
 
@@ -12,23 +10,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-
   bool isVisible = false;
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-        body: PageView(
-          scrollDirection: Axis.horizontal,
-          physics: const ClampingScrollPhysics(),
-          children: [
-            const ShowNewsPage(),
-            const Photos(),
-            const Champions(),
-            const EventsPage(),
-          ],
-        ),
-      );
-    }
+    return Scaffold(
+      body: PageView(
+        scrollDirection: Axis.horizontal,
+        physics: const ClampingScrollPhysics(),
+        children: [
+          const ShowNewsPage(),
+          // const Photos(),
+          // const Champions(),
+          // const EventsPage(),
+        ],
+      ),
+    );
   }
-
+}

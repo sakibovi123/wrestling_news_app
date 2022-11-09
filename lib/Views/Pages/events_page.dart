@@ -16,18 +16,25 @@ class _EventsPageState extends State<EventsPage> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: ListView.builder(
-        physics: ClampingScrollPhysics(),
-        itemCount: 6,
-        itemBuilder: (context, index) {
-          return EventCard(
-            id: 2,
-            date: 'vasada',
-            event_logo: '',
-            event_name: 'asdaas',
-            location: 'adadasdas',
-          );
-        },
+      body: Column(
+        children: [
+          Flexible(
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              itemCount: 6,
+              itemBuilder: (context, index) {
+                return EventCard(
+                  id: 2,
+                  date: 'vasada',
+                  event_logo: '',
+                  event_name: 'asdaas',
+                  location: 'adadasdas',
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

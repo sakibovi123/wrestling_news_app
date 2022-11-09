@@ -27,20 +27,27 @@ class _ChampionsState extends State<Champions> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: 10,
-        scrollDirection: Axis.vertical,
-        physics: ClampingScrollPhysics(),
-        itemBuilder: (context, index) {
-          return ChampionsCard(
-            width: width,
-            height: height,
-            eventName: eventName,
-            currentChampion: currentChampion,
-            since: since,
-            days: days,
-          );
-        },
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return ChampionsCard(
+                  width: width,
+                  height: height,
+                  eventName: eventName,
+                  currentChampion: currentChampion,
+                  since: since,
+                  days: days,
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

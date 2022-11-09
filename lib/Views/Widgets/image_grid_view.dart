@@ -32,6 +32,7 @@ class _ImageGridViewState extends State<ImageGridView> {
           scrollDirection: Axis.vertical,
           crossAxisSpacing: 8,
           mainAxisSpacing: 8,
+          shrinkWrap: true,
           gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2),
           itemCount: 15,
