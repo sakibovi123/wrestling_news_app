@@ -33,11 +33,14 @@ class EventCard extends StatelessWidget {
                 bottomStart: Radius.circular(10.0),
               ),
               child: Image.network(
-                "https://wrestlingdb.pythonanywhere.com$event_logo",
+                event_logo,
                 width: 130,
                 height: 120,
                 fit: BoxFit.fill,
               ),
+            ),
+            SizedBox(
+              width: 10,
             ),
             Padding(
               padding: const EdgeInsets.all(5.0),

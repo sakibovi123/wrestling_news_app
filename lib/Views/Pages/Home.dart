@@ -19,9 +19,9 @@ class _HomeState extends State<Home> {
         physics: const ClampingScrollPhysics(),
         children: [
           const ShowNewsPage(),
-          // const Photos(),
-          // const Champions(),
-          // const EventsPage(),
+          const Photos(),
+          const Champions(),
+          const EventsPage(),
         ],
       ),
     );

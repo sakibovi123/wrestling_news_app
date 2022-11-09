@@ -27,7 +27,8 @@ class _EventsPageState extends State<EventsPage> {
                 return EventCard(
                   id: 2,
                   date: 'vasada',
-                  event_logo: '',
+                  event_logo:
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/WWE_%282014%29_logo.svg/1200px-WWE_%282014%29_logo.svg.png',
                   event_name: 'asdaas',
                   location: 'adadasdas',
                 );

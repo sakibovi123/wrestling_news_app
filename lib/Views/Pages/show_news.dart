@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Controller/NewsController.dart';
+import 'Export.dart';
 
 class ShowNewsPage extends StatefulWidget {
   const ShowNewsPage({Key? key}) : super(key: key);
@@ -39,17 +40,16 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
           scrollDirection: Axis.vertical,
           // shrinkWrap: true,
           itemBuilder: (context, index) {
-            return Text('Hello World');
-            // return NewNewscardWidget(
-            //   width: MediaQuery.of(context).size.width,
-            //   height: MediaQuery.of(context).size.height,
-            //   title: news[index].title!.rendered!,
-            //   content: news[index].content!.rendered!,
-            //   image: news[index].ogImage ?? [],
-            //   id: news[index].id!,
-            // authorName: news[index].author!,
-            // date: 'November 5, 2022',
-            // );
+            return NewNewscardWidget(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              title: news[index].title!.rendered!,
+              content: news[index].content!.rendered!,
+              image: news[index].ogImage ?? [],
+              id: news[index].id!,
+              // authorName: news[index].author!,
+              date: 'November 5, 2022',
+            );
           },
         ),
       );

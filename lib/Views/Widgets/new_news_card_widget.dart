@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class NewNewscardWidget extends StatelessWidget {
   const NewNewscardWidget({
@@ -49,18 +50,16 @@ class NewNewscardWidget extends StatelessWidget {
             children: [
               Center(
                 child: Container(
-                  height: height * .28,
+                  height: height * .40,
                   width: width,
-                  // child:
-                  // ListView.builder(
-                  //     itemCount: image.length,
-                  //     itemBuilder: (context, i) {
-                  //       return Image.network(
-                  //         // image[0].url,
-                  //
-                  //         fit: BoxFit.cover,
-                  //       );
-                  //     }),
+                  child: ListView.builder(
+                      itemCount: image!.length,
+                      itemBuilder: (context, i) {
+                        return Image.network(
+                          image![0].url,
+                          fit: BoxFit.fill,
+                        );
+                      }),
                 ),
               ),
               const SizedBox(
@@ -82,14 +81,15 @@ class NewNewscardWidget extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.only(left: 5, right: 5),
-                child: Text(
-                  content,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w300,
-                    fontFamily: 'NunitoSans',
-                  ),
-                ),
+                child: Html(data: content.substring(0, 600)),
+                // child: Text(
+                //   content,
+                //   style: const TextStyle(
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.w300,
+                //     fontFamily: 'NunitoSans',
+                //   ),
+                // ),
               ),
               const SizedBox(
                 height: 10,
