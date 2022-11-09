@@ -3,7 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class CustomAppbar extends StatefulWidget {
-  const CustomAppbar({Key? key}) : super(key: key);
+  // const CustomAppbar({Key? key}) : super(key: key);
+  const CustomAppbar({Key? key, this.title, this.icon}) : super(key: key);
+
+  final Widget? title;
+  final Widget? icon;
 
   @override
   State<CustomAppbar> createState() => _CustomAppbarState();
@@ -37,8 +41,14 @@ class _CustomAppbarState extends State<CustomAppbar> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_back_outlined),
+                    icon: const Icon(Icons.arrow_back_outlined),
                   ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                ),
+                Container(
+                  child: widget.title,
                 ),
               ],
             ),

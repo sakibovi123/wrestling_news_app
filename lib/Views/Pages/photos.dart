@@ -19,6 +19,7 @@ class _PhotosState extends State<Photos> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: FutureBuilder(
         future: photoController.getPhotos(),

@@ -45,7 +45,7 @@ class ResultCards extends StatelessWidget {
             color: Colors.black45,
             image: DecorationImage(
               image: const NetworkImage(
-                  'https://logos-world.net/wp-content/uploads/2021/11/WWE-Emblem.png'),
+                  'https://wrestlingworld.co/wp-content/uploads/2019/05/ww-star-280x96.png'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.75),

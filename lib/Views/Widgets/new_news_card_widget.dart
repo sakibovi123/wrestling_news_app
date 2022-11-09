@@ -84,7 +84,12 @@ class NewNewscardWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 child: Html(
-                  data: content.substring(0, 600)
+                  data: content.substring(0, 600),
+                  style: {
+                    "body": Style(
+                      fontSize: FontSize(16)
+                    ),
+                  },
                 ),
                 // child: Text(
                 //   content,

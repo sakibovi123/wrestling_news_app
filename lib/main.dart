@@ -7,8 +7,8 @@ import 'package:wrestling_news_app/Controller/ResultController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+
   runApp(const MyApp());
 }
 

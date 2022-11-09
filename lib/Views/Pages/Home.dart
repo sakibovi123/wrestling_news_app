@@ -18,16 +18,29 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(
-        body: PageView(
-          scrollDirection: Axis.horizontal,
-          physics: const ClampingScrollPhysics(),
-          children: const [
-            ShowNewsPage(),
-            Photos(),
-            Champions(),
-            EventsPage(),
-            ResultsPage(),
-          ],
+
+        body: Stack(
+          children: [
+            PageView(
+            scrollDirection: Axis.horizontal,
+            physics: const ClampingScrollPhysics(),
+            children: const [
+              ShowNewsPage(),
+              Photos(),
+              Champions(),
+              EventsPage(),
+              ResultsPage(),
+            ],
+          ),
+        // const CustomAppbar(
+        //   title: Text(
+        //     'Wrestling World',
+        //     style: TextStyle(
+        //       fontSize: 20,
+        //     ),
+        //   ),
+        // ),
+        ],
         ),
       );
     }

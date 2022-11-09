@@ -43,6 +43,9 @@ class EventCard extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
+            const SizedBox(
+              width: 10,
+            ),
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: Column(
