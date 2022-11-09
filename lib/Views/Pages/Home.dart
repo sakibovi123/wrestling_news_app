@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
       return Scaffold(
         body: PageView(
           scrollDirection: Axis.horizontal,
-          physics: ClampingScrollPhysics(),
+          physics: const ClampingScrollPhysics(),
 
           children: [
             ListView.builder(
