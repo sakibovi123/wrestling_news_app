@@ -33,10 +33,11 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
       );
     } else {
       return Scaffold(
-        body: ListView.builder(
+        body: PageView.builder(
           physics: const ScrollPhysics(),
           itemCount: news.length,
-          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          // shrinkWrap: true,
           itemBuilder: (context, index) {
             return Text('Hello World');
             // return NewNewscardWidget(

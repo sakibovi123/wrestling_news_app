@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wrestling_news_app/Controller/ChampionController.dart';
 
 import '../Pages/Export.dart';
 
@@ -12,12 +13,9 @@ class Champions extends StatefulWidget {
   State<Champions> createState() => _ChampionsState();
 }
 
-class _ChampionsState extends State<Champions> {
-  String eventName = 'WWE CHAMPIONSHIP';
-  String currentChampion = 'ROMAN REIGNS';
-  String since = 'APRIL 3, 2022';
-  String days = '217';
+ChampionController championController = ChampionController();
 
+class _ChampionsState extends State<Champions> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -27,28 +25,32 @@ class _ChampionsState extends State<Champions> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              physics: ClampingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return ChampionsCard(
-                  width: width,
-                  height: height,
-                  eventName: eventName,
-                  currentChampion: currentChampion,
-                  since: since,
-                  days: days,
-                );
-              },
-            ),
-          ),
-        ],
-      ),
+      body: FutureBuilder(
+          future: championController.getChampions(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: 10,
+                scrollDirection: Axis.vertical,
+                physics: ClampingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return ChampionsCard(
+                    width: width,
+                    height: height,
+                    titleName: snapshot.data[index]["title"],
+                    currentChampion: snapshot.data[index]["current_champion"],
+                    since: snapshot.data[index]["since"],
+                    titleImage: snapshot.data[index]["title_image"],
+                    championImage: snapshot.data[index]["champion_image"],
+                  );
+                },
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          }),
     );
   }
 }
