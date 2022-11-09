@@ -22,6 +22,7 @@ class _HomeState extends State<Home> {
           const Photos(),
           const Champions(),
           const EventsPage(),
+          const ResultsPage(),
         ],
       ),
     );
