@@ -16,11 +16,13 @@ class _PhotosState extends State<Photos> {
         elevation: 0,
         backgroundColor: Colors.white,
       ),
-      body: const ImageGridView(
-        image:
-        'https://isbsp.daffodilvarsity.edu.bd/wp-content/uploads/2018/11/shapla.jpg',
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: const ImageGridView(
+          image:
+              'https://isbsp.daffodilvarsity.edu.bd/wp-content/uploads/2018/11/shapla.jpg',
+        ),
       ),
     );
   }
 }
-
