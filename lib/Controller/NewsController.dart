@@ -18,8 +18,8 @@ class NewsController with ChangeNotifier{
       // print(data);
       List<NewsModel> temp = [];
       data.forEach((element) {
-        NewsModel product = NewsModel.fromJson(element);
-        temp.add(product);
+        NewsModel newsModel = NewsModel.fromJson(element);
+        temp.add(newsModel);
       });
       _news = temp;
       notifyListeners();
