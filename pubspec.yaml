@@ -40,6 +40,7 @@ dependencies:
   flutter_staggered_grid_view: ^0.6.2
   http: ^0.13.5
   provider: ^6.0.4
+  flutter_html: ^2.2.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,13 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/digital2.png
+  fonts:
+    - family: Khand
+      fonts:
+        - asset: assets/fonts/Khand-Regular.ttf
+    - family: NunitoSans
+      fonts:
+        - asset: assets/fonts/NunitoSans-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

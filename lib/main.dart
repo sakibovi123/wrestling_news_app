@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/EventController.dart';
+import 'package:wrestling_news_app/Controller/NewsController.dart';
+import 'package:wrestling_news_app/Controller/ResultController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   runApp(const MyApp());
 }
 
@@ -17,22 +18,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (ctx) => EventController())],
+      providers: [
+        ChangeNotifierProvider(create: (ctx) => EventController()),
+        ChangeNotifierProvider(create: (ctx) => NewsController()),
+        ChangeNotifierProvider(create: (ctx) => ResultsController()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Wrestling News',
         theme: ThemeData(
-          primarySwatch: Colors.orange,
+          primarySwatch: Colors.deepPurple,
+          fontFamily: 'Khand',
         ),
         // home: const Home(),
         home: const SplashScreen(),
-        initialRoute: '/',
         routes: {
-          Home.routeName: (context) => const Home(),
-          WrestlingNews.routeName: (context) => const WrestlingNews(),
-          Photos.routeName: (context) => const Photos(),
-          Champions.routeName: (context) => const Champions(),
           EventDetails.routeName: (context) => const EventDetails(),
+          ResultDetails.routeName: (context) => const ResultDetails(),
         },
       ),
     );

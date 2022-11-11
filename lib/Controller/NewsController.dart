@@ -4,36 +4,37 @@ import 'package:wrestling_news_app/Model/NewsModel.dart';
 import 'package:http/http.dart' as http;
 
 
-class NewsController{
-  String url = "https://wrestlingworld.co/wp-json/wp/v2/posts?categories=22";
-  Future<List> getNews() async {
-    try{
-      var response = await http.get(Uri.parse(url));
-      if(response.statusCode == 200){
-        return jsonDecode(response.body);
-      }
-      else{
-        return Future.error("Error Handling the request");
-      }
-    } catch(Exception){
-      print(Exception);
-      return Future.error("Error in the controller");
+class NewsController with ChangeNotifier{
+  String urlnews = "https://wrestlingworld.co/wp-json/wp/v2/posts?categories=22";
+  List<NewsModel> _news = [];
+
+  Future<bool> getNews() async {
+    var url = Uri.parse(urlnews);
+    // var token = storage.getItem('token');
+    try {
+      http.Response response = await http.get(url);
+      // print(response.body);
+      var data = json.decode(response.body) as List;
+      // print(data);
+      List<NewsModel> temp = [];
+      data.forEach((element) {
+        NewsModel newsModel = NewsModel.fromJson(element);
+        temp.add(newsModel);
+      });
+      _news = temp;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
     }
   }
+  List<NewsModel> get allNews {
+    return [..._news];
+  }
 
-
-  Future getNewsDetails(int newsId) async {
-    try{
-      var response = await http.get(Uri.parse("https://wrestlingworld.co/wp-json/wp/v2/posts/{$newsId}"));
-      if ( response.statusCode == 200 ){
-        return jsonDecode(response.body);
-      }
-      else{
-        Future.error("404 Server Error!");
-      }
-    } catch(Exception){
-      print(Exception);
-    }
+  NewsModel getNewsDetails(int id){
+    return _news.firstWhere((element) => element.id == id);
   }
 
 
