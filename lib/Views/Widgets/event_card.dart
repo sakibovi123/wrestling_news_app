@@ -24,57 +24,69 @@ class EventCard extends StatelessWidget {
         Navigator.of(context).pushNamed(EventDetails.routeName, arguments: id);
       },
       child: Card(
-        elevation: 5,
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadiusDirectional.only(
-                topStart: Radius.circular(10.0),
-                bottomStart: Radius.circular(10.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(0, 8),
+                spreadRadius: -12,
+                blurRadius: 26,
+                color: Color.fromRGBO(149, 143, 143, 1),
               ),
-              // child: Image.network(event_logo,
-              //   width: 130,
-              //   height: 120,
-              //   fit: BoxFit.fill,),
-              child: Image.network(
-                "https://wrestlingdb.pythonanywhere.com$event_logo",
-                width: 130,
-                height: 120,
-                fit: BoxFit.fill,
+            ],
+          ),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadiusDirectional.only(
+                  topStart: Radius.circular(10.0),
+                  bottomStart: Radius.circular(10.0),
+                ),
+                // child: Image.network(event_logo,
+                //   width: 130,
+                //   height: 120,
+                //   fit: BoxFit.fill,),
+                child: Image.network(
+                  "https://wrestlingdb.pythonanywhere.com$event_logo",
+                  width: 130,
+                  height: 120,
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    date,
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    width: 180,
-                    child: Text(
-                      event_name,
+              SizedBox(
+                width: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      date,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      width: 180,
+                      child: Text(
+                        event_name,
+                        style: const TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

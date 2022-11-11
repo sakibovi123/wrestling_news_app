@@ -24,8 +24,8 @@ class ImageGridView extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(
           top: 40,
-          left: 12,
-          right: 12,
+          // left: 12,
+          // right: 12,
           bottom: 12,
         ),
         child: ClipRRect(

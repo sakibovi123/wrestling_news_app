@@ -34,7 +34,19 @@ class _ResultDetailsState extends State<ResultDetails> {
             resultTitle: resultDetails.title!.rendered!,
             resultDescription: resultDetails.content!.rendered!,
           ),
-          const CustomAppbar(),
+          const CustomAppbar(
+            title: 'Result Details',
+          ),
+          Positioned(
+            top: 5,
+            left: 0,
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back_outlined),
+            ),
+          ),
         ],
       ),
     );

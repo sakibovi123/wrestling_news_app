@@ -20,20 +20,13 @@ class _HomeState extends State<Home> {
             scrollDirection: Axis.horizontal,
             physics: const ClampingScrollPhysics(),
             children: const [
+              LandingPage(),
               ShowNewsPage(),
               Photos(),
               Champions(),
               EventsPage(),
               ResultsPage(),
             ],
-          ),
-          CustomAppbar(
-            title: Text(
-              'Wrestling World',
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
           ),
         ],
       ),

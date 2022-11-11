@@ -54,6 +54,7 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
                 );
               },
             ),
+            CustomAppbar(title: 'News'),
           ],
         ),
       );

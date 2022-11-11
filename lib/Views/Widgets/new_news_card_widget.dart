@@ -52,9 +52,6 @@ class NewNewscardWidget extends StatelessWidget {
                       }),
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Text(
@@ -71,7 +68,7 @@ class NewNewscardWidget extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.only(left: 5, right: 5),
-                child: Html(data: content.substring(0, 600)),
+                child: Html(data: content.substring(0, 400)),
                 // child: Text(
                 //   content,
                 //   style: const TextStyle(
