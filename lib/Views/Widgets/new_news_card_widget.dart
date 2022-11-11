@@ -26,6 +26,16 @@ class NewNewscardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle buttonStyle1 = ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFFc3232a),
+      shape: const StadiumBorder(),
+      minimumSize: const Size(200, 50),
+    );
+    final ButtonStyle buttonStyle2 = ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFFf5f5f5),
+      shape: const StadiumBorder(),
+      minimumSize: const Size(10, 50),
+    );
     return UnconstrainedBox(
       child: Container(
         width: width,
@@ -84,7 +94,7 @@ class NewNewscardWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 child: Html(
-                  data: content.substring(0, 600),
+                  data: content.substring(0, 200),
                   style: {
                     "body": Style(
                       fontSize: FontSize(16)
@@ -124,7 +134,40 @@ class NewNewscardWidget extends StatelessWidget {
                       width: 10,
                     ),
                     Text(date),
+
                   ],
+                ),
+
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Expanded(
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: (){},
+                          child: Icon(
+                            Icons.share,
+                            color: Colors.blueGrey,
+                          ),
+                          style: buttonStyle2,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: (){},
+                          child: Text("Show Details"),
+                          style: buttonStyle1,
+                        ),
+                      ),
+
+                    ]
                 ),
               ),
             ],
