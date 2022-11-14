@@ -56,7 +56,7 @@ class NewNewscardWidget extends StatelessWidget {
                 children: [
                   Center(
                     child: Container(
-                      height: height * .35,
+                      height: 290,
                       width: width,
                       child: ListView.builder(
                           padding: EdgeInsets.only(top: 0),
@@ -68,9 +68,6 @@ class NewNewscardWidget extends StatelessWidget {
                             );
                           }),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 5,
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -86,7 +83,7 @@ class NewNewscardWidget extends StatelessWidget {
                   ),
                   Container(
                     child: Html(
-                      data: content.substring(0, 200),
+                      data: content.substring(0, 100),
                       style: {
                         "body": Style(
                             fontSize: const FontSize(16),
@@ -142,6 +139,15 @@ class NewNewscardWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Container(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.share,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                         InkWell(
                           onTap: () {
                             Navigator.of(context).pushNamed(
@@ -156,15 +162,6 @@ class NewNewscardWidget extends StatelessWidget {
                                 fontSize: 18,
                                 color: Colors.white,
                               ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.share,
-                              color: Colors.white,
                             ),
                           ),
                         ),
