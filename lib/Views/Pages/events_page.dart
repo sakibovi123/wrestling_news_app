@@ -34,33 +34,37 @@ class _EventsPageState extends State<EventsPage> {
       );
     } else {
       return Scaffold(
-        body: Stack(
-          children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                ),
-                Flexible(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: const ClampingScrollPhysics(),
-                    itemCount: all_events.length,
-                    itemBuilder: (context, index) {
-                      return EventCard(
-                        id: all_events![index].id!,
-                        date: all_events![index].date!,
-                        event_logo: all_events![index].eventLogo!,
-                        event_name: all_events![index].eventName!,
-                        location: all_events![index].location!,
-                      );
-                    },
-                  ),
-                ),
-              ],
+        extendBodyBehindAppBar: true,
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            SliverAppBar(
+              floating: true,
+              title: Text('Events'),
+              centerTitle: true,
+              toolbarHeight: 40.0,
+              backgroundColor: Colors.grey,
             ),
-            CustomAppbar(title: 'Events'),
           ],
+          body: Column(
+            children: [
+              Flexible(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
+                  itemCount: all_events.length,
+                  itemBuilder: (context, index) {
+                    return EventCard(
+                      id: all_events![index].id!,
+                      date: all_events![index].date!,
+                      event_logo: all_events![index].eventLogo!,
+                      event_name: all_events![index].eventName!,
+                      location: all_events![index].location!,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }

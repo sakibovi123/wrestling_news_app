@@ -26,28 +26,24 @@ class _ResultDetailsState extends State<ResultDetails> {
     final resultDetails =
     Provider.of<ResultsController>(context).getResultDetails(id as int);
     return Scaffold(
-      body: Stack(
-        children: [
-          ShowResultCard(
-            width: width,
-            height: height,
-            resultTitle: resultDetails.title!.rendered!,
-            resultDescription: resultDetails.content!.rendered!,
-          ),
-          const CustomAppbar(
-            title: 'Result Details',
-          ),
-          Positioned(
-            top: 5,
-            left: 0,
-            child: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back_outlined),
-            ),
+      extendBodyBehindAppBar: true,
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverAppBar(
+            floating: true,
+            title: Text(resultDetails.title!.rendered!.toUpperCase()),
+            centerTitle: true,
+            toolbarHeight: 40.0,
+            backgroundColor: Colors.grey,
           ),
         ],
+        body: ShowResultCard(
+          width: width,
+          height: height,
+          resultTitle: resultDetails.title!.rendered!,
+          resultDescription: resultDetails.content!.rendered!,
+        ),
       ),
     );
   }
