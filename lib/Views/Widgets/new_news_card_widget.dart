@@ -179,7 +179,8 @@ class NewNewscardWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        InkWell(
+                        GestureDetector(
+                          onTap: () {},
                           child: Container(
                             margin: EdgeInsets.all(13),
                             child: Text(

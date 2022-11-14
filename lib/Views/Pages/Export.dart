@@ -23,6 +23,7 @@ export '../Widgets/show_result_card.dart';
 export 'Home.dart';
 export 'Landing.dart';
 export 'Login.dart';
+export 'NewsDetails.dart';
 export 'Register.dart';
 export 'champions.dart';
 export 'champions.dart';
