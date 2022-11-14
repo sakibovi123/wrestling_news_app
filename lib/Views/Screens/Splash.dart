@@ -39,18 +39,18 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Image.network(
-            "https://i.pinimg.com/originals/69/01/6e/69016ef7763b53f048891be7c6a59e73.png",
+            "https://wrestlingworld.co/wp-content/uploads/2019/05/ww-star-280x96.png",
             height: 300.0,
             width: 300.0,
           ),
-          const Text(
-            "A Great Wrestling App",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0),
-          ),
+          // const Text(
+          //   "A Great Wrestling App",
+          //   textAlign: TextAlign.center,
+          //   style: TextStyle(
+          //       color: Colors.white,
+          //       fontWeight: FontWeight.bold,
+          //       fontSize: 18.0),
+          // ),
           const CircularProgressIndicator(),
         ],
       ),

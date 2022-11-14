@@ -24,7 +24,7 @@ class _ResultDetailsState extends State<ResultDetails> {
     double height = MediaQuery.of(context).size.height;
     final id = ModalRoute.of(context)?.settings.arguments;
     final resultDetails =
-        Provider.of<ResultsController>(context).getResultDetails(id as int);
+    Provider.of<ResultsController>(context).getResultDetails(id as int);
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: NestedScrollView(

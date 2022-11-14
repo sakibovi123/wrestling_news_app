@@ -10,11 +10,11 @@ class EventCard extends StatelessWidget {
 
   const EventCard(
       {Key? key,
-      required this.id,
-      required this.date,
-      required this.event_logo,
-      required this.event_name,
-      required this.location})
+        required this.id,
+        required this.date,
+        required this.event_logo,
+        required this.event_name,
+        required this.location})
       : super(key: key);
 
   @override

@@ -11,7 +11,7 @@ class EventDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)?.settings.arguments;
     final eventDetails =
-        Provider.of<EventController>(context).getEventDetails(id as int);
+    Provider.of<EventController>(context).getEventDetails(id as int);
 
     return Scaffold(
       extendBodyBehindAppBar: true,

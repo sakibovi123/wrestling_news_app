@@ -8,6 +8,7 @@ import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 void main() {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+
   runApp(const MyApp());
 }
 
