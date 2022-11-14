@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
+import '../Pages/NewsDetails.dart';
+
 class NewNewscardWidget extends StatelessWidget {
   const NewNewscardWidget({
     Key? key,
@@ -82,7 +84,6 @@ class NewNewscardWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   Container(
                     child: Html(
                       data: content.substring(0, 200),
@@ -92,14 +93,6 @@ class NewNewscardWidget extends StatelessWidget {
                             fontFamily: 'NunitoSans'),
                       },
                     ),
-                    // child: Text(
-                    //   content,
-                    //   style: const TextStyle(
-                    //     fontSize: 16,
-                    //     fontWeight: FontWeight.w300,
-                    //     fontFamily: 'NunitoSans',
-                    //   ),
-                    // ),
                   ),
                   const SizedBox(
                     height: 10,
@@ -119,36 +112,6 @@ class NewNewscardWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // UnconstrainedBox(
-                  //   child: Container(
-                  //     width: width * 0.95,
-                  //     child: Row(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       crossAxisAlignment: CrossAxisAlignment.center,
-                  //       children: [
-                  //         Padding(
-                  //           padding: const EdgeInsets.all(8.0),
-                  //           child: ElevatedButton(
-                  //             onPressed: () {},
-                  //             child: Icon(
-                  //               Icons.share,
-                  //               color: Colors.blueGrey,
-                  //             ),
-                  //             style: buttonStyle2,
-                  //           ),
-                  //         ),
-                  //         Padding(
-                  //           padding: const EdgeInsets.all(8.0),
-                  //           child: ElevatedButton(
-                  //             onPressed: () {},
-                  //             child: Text("Show Details"),
-                  //             style: buttonStyle1,
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -179,8 +142,12 @@ class NewNewscardWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
-                          onTap: () {},
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                                NewsDetailsCard.routeName,
+                                arguments: id);
+                          },
                           child: Container(
                             margin: EdgeInsets.all(13),
                             child: Text(

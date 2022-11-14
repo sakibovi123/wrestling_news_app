@@ -5,6 +5,7 @@ import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Controller/NewsController.dart';
 import 'package:wrestling_news_app/Controller/ResultController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
+import 'package:wrestling_news_app/Views/Pages/NewsDetails.dart';
 
 void main() {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Wrestling News',
         theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
+          //primarySwatch: Colors.white,
           fontFamily: 'Khand',
         ),
         // home: const Home(),
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         routes: {
           EventDetails.routeName: (context) => const EventDetails(),
           ResultDetails.routeName: (context) => const ResultDetails(),
+          NewsDetailsCard.routeName: (context) => const NewsDetailsCard(),
         },
       ),
     );
