@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 import '../../Controller/NewsController.dart';
@@ -14,6 +15,40 @@ class ShowNewsPage extends StatefulWidget {
 class _ShowNewsPageState extends State<ShowNewsPage> {
   bool _init = true;
   bool _isLoadingNews = false;
+  late PageController _pageViewController;
+  bool _showAppbar = true;
+  bool isScrollingDown = false;
+  @override
+  void initState() {
+    super.initState();
+    _pageViewController = PageController();
+    _pageViewController.addListener(() {
+      if (_pageViewController.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        if (!isScrollingDown) {
+          isScrollingDown = true;
+          _showAppbar = false;
+          setState(() {});
+        }
+      }
+      if (_pageViewController.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        if (isScrollingDown) {
+          isScrollingDown = false;
+          _showAppbar = true;
+          setState(() {});
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageViewController.dispose();
+    _pageViewController.removeListener(() {});
+    super.dispose();
+  }
+
   @override
   void didChangeDependencies() async {
     if (_init) {
@@ -34,28 +69,39 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
       );
     } else {
       return Scaffold(
-        body: Stack(
-          children: [
-            PageView.builder(
-              physics: const ScrollPhysics(),
-              itemCount: news.length,
-              scrollDirection: Axis.vertical,
-              // shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return NewNewscardWidget(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  title: news[index].title!.rendered!,
-                  content: news[index].content!.rendered!,
-                  image: news[index].ogImage ?? [],
-                  id: news[index].id!,
-                  // authorName: news[index].author!,
-                  date: 'November 5, 2022',
-                );
-              },
+        extendBodyBehindAppBar: true,
+        body: NestedScrollView(
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            SliverAppBar(
+              floating: true,
+              title: Text(
+                'Feed',
+              ),
+              centerTitle: true,
+              toolbarHeight: _showAppbar ? 40 : 0.0,
+              backgroundColor: Colors.grey.withAlpha(200),
             ),
-            CustomAppbar(title: 'News'),
           ],
+          body: PageView.builder(
+            controller: _pageViewController,
+            physics: const ScrollPhysics(),
+            itemCount: news.length,
+            scrollDirection: Axis.vertical,
+            // shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return NewNewscardWidget(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                title: news[index].title!.rendered!,
+                content: news[index].content!.rendered!,
+                image: news[index].ogImage ?? [],
+                id: news[index].id!,
+                // authorName: news[index].author!,
+                date: 'November 5, 2022',
+              );
+            },
+          ),
         ),
       );
     }

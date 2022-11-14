@@ -19,14 +19,12 @@ class ShowResultCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return UnconstrainedBox(
       child: Container(
-        margin: const EdgeInsets.only(top: 30),
         width: width,
-        height: height * 0.95,
+        height: height * 0.90,
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 30),
               padding: const EdgeInsets.only(
                 bottom: 0, // Space between underline and text
               ),
@@ -51,30 +49,30 @@ class ShowResultCard extends StatelessWidget {
               height: 10,
             ),
             Expanded(
-              child: ListView.builder(
-                physics: const ClampingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 8,
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Html(data: resultDescription),
-                        // Text(
-                        //   resultDescription,
-                        //   style: const TextStyle(
-                        //     fontSize: 16,
-                        //     fontWeight: FontWeight.w600,
-                        //   ),
-                        // ),
-                        const SizedBox(
-                          height: 10,
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Html(
+                      data: resultDescription,
+                      style: {
+                        'body': Style(
+                          fontFamily: 'NunitoSans',
                         ),
-                      ],
+                      },
                     ),
-                  );
-                },
+                    // Text(
+                    //   resultDescription,
+                    //   style: const TextStyle(
+                    //     fontSize: 16,
+                    //     fontWeight: FontWeight.w600,
+                    //   ),
+                    // ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -83,3 +81,38 @@ class ShowResultCard extends StatelessWidget {
     );
   }
 }
+
+// Expanded(
+// child: ListView.builder(
+// physics: const ClampingScrollPhysics(),
+// shrinkWrap: true,
+// itemCount: 8,
+// itemBuilder: (context, index) {
+// return Container(
+// child: Column(
+// crossAxisAlignment: CrossAxisAlignment.start,
+// children: [
+// Html(
+// data: resultDescription,
+// style: {
+// 'body': Style(
+// fontFamily: 'NunitoSans',
+// ),
+// },
+// ),
+// // Text(
+// //   resultDescription,
+// //   style: const TextStyle(
+// //     fontSize: 16,
+// //     fontWeight: FontWeight.w600,
+// //   ),
+// // ),
+// const SizedBox(
+// height: 10,
+// ),
+// ],
+// ),
+// );
+// },
+// ),
+// ),

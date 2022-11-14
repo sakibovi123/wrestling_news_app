@@ -24,7 +24,7 @@ class ChampionsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return UnconstrainedBox(
       child: Container(
-        margin: EdgeInsets.only(bottom: 10, top: 30),
+        margin: EdgeInsets.only(bottom: 10, top: 5),
         width: width * 0.95,
         height: height * 0.30,
         decoration: BoxDecoration(
@@ -64,14 +64,16 @@ class ChampionsCard extends StatelessWidget {
                       height: 30,
                     ),
                     Container(
+                      width: width * 0.5,
                       color: const Color(0xFFce061e),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 5, horizontal: 10),
                         child: Text(
                           titleName,
+                          textAlign: TextAlign.center,
                           style: const TextStyle(
-                            color: Color(0xFFfffffff),
+                            color: Color(0xfffffffff),
                           ),
                         ),
                       ),

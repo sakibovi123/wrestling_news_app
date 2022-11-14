@@ -54,7 +54,7 @@ class ResultCards extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              resultTitle,
+              resultTitle.toUpperCase(),
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 30,

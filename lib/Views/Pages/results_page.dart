@@ -30,26 +30,33 @@ class _ResultsPageState extends State<ResultsPage> {
     double height = MediaQuery.of(context).size.height;
     final all_results = Provider.of<ResultsController>(context).results;
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 40),
-            child: ListView.builder(
-              itemCount: all_results.length,
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return ResultCards(
-                    width: width,
-                    height: height,
-                    resultTitle: all_results![index].title!.rendered!,
-                    id: all_results![index].id!);
-              },
-            ),
+      extendBodyBehindAppBar: true,
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          const SliverAppBar(
+            floating: true,
+            title: Text('Results'),
+            centerTitle: true,
+            toolbarHeight: 40.0,
+            backgroundColor: Colors.grey,
           ),
-          CustomAppbar(title: 'Results'),
         ],
+        body: Container(
+          child: ListView.builder(
+            itemCount: all_results.length,
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+            itemBuilder: (context, index) {
+              return ResultCards(
+                  width: width,
+                  height: height,
+                  resultTitle: all_results![index].title!.rendered!,
+                  id: all_results![index].id!);
+            },
+          ),
+        ),
       ),
     );
   }
