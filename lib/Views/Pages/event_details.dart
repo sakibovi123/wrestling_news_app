@@ -11,13 +11,13 @@ class EventDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)?.settings.arguments;
     final eventDetails =
-        Provider.of<EventController>(context).getEventDetails(id as int);
+    Provider.of<EventController>(context).getEventDetails(id as int);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: SingleChildScrollView(
         child: Column(

@@ -16,51 +16,53 @@ class _EventsPageState extends State<EventsPage> {
 
   @override
   void didChangeDependencies() async {
-    if(_init){
-      _isloading = await Provider.of<EventController>(context, listen: false).getEvents();
+    if (_init) {
+      _isloading = await Provider.of<EventController>(context, listen: false)
+          .getEvents();
     }
     _init = false;
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     final all_events = Provider.of<EventController>(context).events;
 
-    if(!_isloading){
+    if (!_isloading) {
       return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator()
-        ),
+        body: Center(child: CircularProgressIndicator()),
       );
-    }
-    else{
+    } else {
       return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-        ),
-        body: Column(
+        body: Stack(
           children: [
-            Flexible(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                itemCount: all_events.length,
-                itemBuilder: (context, index) {
-                  return EventCard(
-                    id: all_events![index].id!,
-                    date: all_events![index].date!,
-                    event_logo: all_events![index].eventLogo!,
-                    event_name: all_events![index].eventName!,
-                    location: all_events![index].location!,
-                  );
-                },
-              ),
+            Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.07,
+                ),
+                Flexible(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const ClampingScrollPhysics(),
+                    itemCount: all_events.length,
+                    itemBuilder: (context, index) {
+                      return EventCard(
+                        id: all_events![index].id!,
+                        date: all_events![index].date!,
+                        event_logo: all_events![index].eventLogo!,
+                        event_name: all_events![index].eventName!,
+                        location: all_events![index].location!,
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
+            CustomAppbar(title: 'Events'),
           ],
         ),
       );
     }
-
   }
 }

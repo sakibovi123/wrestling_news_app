@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:wrestling_news_app/Controller/NewsController.dart';
 
 import 'Export.dart';
 
@@ -12,19 +10,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-
   bool isVisible = false;
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-
-        body: Stack(
-          children: [
-            PageView(
+    return Scaffold(
+      body: Stack(
+        children: [
+          PageView(
             scrollDirection: Axis.horizontal,
             physics: const ClampingScrollPhysics(),
             children: const [
+              LandingPage(),
               ShowNewsPage(),
               Photos(),
               Champions(),
@@ -32,17 +28,8 @@ class _HomeState extends State<Home> {
               ResultsPage(),
             ],
           ),
-        // const CustomAppbar(
-        //   title: Text(
-        //     'Wrestling World',
-        //     style: TextStyle(
-        //       fontSize: 20,
-        //     ),
-        //   ),
-        // ),
         ],
-        ),
-      );
-    }
+      ),
+    );
   }
-
+}

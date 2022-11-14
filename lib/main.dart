@@ -38,8 +38,6 @@ class MyApp extends StatelessWidget {
           ResultDetails.routeName: (context) => const ResultDetails(),
         },
       ),
-
     );
-
   }
 }

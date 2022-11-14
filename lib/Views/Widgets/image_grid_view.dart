@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 class ImageGridView extends StatelessWidget {
@@ -23,18 +22,15 @@ class ImageGridView extends StatelessWidget {
         );
       },
       child: Container(
-          margin: const EdgeInsets.only(
-            top: 40,
-            left: 12,
-            right: 12,
-            bottom: 12,
-          ),
+        margin: const EdgeInsets.only(
+          top: 40,
+          // left: 12,
+          // right: 12,
+          bottom: 12,
+        ),
         child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                image
-              ),
-
+          borderRadius: BorderRadius.circular(10),
+          child: Image.network(image),
         ),
       ),
     );

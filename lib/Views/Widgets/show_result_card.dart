@@ -52,7 +52,6 @@ class ShowResultCard extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                scrollDirection: Axis.vertical,
                 physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: 8,

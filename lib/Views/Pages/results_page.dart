@@ -16,8 +16,9 @@ class _ResultsPageState extends State<ResultsPage> {
 
   @override
   void didChangeDependencies() async {
-    if( _init ){
-      _isloading = await Provider.of<ResultsController>(context, listen: false).getResults();
+    if (_init) {
+      _isloading = await Provider.of<ResultsController>(context, listen: false)
+          .getResults();
     }
     _init = false;
     setState(() {});
@@ -29,22 +30,26 @@ class _ResultsPageState extends State<ResultsPage> {
     double height = MediaQuery.of(context).size.height;
     final all_results = Provider.of<ResultsController>(context).results;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: ListView.builder(
-        itemCount: all_results.length,
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        physics: const ClampingScrollPhysics(),
-        itemBuilder: (context, index) {
-          return ResultCards(width: width, height: height,
-              resultTitle: all_results![index].title!.rendered!,
-              id: all_results![index].id!
-          );
-        },
+      body: Stack(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 40),
+            child: ListView.builder(
+              itemCount: all_results.length,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return ResultCards(
+                    width: width,
+                    height: height,
+                    resultTitle: all_results![index].title!.rendered!,
+                    id: all_results![index].id!);
+              },
+            ),
+          ),
+          CustomAppbar(title: 'Results'),
+        ],
       ),
     );
   }

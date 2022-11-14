@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wrestling_news_app/Controller/NewsController.dart';
 import 'package:wrestling_news_app/Controller/ResultController.dart';
 
 import '../Pages/Export.dart';
@@ -25,21 +24,29 @@ class _ResultDetailsState extends State<ResultDetails> {
     double height = MediaQuery.of(context).size.height;
     final id = ModalRoute.of(context)?.settings.arguments;
     final resultDetails =
-      Provider.of<ResultsController>(context).getResultDetails(id as int);
+    Provider.of<ResultsController>(context).getResultDetails(id as int);
     return Scaffold(
       body: Stack(
         children: [
-          SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            child: ShowResultCard(
-              width: width,
-              height: height,
-              resultTitle: resultDetails.title!.rendered!,
-              resultDescription: resultDetails.content!.rendered!,
+          ShowResultCard(
+            width: width,
+            height: height,
+            resultTitle: resultDetails.title!.rendered!,
+            resultDescription: resultDetails.content!.rendered!,
+          ),
+          const CustomAppbar(
+            title: 'Result Details',
+          ),
+          Positioned(
+            top: 5,
+            left: 0,
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back_outlined),
             ),
           ),
-          CustomAppbar(),
         ],
       ),
     );

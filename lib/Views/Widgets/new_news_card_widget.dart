@@ -26,32 +26,12 @@ class NewNewscardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle buttonStyle1 = ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xFFc3232a),
-      shape: const StadiumBorder(),
-      minimumSize: const Size(200, 50),
-    );
-    final ButtonStyle buttonStyle2 = ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xFFf5f5f5),
-      shape: const StadiumBorder(),
-      minimumSize: const Size(10, 50),
-    );
     return UnconstrainedBox(
       child: Container(
         width: width,
-        height: height,
+        height: height * 0.9,
         decoration: const BoxDecoration(
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey, //color of shadow
-              spreadRadius: 0.5,
-              blurRadius: 3,
-              offset: Offset(0, 1),
-              //first paramerter of offset is left-right
-              //second parameter is top to down
-            ),
-          ],
         ),
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
@@ -62,20 +42,15 @@ class NewNewscardWidget extends StatelessWidget {
                 child: Container(
                   height: height * .40,
                   width: width,
-                  child:
-                  ListView.builder(
+                  child: ListView.builder(
                       itemCount: image!.length,
                       itemBuilder: (context, i) {
                         return Image.network(
                           image![0].url,
-
                           fit: BoxFit.fill,
                         );
                       }),
                 ),
-              ),
-              const SizedBox(
-                height: 15,
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -93,14 +68,7 @@ class NewNewscardWidget extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.only(left: 5, right: 5),
-                child: Html(
-                  data: content.substring(0, 200),
-                  style: {
-                    "body": Style(
-                      fontSize: FontSize(16)
-                    ),
-                  },
-                ),
+                child: Html(data: content.substring(0, 400)),
                 // child: Text(
                 //   content,
                 //   style: const TextStyle(
@@ -134,40 +102,7 @@ class NewNewscardWidget extends StatelessWidget {
                       width: 10,
                     ),
                     Text(date),
-
                   ],
-                ),
-
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              Expanded(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          onPressed: (){},
-                          child: Icon(
-                            Icons.share,
-                            color: Colors.blueGrey,
-                          ),
-                          style: buttonStyle2,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          onPressed: (){},
-                          child: Text("Show Details"),
-                          style: buttonStyle1,
-                        ),
-                      ),
-
-                    ]
                 ),
               ),
             ],
@@ -177,4 +112,3 @@ class NewNewscardWidget extends StatelessWidget {
     );
   }
 }
-

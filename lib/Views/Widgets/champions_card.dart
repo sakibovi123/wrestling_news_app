@@ -11,20 +11,20 @@ class ChampionsCard extends StatelessWidget {
 
   const ChampionsCard(
       {Key? key,
-        required this.width,
-        required this.height,
-        required this.titleName,
-        required this.currentChampion,
-        required this.since,
-        this.titleImage,
-        this.championImage})
+      required this.width,
+      required this.height,
+      required this.titleName,
+      required this.currentChampion,
+      required this.since,
+      this.titleImage,
+      this.championImage})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return UnconstrainedBox(
       child: Container(
-        margin: EdgeInsets.only(bottom: 10, top: 10),
+        margin: EdgeInsets.only(bottom: 10, top: 30),
         width: width * 0.95,
         height: height * 0.30,
         decoration: BoxDecoration(
@@ -50,11 +50,11 @@ class ChampionsCard extends StatelessWidget {
                 height: height * 0.20,
                 child: titleImage != null
                     ? Image.network(
-                  'https://wrestlingdb.pythonanywhere.com/$titleImage',
-                  fit: BoxFit.contain,
-                )
+                        'https://wrestlingdb.pythonanywhere.com/$titleImage',
+                        fit: BoxFit.contain,
+                      )
                     : Image.network(
-                    "https://wallpapercave.com/wp/wp2092436.jpg"),
+                        "https://wallpapercave.com/wp/wp2092436.jpg"),
               ),
               Container(
                 height: height * .28,
@@ -100,11 +100,11 @@ class ChampionsCard extends StatelessWidget {
                 height: height * 0.20,
                 child: championImage != null
                     ? Image.network(
-                  'https://wrestlingdb.pythonanywhere.com/$championImage',
-                  fit: BoxFit.contain,
-                )
+                        'https://wrestlingdb.pythonanywhere.com/$championImage',
+                        fit: BoxFit.contain,
+                      )
                     : Image.network(
-                    "https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"),
+                        "https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"),
               ),
             ],
           ),

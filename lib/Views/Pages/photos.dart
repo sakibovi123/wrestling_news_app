@@ -10,38 +10,39 @@ class Photos extends StatefulWidget {
 }
 
 class _PhotosState extends State<Photos> {
-
   PhotoController photoController = PhotoController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-      ),
-      body: FutureBuilder(
-        future: photoController.getPhotos(),
-        builder: (context, snapshot){
-          if(snapshot.hasData){
-            return ListView.builder(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, i){
-                return ImageGridView(image: snapshot.data[i]["_image_link"]);
-              },
-            );
-          }
-          else{
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: Colors.white,
+      // ),
+      body: Stack(
+        children: [
+          FutureBuilder(
+            future: photoController.getPhotos(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return PageView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, i) {
+                    return ImageGridView(
+                        image: snapshot.data[i]["_image_link"]);
+                  },
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
+          CustomAppbar(title: 'Photos'),
+        ],
       ),
     );
   }
 }
-

@@ -2,13 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+typedef CustomCallBack = IconButton Function(Icons value);
+
 class CustomAppbar extends StatefulWidget {
-  // const CustomAppbar({Key? key}) : super(key: key);
-  const CustomAppbar({Key? key, this.title, this.icon}) : super(key: key);
+  const CustomAppbar({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
-  final Widget? title;
-  final Widget? icon;
-
+  final String title;
   @override
   State<CustomAppbar> createState() => _CustomAppbarState();
 }
@@ -31,25 +33,19 @@ class _CustomAppbarState extends State<CustomAppbar> {
             width: screenSize,
             height: 60,
             child: Row(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  margin: EdgeInsets.only(right: 15),
-                  width: 56,
-                  color: Colors.transparent,
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.arrow_back_outlined),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      widget.title,
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.25,
-                ),
-                Container(
-                  child: widget.title,
-                ),
+                // SizedBox(
+                //   width: MediaQuery.of(context),
+                // )
               ],
             ),
           ),
