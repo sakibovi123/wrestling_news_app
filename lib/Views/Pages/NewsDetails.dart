@@ -21,20 +21,32 @@ class _NewsDetailsCardState extends State<NewsDetailsCard> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        // iconTheme: ThemeData(color: Colors.black),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network("https://e00-marca.uecdn.es/assets/multimedia/imagenes/2022/10/21/16663715357215.jpg",
-            fit: BoxFit.cover,
-              height: 300,
-            ),
             Container(
-              height: 10,
-              //color: const Color(0XFF111111),
+              height: 300,
+              // width: width,
+              child: ListView.builder(
+                  padding: EdgeInsets.only(top: 0),
+                  itemCount: newsDetails.ogImage!.length,
+                  itemBuilder: (context, i) {
+                    return Image.network(
+                      newsDetails.ogImage![0].url!,
+                      fit: BoxFit.cover,
+                      height: 300,
+                    );
+                  }),
             ),
+            // Image.network("https://e00-marca.uecdn.es/assets/multimedia/imagenes/2022/10/21/16663715357215.jpg",
+            // fit: BoxFit.cover,
+            //   height: 300,
+            // ),
+
             Container(
               height: 5,
               color: const Color(0XFFe8e8e8),
@@ -44,57 +56,32 @@ class _NewsDetailsCardState extends State<NewsDetailsCard> {
               child: Text(
                 newsDetails.title!.rendered!,
                 style: const TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1,
-                ),
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+                height: 1.1,
+                fontFamily: 'Khand-Bold',
+              ),
               ),
             ),
-            Container(
-              height: 5,
-              color: const Color(0XFFe8e8e8),
-            ),
+
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Align(
                 alignment: Alignment.center,
-                child: Html(
-                  data: newsDetails.content!.rendered as String
+                child:
+                Html(
+                  data: newsDetails.content!.rendered!,
+                  style: {
+                    "body": Style(
+                        fontSize: const FontSize(16),
+                        fontFamily: 'NunitoSans'),
+                  },
                 ),
               ),
             ),
-            Container(
-              height: 5,
-              color: const Color(0XFFe8e8e8),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "Related News",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            // Container(
-            //   height: 400,
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: GridView.count(
-            //         crossAxisCount: 1,
-            //       scrollDirection: Axis.horizontal,
-            //       children: List.generate(10, (i) => const NewsCard())
-            //     ),
-            //   ),
-            // ),
+
+
+
           ],
         ),
       )

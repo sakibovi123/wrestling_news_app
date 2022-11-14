@@ -29,11 +29,12 @@ class _SplashScreenState extends State<SplashScreen> {
         body: Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomRight,
-              colors: [Color(0xFF3065E7), Color(0xFF7486FD)])),
+      color: const Color(0xFF181818),
+      // decoration: const BoxDecoration(
+      //     gradient: LinearGradient(
+      //         begin: Alignment.topRight,
+      //         end: Alignment.bottomRight,
+      //         colors: [Color(0xFF3065E7), Color(0xFF7486FD)])),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
