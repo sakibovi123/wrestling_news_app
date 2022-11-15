@@ -69,6 +69,7 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
       );
     } else {
       return Scaffold(
+        backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
         body: NestedScrollView(
           floatHeaderSlivers: true,

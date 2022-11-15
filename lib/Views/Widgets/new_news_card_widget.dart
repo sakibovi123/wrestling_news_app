@@ -54,21 +54,20 @@ class NewNewscardWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Container(
-                      height: 290,
-                      width: width,
-                      child: ListView.builder(
-                          padding: EdgeInsets.only(top: 0),
-                          itemCount: image!.length,
-                          itemBuilder: (context, i) {
-                            return Image.network(
-                              image![0].url,
-                              fit: BoxFit.fill,
-                            );
-                          }),
-                    ),
+                  Container(
+                    height: 230,
+                    width: width,
+                    child: ListView.builder(
+                        padding: EdgeInsets.only(top: 0),
+                        itemCount: image!.length,
+                        itemBuilder: (context, i) {
+                          return Image.network(
+                            image![0].url,
+                            fit: BoxFit.fill,
+                          );
+                        }),
                   ),
+                  SizedBox(height: 5,),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Text(

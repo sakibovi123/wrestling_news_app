@@ -8,7 +8,10 @@ import 'package:wrestling_news_app/Views/Pages/Export.dart';
 import 'package:wrestling_news_app/Views/Pages/NewsDetails.dart';
 
 void main() {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
+    SystemUiOverlay.bottom,
+  ]);
 
   runApp(const MyApp());
 }
