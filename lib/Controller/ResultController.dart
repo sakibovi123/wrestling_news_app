@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../Model/ResultModel.dart';
 
-
-class ResultsController with ChangeNotifier{
-  String url = "https://wrestlingworld.co/wp-json/wp/v2/quick_results";
+class ResultsController with ChangeNotifier {
+  String url = "https://api.wrestlingworld.co/wp-json/wp/v2/quick_results";
 
   List<ResultModel> _results = [];
 
   Future<bool> getResults() async {
-    try{
+    try {
       var response = await http.get(Uri.parse(url));
-      if ( response.statusCode == 200 ){
+      if (response.statusCode == 200) {
         var data = json.decode(response.body);
         List<ResultModel> temp = [];
-        data.forEach((element){
+        data.forEach((element) {
           ResultModel resultModel = ResultModel.fromJson(element);
           temp.add(resultModel);
         });
@@ -23,11 +22,10 @@ class ResultsController with ChangeNotifier{
         notifyListeners();
         Future.error(response.body);
         return true;
-      }
-      else{
+      } else {
         return false;
       }
-    } catch(e){
+    } catch (e) {
       Future.error(e);
       return false;
     }
@@ -37,7 +35,7 @@ class ResultsController with ChangeNotifier{
     return [..._results];
   }
 
-  ResultModel getResultDetails(int id){
+  ResultModel getResultDetails(int id) {
     return _results.firstWhere((element) => element.id == id);
   }
 }
