@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Provider/DarkThemeProvider.dart';
 
 import '../../Controller/NewsController.dart';
 import 'Export.dart';
@@ -62,6 +63,7 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     final news = Provider.of<NewsController>(context).allNews;
     if (!_isLoadingNews) {
       return const Scaffold(
@@ -69,7 +71,6 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
       );
     } else {
       return Scaffold(
-        backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
         body: NestedScrollView(
           floatHeaderSlivers: true,
@@ -82,6 +83,36 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
               centerTitle: true,
               toolbarHeight: _showAppbar ? 40 : 0.0,
               backgroundColor: Colors.grey.withAlpha(200),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        content: SwitchListTile(
+                          title: themeState.getDarkTheme
+                              ? Text('Darkmode')
+                              : Text('Lightmode'),
+                          secondary: Icon(
+                            themeState.getDarkTheme
+                                ? Icons.dark_mode_outlined
+                                : Icons.light_mode_outlined,
+                          ),
+                          value: themeState.getDarkTheme,
+                          onChanged: ((bool value) {
+                            setState(() {
+                              themeState.setDarkTheme = value;
+                            });
+                          }),
+                        ),
+                      ),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.settings,
+                  ),
+                ),
+              ],
             ),
           ],
           body: PageView.builder(

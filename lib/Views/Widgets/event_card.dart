@@ -10,11 +10,11 @@ class EventCard extends StatelessWidget {
 
   const EventCard(
       {Key? key,
-        required this.id,
-        required this.date,
-        required this.event_logo,
-        required this.event_name,
-        required this.location})
+      required this.id,
+      required this.date,
+      required this.event_logo,
+      required this.event_name,
+      required this.location})
       : super(key: key);
 
   @override
@@ -26,6 +26,11 @@ class EventCard extends StatelessWidget {
       child: Card(
         child: Container(
           decoration: BoxDecoration(
+            borderRadius: BorderRadiusDirectional.all(
+              // topStart: Radius.circular(5.0),
+              // bottomStart: Radius.circular(5.0),
+              Radius.circular(10),
+            ),
             color: Colors.white,
             boxShadow: [
               BoxShadow(
@@ -40,8 +45,8 @@ class EventCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: const BorderRadiusDirectional.only(
-                  topStart: Radius.circular(10.0),
-                  bottomStart: Radius.circular(10.0),
+                  topStart: Radius.circular(5),
+                  bottomStart: Radius.circular(5),
                 ),
                 // child: Image.network(event_logo,
                 //   width: 130,

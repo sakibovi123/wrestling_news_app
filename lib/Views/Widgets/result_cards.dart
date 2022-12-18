@@ -44,7 +44,8 @@ class ResultCards extends StatelessWidget {
             color: Colors.black45,
             image: DecorationImage(
               image: const NetworkImage(
-                  'https://wrestlingworld.co/wp-content/uploads/2019/05/ww-star-280x96.png?fbclid=IwAR1nY6M3v4zQO6RIhKyy0m_TQlv73PbNKqDLUqcQxzg1FTF2BlkVLgoYyVo'),
+                'https://upload.wikimedia.org/wikipedia/en/1/1a/ROH_World_Six-Man_Tag_Team_Championship.jpeg',
+              ),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.75),

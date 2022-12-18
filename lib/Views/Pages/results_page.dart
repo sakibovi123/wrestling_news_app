@@ -52,8 +52,8 @@ class _ResultsPageState extends State<ResultsPage> {
               return ResultCards(
                   width: width,
                   height: height,
-                  resultTitle: all_results![index].title!.rendered!,
-                  id: all_results![index].id!);
+                  resultTitle: all_results[index].title!.rendered!,
+                  id: all_results[index].id!);
             },
           ),
         ),

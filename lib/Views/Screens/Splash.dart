@@ -40,7 +40,8 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Image.network(
-            "https://wrestlingworld.co/wp-content/uploads/2019/05/ww-star-280x96.png",
+            // "https://wrestlingworld.co/wp-content/uploads/2019/05/ww-star-280x96.png",
+            'https://media.zenfs.com/en/business-wire.com/a0992cbc7b70f60bdc482651d9dbdae0',
             height: 300.0,
             width: 300.0,
           ),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:provider/provider.dart';
+
+import '../../Provider/DarkThemeProvider.dart';
 
 class ShowResultCard extends StatelessWidget {
   const ShowResultCard({
@@ -17,6 +20,7 @@ class ShowResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     return UnconstrainedBox(
       child: Container(
         width: width,
@@ -38,8 +42,8 @@ class ShowResultCard extends StatelessWidget {
               ),
               child: Text(
                 resultTitle,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: themeState.getDarkTheme ? Colors.white : Colors.black,
                   fontSize: 26,
                   fontWeight: FontWeight.w900,
                 ),
@@ -49,29 +53,34 @@ class ShowResultCard extends StatelessWidget {
               height: 10,
             ),
             Expanded(
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Html(
-                      data: resultDescription,
-                      style: {
-                        'body': Style(
-                          fontFamily: 'NunitoSans',
-                        ),
-                      },
-                    ),
-                    // Text(
-                    //   resultDescription,
-                    //   style: const TextStyle(
-                    //     fontSize: 16,
-                    //     fontWeight: FontWeight.w600,
-                    //   ),
-                    // ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
+              child: SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Html(
+                        data: resultDescription,
+                        style: {
+                          'body': Style(
+                            fontFamily: 'NunitoSans',
+                            color: themeState.getDarkTheme
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                        },
+                      ),
+                      // Text(
+                      //   resultDescription,
+                      //   style: const TextStyle(
+                      //     fontSize: 16,
+                      //     fontWeight: FontWeight.w600,
+                      //   ),
+                      // ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

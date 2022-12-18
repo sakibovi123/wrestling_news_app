@@ -11,7 +11,7 @@ class EventDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)?.settings.arguments;
     final eventDetails =
-    Provider.of<EventController>(context).getEventDetails(id as int);
+        Provider.of<EventController>(context).getEventDetails(id as int);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -56,10 +56,13 @@ class EventDetails extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            eventDetails.eventName as String,
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                          Container(
+                            width: 250,
+                            child: Text(
+                              eventDetails.eventName as String,
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
                           ),
                           const SizedBox(
                             height: 12,

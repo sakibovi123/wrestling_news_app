@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:provider/provider.dart';
 
+import '../../Provider/DarkThemeProvider.dart';
 import '../Pages/NewsDetails.dart';
 
 class NewNewscardWidget extends StatelessWidget {
@@ -30,6 +32,7 @@ class NewNewscardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     final ButtonStyle buttonStyle1 = ElevatedButton.styleFrom(
       backgroundColor: const Color(0xFFc3232a),
       shape: const StadiumBorder(),
@@ -46,8 +49,10 @@ class NewNewscardWidget extends StatelessWidget {
           child: Container(
             width: width,
             height: height * 0.9,
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration: BoxDecoration(
+              color: themeState.getDarkTheme
+                  ? Color.fromARGB(255, 0, 0, 26)
+                  : Colors.white,
             ),
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
@@ -67,16 +72,21 @@ class NewNewscardWidget extends StatelessWidget {
                           );
                         }),
                   ),
-                  SizedBox(height: 5,),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
                         height: 1.1,
                         fontFamily: 'Khand-Bold',
+                        color: themeState.getDarkTheme
+                            ? Colors.white
+                            : Colors.black,
                       ),
                     ),
                   ),
@@ -85,8 +95,12 @@ class NewNewscardWidget extends StatelessWidget {
                       data: content.substring(0, 100),
                       style: {
                         "body": Style(
-                            fontSize: const FontSize(16),
-                            fontFamily: 'NunitoSans'),
+                          fontSize: const FontSize(16),
+                          fontFamily: 'NunitoSans',
+                          color: themeState.getDarkTheme
+                              ? Colors.white
+                              : Colors.black,
+                        ),
                       },
                     ),
                   ),
@@ -104,7 +118,14 @@ class NewNewscardWidget extends StatelessWidget {
                         //       color: Colors.black45),
                         // ),
 
-                        Text(date),
+                        Text(
+                          date,
+                          style: TextStyle(
+                            color: themeState.getDarkTheme
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                        ),
                       ],
                     ),
                   ),
