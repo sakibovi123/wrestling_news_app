@@ -89,14 +89,34 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
+                        backgroundColor: themeState.getDarkTheme
+                            ? Color.fromARGB(255, 0, 0, 26)
+                            : Colors.white,
                         content: SwitchListTile(
                           title: themeState.getDarkTheme
-                              ? Text('Darkmode')
-                              : Text('Lightmode'),
+                              ? Text(
+                                  'Darkmode',
+                                  style: TextStyle(
+                                    color: themeState.getDarkTheme
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                )
+                              : Text(
+                                  'Lightmode',
+                                  style: TextStyle(
+                                    color: themeState.getDarkTheme
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                ),
                           secondary: Icon(
                             themeState.getDarkTheme
                                 ? Icons.dark_mode_outlined
                                 : Icons.light_mode_outlined,
+                            color: themeState.getDarkTheme
+                                ? Colors.white
+                                : Colors.black,
                           ),
                           value: themeState.getDarkTheme,
                           onChanged: ((bool value) {
