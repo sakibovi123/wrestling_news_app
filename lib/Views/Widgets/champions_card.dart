@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../Provider/DarkThemeProvider.dart';
+import '../Pages/Export.dart';
 
 class ChampionsCard extends StatelessWidget {
   final double width;
@@ -22,13 +26,14 @@ class ChampionsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     return UnconstrainedBox(
       child: Container(
         margin: EdgeInsets.only(bottom: 10, top: 5),
         width: width * 0.95,
         height: height * 0.30,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: themeState.getDarkTheme ? Color(0xFF191919) : Colors.white,
           borderRadius: BorderRadius.circular(5),
           boxShadow: const [
             BoxShadow(
@@ -52,9 +57,38 @@ class ChampionsCard extends StatelessWidget {
                     ? Image.network(
                         'https://wrestlingdb.pythonanywhere.com/$titleImage',
                         fit: BoxFit.contain,
+                        frameBuilder:
+                            (context, child, frame, wasSynchronouslyLoaded) {
+                          return child;
+                        },
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          } else {
+                            return Center(
+                              child: CustomCircularProgressIndicator(
+                                  themeState: themeState),
+                            );
+                          }
+                        },
                       )
                     : Image.network(
-                        "https://wallpapercave.com/wp/wp2092436.jpg"),
+                        "https://wallpapercave.com/wp/wp2092436.jpg",
+                        frameBuilder:
+                            (context, child, frame, wasSynchronouslyLoaded) {
+                          return child;
+                        },
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          } else {
+                            return Center(
+                              child: CustomCircularProgressIndicator(
+                                  themeState: themeState),
+                            );
+                          }
+                        },
+                      ),
               ),
               Container(
                 height: height * .28,
@@ -88,8 +122,20 @@ class ChampionsCard extends StatelessWidget {
                           Text(
                             'CUREENT CHAMPION: $currentChampion',
                             textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: themeState.getDarkTheme
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
                           ),
-                          Text('SINCE: $since'),
+                          Text(
+                            'SINCE: $since',
+                            style: TextStyle(
+                              color: themeState.getDarkTheme
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -104,9 +150,38 @@ class ChampionsCard extends StatelessWidget {
                     ? Image.network(
                         'https://wrestlingdb.pythonanywhere.com/$championImage',
                         fit: BoxFit.contain,
+                        frameBuilder:
+                            (context, child, frame, wasSynchronouslyLoaded) {
+                          return child;
+                        },
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          } else {
+                            return Center(
+                              child: CustomCircularProgressIndicator(
+                                  themeState: themeState),
+                            );
+                          }
+                        },
                       )
                     : Image.network(
-                        "https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"),
+                        "https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg",
+                        frameBuilder:
+                            (context, child, frame, wasSynchronouslyLoaded) {
+                          return child;
+                        },
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          } else {
+                            return Center(
+                              child: CustomCircularProgressIndicator(
+                                  themeState: themeState),
+                            );
+                          }
+                        },
+                      ),
               ),
             ],
           ),

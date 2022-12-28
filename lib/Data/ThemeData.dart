@@ -4,7 +4,7 @@ class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
       scaffoldBackgroundColor:
-          isDarkTheme ? Color(0xFF00001a) : Color(0xFFFFFFFF),
+          isDarkTheme ? Color(0xFF212121) : Color(0xFFFFFFFF),
       fontFamily: 'Khand',
     );
   }

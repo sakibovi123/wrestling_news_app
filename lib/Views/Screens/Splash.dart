@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../Pages/Export.dart';
+import '../Pages/Export.dart';
+import 'package:provider/provider.dart';
+import '../../Provider/DarkThemeProvider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -25,11 +28,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
         body: Container(
       width: double.infinity,
       height: double.infinity,
-      color: const Color(0xFF181818),
+      color: themeState.getDarkTheme ? Color(0xFF212121) : Colors.white,
       // decoration: const BoxDecoration(
       //     gradient: LinearGradient(
       //         begin: Alignment.topRight,
@@ -53,7 +57,12 @@ class _SplashScreenState extends State<SplashScreen> {
           //       fontWeight: FontWeight.bold,
           //       fontSize: 18.0),
           // ),
-          const CircularProgressIndicator(),
+          CustomCircularProgressIndicator(themeState: themeState),
+          // CircularProgressIndicator(
+          //   value: 0.5,
+          //   backgroundColor: Colors.grey,
+          //   color: Colors.yellow,
+          // ),
         ],
       ),
     ));

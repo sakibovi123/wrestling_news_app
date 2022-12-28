@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/EventController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
+import '../../Provider/DarkThemeProvider.dart';
+
 class EventsPage extends StatefulWidget {
   const EventsPage({Key? key}) : super(key: key);
 
@@ -27,10 +29,12 @@ class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
     final all_events = Provider.of<EventController>(context).events;
+    final themeState = Provider.of<DarkThemeProvider>(context);
 
     if (!_isloading) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+      return Scaffold(
+        body: Center(
+            child: CustomCircularProgressIndicator(themeState: themeState)),
       );
     } else {
       return Scaffold(

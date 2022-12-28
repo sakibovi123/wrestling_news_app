@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/ChampionController.dart';
 
+import '../../Provider/DarkThemeProvider.dart';
 import '../Pages/Export.dart';
 
 class Champions extends StatefulWidget {
@@ -18,6 +20,7 @@ ChampionController championController = ChampionController();
 class _ChampionsState extends State {
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -58,8 +61,9 @@ class _ChampionsState extends State {
                       },
                     );
                   } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return Center(
+                      child: CustomCircularProgressIndicator(
+                          themeState: themeState),
                     );
                   }
                 },

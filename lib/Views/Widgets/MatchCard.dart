@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../Provider/DarkThemeProvider.dart';
 
 class MatchCard extends StatelessWidget {
   final String matchTitle;
@@ -9,9 +12,13 @@ class MatchCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     double width = MediaQuery.of(context).size.width;
     return UnconstrainedBox(
       child: Card(
+        color: themeState.getDarkTheme
+            ? Color.fromARGB(255, 0, 0, 26)
+            : Colors.white,
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: 165),
           child: Container(
@@ -19,6 +26,14 @@ class MatchCard extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             width: width * 0.95,
             decoration: BoxDecoration(
+              // boxShadow: [
+              //   BoxShadow(
+              //     offset: Offset(0, 8),
+              //     spreadRadius: -12,
+              //     blurRadius: 26,
+              //     color: Color.fromRGBO(149, 143, 143, 1),
+              //   )
+              // ],
               color: Colors.black,
               image: DecorationImage(
                 image: const NetworkImage(

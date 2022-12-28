@@ -66,8 +66,11 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
     final themeState = Provider.of<DarkThemeProvider>(context);
     final news = Provider.of<NewsController>(context).allNews;
     if (!_isLoadingNews) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+      return Scaffold(
+        // body: Center(child: CircularProgressIndicator()),
+        body: Center(
+          child: CustomCircularProgressIndicator(themeState: themeState),
+        ),
       );
     } else {
       return Scaffold(
@@ -90,7 +93,7 @@ class _ShowNewsPageState extends State<ShowNewsPage> {
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
                         backgroundColor: themeState.getDarkTheme
-                            ? Color.fromARGB(255, 0, 0, 26)
+                            ? Color(0xFF212121)
                             : Colors.white,
                         content: SwitchListTile(
                           title: themeState.getDarkTheme

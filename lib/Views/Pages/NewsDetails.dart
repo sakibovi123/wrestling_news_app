@@ -3,6 +3,8 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/NewsController.dart';
 
+import '../../Provider/DarkThemeProvider.dart';
+
 class NewsDetailsCard extends StatefulWidget {
   const NewsDetailsCard({Key? key}) : super(key: key);
   static const routeName = "/news-details";
@@ -13,6 +15,7 @@ class NewsDetailsCard extends StatefulWidget {
 class _NewsDetailsCardState extends State<NewsDetailsCard> {
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     final id = ModalRoute.of(context)?.settings.arguments;
     final newsDetails =
         Provider.of<NewsController>(context).getNewsDetails(id as int);
@@ -23,7 +26,6 @@ class _NewsDetailsCardState extends State<NewsDetailsCard> {
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             SliverAppBar(
               floating: true,
-              title: Text('Champions'),
               centerTitle: true,
               toolbarHeight: 40.0,
               backgroundColor: Colors.grey,
@@ -65,11 +67,13 @@ class _NewsDetailsCardState extends State<NewsDetailsCard> {
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
                     newsDetails.title!.rendered!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w700,
                       height: 1.1,
                       fontFamily: 'Khand-Bold',
+                      color:
+                          themeState.getDarkTheme ? Colors.white : Colors.black,
                     ),
                   ),
                 ),
@@ -82,8 +86,12 @@ class _NewsDetailsCardState extends State<NewsDetailsCard> {
                       data: newsDetails.content!.rendered!,
                       style: {
                         "body": Style(
-                            fontSize: const FontSize(16),
-                            fontFamily: 'NunitoSans'),
+                          fontSize: const FontSize(16),
+                          fontFamily: 'NunitoSans',
+                          color: themeState.getDarkTheme
+                              ? Colors.white
+                              : Colors.black,
+                        ),
                       },
                     ),
                   ),

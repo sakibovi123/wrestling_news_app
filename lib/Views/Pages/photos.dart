@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 import 'package:wrestling_news_app/Controller/PhotoController.dart';
 import 'package:wrestling_news_app/Views/Pages/Export.dart';
+
+import '../../Provider/DarkThemeProvider.dart';
 
 class Photos extends StatefulWidget {
   const Photos({Key? key}) : super(key: key);
@@ -49,6 +52,7 @@ class _PhotosState extends State<Photos> {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: NestedScrollView(
@@ -75,9 +79,10 @@ class _PhotosState extends State<Photos> {
                 },
               );
             } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return Center(
+                  child: CustomCircularProgressIndicator(
+                themeState: themeState,
+              ));
             }
           },
         ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Views/Pages/Export.dart';
 
 import '../../Provider/DarkThemeProvider.dart';
 import '../Pages/NewsDetails.dart';
@@ -50,9 +51,7 @@ class NewNewscardWidget extends StatelessWidget {
             width: width,
             height: height * 0.9,
             decoration: BoxDecoration(
-              color: themeState.getDarkTheme
-                  ? Color.fromARGB(255, 0, 0, 26)
-                  : Colors.white,
+              color: themeState.getDarkTheme ? Color(0xFF212121) : Colors.white,
             ),
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
@@ -69,6 +68,24 @@ class NewNewscardWidget extends StatelessWidget {
                           return Image.network(
                             image![0].url,
                             fit: BoxFit.fill,
+                            frameBuilder: (context, child, frame,
+                                wasSynchronouslyLoaded) {
+                              return child;
+                            },
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) {
+                                return child;
+                              } else {
+                                return SizedBox(
+                                  width: width,
+                                  height: 230,
+                                  child: Center(
+                                    child: CustomCircularProgressIndicator(
+                                        themeState: themeState),
+                                  ),
+                                );
+                              }
+                            },
                           );
                         }),
                   ),
@@ -92,7 +109,7 @@ class NewNewscardWidget extends StatelessWidget {
                   ),
                   Container(
                     child: Html(
-                      data: content.substring(0, 100),
+                      data: content.substring(0, 300),
                       style: {
                         "body": Style(
                           fontSize: const FontSize(16),

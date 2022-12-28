@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wrestling_news_app/Views/Pages/Export.dart';
 import 'package:wrestling_news_app/Views/Pages/event_details.dart';
+
+import '../../Provider/DarkThemeProvider.dart';
 
 class EventCard extends StatelessWidget {
   final int id;
@@ -19,11 +23,13 @@ class EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(EventDetails.routeName, arguments: id);
       },
       child: Card(
+        color: Colors.transparent,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadiusDirectional.all(
@@ -31,7 +37,7 @@ class EventCard extends StatelessWidget {
               // bottomStart: Radius.circular(5.0),
               Radius.circular(10),
             ),
-            color: Colors.white,
+            color: themeState.getDarkTheme ? Color(0xFF191919) : Colors.white,
             boxShadow: [
               BoxShadow(
                 offset: Offset(0, 8),
@@ -52,12 +58,33 @@ class EventCard extends StatelessWidget {
                 //   width: 130,
                 //   height: 120,
                 //   fit: BoxFit.fill,),
-                child: Image.network(
-                  "https://wrestlingdb.pythonanywhere.com$event_logo",
-                  width: 130,
-                  height: 120,
-                  fit: BoxFit.fill,
-                ),
+                child: event_logo != null
+                    ? Image.network(
+                        "https://wrestlingdb.pythonanywhere.com$event_logo",
+                        width: 130,
+                        height: 120,
+                        fit: BoxFit.fill,
+                        frameBuilder:
+                            (context, child, frame, wasSynchronouslyLoaded) {
+                          return child;
+                        },
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          } else {
+                            return Center(
+                              child: CustomCircularProgressIndicator(
+                                  themeState: themeState),
+                            );
+                          }
+                        },
+                      )
+                    : Image.network(
+                        "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg",
+                        width: 130,
+                        height: 120,
+                        fit: BoxFit.fill,
+                      ),
               ),
               SizedBox(
                 width: 10,
@@ -69,7 +96,10 @@ class EventCard extends StatelessWidget {
                   children: [
                     Text(
                       date,
-                      style: const TextStyle(
+                      style: TextStyle(
+                        color: themeState.getDarkTheme
+                            ? Colors.white
+                            : Colors.black,
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
@@ -82,7 +112,10 @@ class EventCard extends StatelessWidget {
                       width: 180,
                       child: Text(
                         event_name,
-                        style: const TextStyle(
+                        style: TextStyle(
+                          color: themeState.getDarkTheme
+                              ? Colors.white
+                              : Colors.black,
                           fontSize: 18,
                         ),
                       ),
